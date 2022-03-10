@@ -1,0 +1,1 @@
+﻿[{"Title":"Mr. Dunkins married!","Date":"2/24/22","Body":"Last Friday, the school announced Mr. Dunkins married his long-time lover. Laurie is devastated. ","GameState":1},{"Title":"3 people late for math class!","Date":"02/24/2022","Body":"Tragic all time high. Three people missed the first five minutes of math class. ","GameState":0}]
