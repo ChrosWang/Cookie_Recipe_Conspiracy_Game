@@ -126,7 +126,7 @@ public class NewsLoader : MonoBehaviour
             SearchMyCollection(textField.text);
         }
 
-        if (searchCount >= 4)
+        if (searchCount >=3)
         {
             RefreshNewsFeed();
             searchCount = 0;
