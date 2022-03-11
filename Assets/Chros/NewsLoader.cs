@@ -11,7 +11,16 @@ public class NewsLoader : MonoBehaviour
     public NewsCollection myNewsCollection = new NewsCollection();
 
     public Button SearchButton;
-    public Button CurrentScoreButton; 
+    public Button CurrentScoreButton;
+    public Button ShareButton1;
+    public Button ShareButton2;
+    public Button ShareButton3;
+
+    public GameObject ShareStats1;
+    public GameObject ShareStats2;
+    public GameObject ShareStats3;
+    //public Image ShareStats2;
+    // public Image ShareStats3;
 
     public Text textField;
     public Text scoreField; 
@@ -29,6 +38,12 @@ public class NewsLoader : MonoBehaviour
     public TMP_Text Algorithm2Body;
 
     public TMP_Text SearchResultStats;
+
+
+
+    public int currentCP;
+
+    public int searchCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,21 +52,68 @@ public class NewsLoader : MonoBehaviour
         Debug.Log(myNewsCollection.News[0].Date);
         Debug.Log(myNewsCollection.News[0].Body);
 
+        currentCP = 0;
+        RefreshNewsFeed();
+
         SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
-        CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed(int.Parse(scoreField.text)));  
+        CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
+
+        ShareButton1.onClick.AddListener(() => UpdateShare1());
+
+        ShareButton2.onClick.AddListener(() => UpdateShare2());
+
+        ShareButton3.onClick.AddListener(() => UpdateShare3());
 
     }
 
-    void RefreshNewsFeed (int currentScore)
+    void RefreshNewsFeed ()
     {
-        myNewsCollection.generateNewsFeed(currentScore);
-        RefreshOne();
-        RefreshTwo();
+        myNewsCollection.generateNewsFeed(currentCP);
+        RefreshTwo(RefreshOne());
     }
     
+    void  UpdateShare1()
+    {
+        if (!myNewsCollection.RetrieveNewsArticle(0).Is_shared) {
+            Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
+            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(0).Score;
+            myNewsCollection.RetrieveNewsArticle(0).Is_shared = true;
+        }
+        Debug.Log("current cp is " + currentCP);
+        ShareStats1.SetActive(true);
+        ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+    }
+    void UpdateShare2()
+    {
+        if (!myNewsCollection.RetrieveNewsArticle(1).Is_shared)
+        {
+            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(1).Score);
+            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(1).Score;
+            myNewsCollection.RetrieveNewsArticle(1).Is_shared = true;
+        }
+        Debug.Log("current cp is " + currentCP);
+        ShareStats2.SetActive(true);
+        ShareStats2.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+    }
+    void UpdateShare3()
+    {
+        if (!myNewsCollection.RetrieveNewsArticle(2).Is_shared)
+        {
+            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(2).Score);
+            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(2).Score;
+            myNewsCollection.RetrieveNewsArticle(2).Is_shared = true;
+        }
+        Debug.Log("current cp is " + currentCP);
+        ShareStats3.SetActive(true);
+        ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+    }
     void SearchMyCollection(string keyword)
     {
-        Debug.Log("Search with " + keyword); 
+        // Debug.Log("Search with " + keyword);
+        searchCount = searchCount + 1; 
+        ShareStats1.SetActive(false);
+        ShareStats2.SetActive(false);
+        ShareStats3.SetActive(false);
         myNewsCollection.SearchForKeyWord(keyword);
         SearchResultStats.text = "Found " + myNewsCollection.searchResultStat.ToString() + " matched results."; 
         RetrieveTopThree();
@@ -59,17 +121,36 @@ public class NewsLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SearchMyCollection(textField.text);
+        }
+
+        if (searchCount >= 4)
+        {
+            RefreshNewsFeed();
+            searchCount = 0;
+        }
     }
-    void RefreshOne ()
+    int RefreshOne ()
     {
-        int randomIndex  = Random.Range(1, myNewsCollection.newsAlgorithm[0] - 1);
+        int randomIndex  = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
+        Debug.Log("1 generated " + randomIndex + "between 1 and " + (myNewsCollection.newsAlgorithm[0]));
         Algorithm1Title.text =  myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Title + " " + myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Date;
         Algorithm1Body.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body;
+        return randomIndex;
     }
-    void RefreshTwo()
+    void RefreshTwo(int indexOne)
     {
-        int randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0] - 1);
+        int randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
+        Debug.Log("2 generated " + randomIndex + "between 1 and " + (myNewsCollection.newsAlgorithm[0]));
+        if (randomIndex == indexOne && myNewsCollection.newsAlgorithm[0]>1)
+        {
+            while (randomIndex == indexOne)
+            {
+                randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
+            }
+        }
         Algorithm2Title.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Title + " " + myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Date;
         Algorithm2Body.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body;
     }
