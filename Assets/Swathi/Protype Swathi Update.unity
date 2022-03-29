@@ -962,7 +962,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1576596631}
   m_Father: {fileID: 334616382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4220,6 +4221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334616382}
   - component: {fileID: 334616383}
+  - component: {fileID: 334616384}
   m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
@@ -4239,7 +4241,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 55278925}
-  - {fileID: 1576596631}
   m_Father: {fileID: 1126869204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4263,12 +4264,12 @@ MonoBehaviour:
   m_Content: {fileID: 55278925}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
-  m_Elasticity: 0.1
+  m_MovementType: 1
+  m_Elasticity: 0
   m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 1576596631}
+  m_DecelerationRate: 0.7
+  m_ScrollSensitivity: 25
+  m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0
@@ -4278,6 +4279,14 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!222 &334616384
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334616381}
+  m_CullTransparentMesh: 1
 --- !u!1 &363991531
 GameObject:
   m_ObjectHideFlags: 0
@@ -16734,7 +16743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315930664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.68, y: 0, z: -10}
+  m_LocalPosition: {x: 9.71, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19050,12 +19059,12 @@ RectTransform:
   - {fileID: 727878871}
   - {fileID: 1869398313}
   - {fileID: 24205077}
-  m_Father: {fileID: 334616382}
-  m_RootOrder: 1
+  m_Father: {fileID: 55278925}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -581.99615, y: 112.03}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1577269095

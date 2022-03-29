@@ -22,8 +22,8 @@ public class NewPostCreator : MonoBehaviour
 
     public void MakePost()
     {   
-        Instantiate(newArticle);
-        newsArticle.Title = ""; 
+       // Instantiate(newArticle);
+        //newsArticle.Title = ""; 
         Debug.Log("it's working!");
     }
 
