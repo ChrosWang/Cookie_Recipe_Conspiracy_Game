@@ -80,8 +80,12 @@ public class StateMachine : MonoBehaviour
                 Debug.Log("Change to tab newsfeed");
                 break;
             case Tab.Chat:
+            if (socialCanvas){
+                socialCanvas.SetActive(true);
+                newsfeedCanvas.SetActive(false);}
+                 else if (newsfeedCanvas){
                 socialCanvas.SetActive(false);
-                newsfeedCanvas.SetActive(false);
+                newsfeedCanvas.SetActive(true);}
                 chatCanvas.SetActive(true);
                 Debug.Log("Change to tab chat");
                 break;
