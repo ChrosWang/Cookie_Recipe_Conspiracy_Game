@@ -20,12 +20,12 @@ public class NewPostCreator : MonoBehaviour
         
     }
 
-    public void MakePost()
-    {   
-       // Instantiate(newArticle);
-        //newsArticle.Title = ""; 
-        Debug.Log("it's working!");
-    }
+    // public void MakePost()
+    // {   
+    //     Instantiate(newArticle);
+    //     newsArticle.Title = ""; 
+    //     Debug.Log("it's working!");
+    // }
 
     //
 
