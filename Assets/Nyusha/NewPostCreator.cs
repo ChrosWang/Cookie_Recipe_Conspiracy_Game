@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NewPostCreator : MonoBehaviour
 {
-    public GameObject newsArticle;
+    public GameObject newPost;
+    public Button NewPostButton;
+    public Transform VerticalLayoutGroup; 
+
 
     // Start is called before the first frame update
     void Start()
     {
-        // MakeNewPost.onClick.AddListener(() => MakeNewPost()); 
+         //NewPostButton.onClick.AddListener(() => MakePost()); 
         
     }
 
@@ -20,13 +24,14 @@ public class NewPostCreator : MonoBehaviour
         
     }
 
-    // public void MakePost()
-    // {   
-    //     Instantiate(newArticle);
-    //     newsArticle.Title = ""; 
-    //     Debug.Log("it's working!");
-    // }
-
-    //
+    public void MakePost(NewsArticle newsarticle)
+     {
+        newPost.GetComponent<NewPost>().nameTag.text = "Chros";
+        newPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
+        newPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
+        Instantiate(newPost, VerticalLayoutGroup);
+        
+        Debug.Log("it's working!");
+    }
 
 }

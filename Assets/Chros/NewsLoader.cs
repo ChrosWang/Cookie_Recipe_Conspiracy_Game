@@ -38,6 +38,7 @@ public class NewsLoader : MonoBehaviour
     public TMP_Text Algorithm2Body;
 
     public TMP_Text SearchResultStats;
+    public NewPostCreator newPostCreater; 
 
 
 
@@ -82,6 +83,7 @@ public class NewsLoader : MonoBehaviour
         Debug.Log("current cp is " + currentCP);
         ShareStats1.SetActive(true);
         ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+        newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(0)); 
     }
     void UpdateShare2()
     {
@@ -93,7 +95,7 @@ public class NewsLoader : MonoBehaviour
         }
         Debug.Log("current cp is " + currentCP);
         ShareStats2.SetActive(true);
-        ShareStats2.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+        ShareStats2.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(1).Score, myNewsCollection.RetrieveNewsArticle(1).Priority);
     }
     void UpdateShare3()
     {
@@ -105,7 +107,7 @@ public class NewsLoader : MonoBehaviour
         }
         Debug.Log("current cp is " + currentCP);
         ShareStats3.SetActive(true);
-        ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+        ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(2).Score, myNewsCollection.RetrieveNewsArticle(2).Priority);
     }
     void SearchMyCollection(string keyword)
     {
