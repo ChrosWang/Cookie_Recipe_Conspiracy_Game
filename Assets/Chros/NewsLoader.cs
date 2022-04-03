@@ -10,6 +10,8 @@ public class NewsLoader : MonoBehaviour
     //google spreadsheet
     public NewsCollection myNewsCollection = new NewsCollection();
 
+    public ChatManager Chat;
+
     public Button SearchButton;
     public Button CurrentScoreButton;
     public Button ShareButton1;
@@ -132,6 +134,11 @@ public class NewsLoader : MonoBehaviour
         {
             RefreshNewsFeed();
             searchCount = 0;
+        }
+
+        if (currentCP == 0)
+        {
+            Chat.NewNotification(); 
         }
     }
     int RefreshOne ()
