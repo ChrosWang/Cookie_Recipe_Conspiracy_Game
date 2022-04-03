@@ -59,7 +59,12 @@ public class StateMachine : MonoBehaviour
         //if button social is clicked, call function ChangeTab(Tab.Social)
 
         newsfeed.onClick.AddListener(() => ChangeTab(Tab.Newsfeed));
-        chat.onClick.AddListener(() => ChangeTab(Tab.Chat));
+        chat.onClick.AddListener(() =>
+        {
+            ChangeTab(Tab.Chat);
+            chatCanvas.GetComponent<ChatManager>().NewNot.SetActive(false);
+        }
+        );
     }
 
     public void ChangeTab(Tab newTab)

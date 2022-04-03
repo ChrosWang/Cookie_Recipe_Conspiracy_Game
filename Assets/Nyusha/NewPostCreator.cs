@@ -29,7 +29,8 @@ public class NewPostCreator : MonoBehaviour
         newPost.GetComponent<NewPost>().nameTag.text = "Chros";
         newPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
         newPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
-        Instantiate(newPost, VerticalLayoutGroup);
+        GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
+        myPost.transform.SetAsFirstSibling();
         
         Debug.Log("it's working!");
     }

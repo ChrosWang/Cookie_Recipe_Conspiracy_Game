@@ -136,10 +136,6 @@ public class NewsLoader : MonoBehaviour
             searchCount = 0;
         }
 
-        if (currentCP == 0)
-        {
-            Chat.NewNotification(); 
-        }
     }
     int RefreshOne ()
     {
