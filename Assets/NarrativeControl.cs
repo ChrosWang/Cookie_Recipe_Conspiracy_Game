@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class NarrativeControl : MonoBehaviour
 {
@@ -13,13 +14,26 @@ public class NarrativeControl : MonoBehaviour
     public StateMachine stateMachine;
     public NewPostCreator newPostCreator;
 
+    public Button Test; 
+
     public void Start()
     {
         currentDay = 0;
-        chatManager.NewNotification();
+        
+
+        Test.onClick.AddListener(() =>
+        {
+            chatManager.NewNotification();
+        }
+        );
     }
     public void NewChatComing (int ID)
     {
         chatManager.NewNotification(); 
+    }
+
+    public void Update()
+    {
+        
     }
 }
