@@ -8,14 +8,20 @@ public class NewPostCreator : MonoBehaviour
 {
     public GameObject newPost;
     public Button NewPostButton;
-    public Transform VerticalLayoutGroup; 
+    public Transform VerticalLayoutGroup;
+
+    public CommentCollection myCommentCollection = new CommentCollection();
+    public TextAsset SpreadSheetJSON;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-         //NewPostButton.onClick.AddListener(() => MakePost()); 
-        
+
+        myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON.text + "}");
+        Debug.Log(myCommentCollection.usercomments[0].Comment);
+
     }
 
     // Update is called once per frame

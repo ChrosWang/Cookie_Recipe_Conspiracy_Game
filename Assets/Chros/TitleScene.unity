@@ -466,8 +466,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1287956355}
   m_HandleRect: {fileID: 1287956354}
   m_Direction: 2
-  m_Value: 1.0183591
-  m_Size: 0.00069947203
+  m_Value: 1.0485551
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546625363}
   m_HandleRect: {fileID: 546625362}
   m_Direction: 0
-  m_Value: -103.153336
+  m_Value: -1239.7698
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1222,7 +1222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71921.92, y: -20346.322}
+  m_AnchoredPosition: {x: 860553.1, y: -21531.559}
   m_SizeDelta: {x: 1587.9, y: 40000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277257722
@@ -2822,7 +2822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 865, y: 3.3444824}
+  m_AnchoredPosition: {x: 1111, y: 3.3444824}
   m_SizeDelta: {x: 1023.24414, y: 1655.6221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413891079
@@ -2878,7 +2878,7 @@ MonoBehaviour:
   Outline: {fileID: 1639132580}
   Arrow: {fileID: 76056005}
   Loginbutton: {fileID: 900676181}
-  ORIGINALX: 865
+  ORIGINALX: 1111
   GroupFadeIn: []
   Username: {fileID: 0}
   Password: {fileID: 0}
@@ -3109,7 +3109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 885, y: 3.344482}
+  m_AnchoredPosition: {x: 1131, y: 3.344482}
   m_SizeDelta: {x: 1023.24414, y: 1655.6221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437767734
@@ -3127,7 +3127,7 @@ MonoBehaviour:
   Outline: {fileID: 1494764726}
   Arrow: {fileID: 10499327}
   Loginbutton: {fileID: 27928298}
-  ORIGINALX: 885
+  ORIGINALX: 1131
   GroupFadeIn: []
   Username: {fileID: 1601648776}
   Password: {fileID: 832761523}
@@ -5110,7 +5110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 905, y: 3.3444824}
+  m_AnchoredPosition: {x: 1151, y: 3.3444824}
   m_SizeDelta: {x: 1023.24414, y: 1655.6221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925574043
@@ -5128,7 +5128,7 @@ MonoBehaviour:
   Outline: {fileID: 1823167779}
   Arrow: {fileID: 654156934}
   Loginbutton: {fileID: 1886643003}
-  ORIGINALX: 905
+  ORIGINALX: 1151
   GroupFadeIn: []
   Username: {fileID: 0}
   Password: {fileID: 0}
@@ -5879,7 +5879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 925, y: 3.3444824}
+  m_AnchoredPosition: {x: 1171, y: 3.3444824}
   m_SizeDelta: {x: 1023.24414, y: 1655.6221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034420302
@@ -5897,7 +5897,7 @@ MonoBehaviour:
   Outline: {fileID: 982457114}
   Arrow: {fileID: 943035193}
   Loginbutton: {fileID: 975720782}
-  ORIGINALX: 925
+  ORIGINALX: 1171
   GroupFadeIn: []
   Username: {fileID: 0}
   Password: {fileID: 0}
