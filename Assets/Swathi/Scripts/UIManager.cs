@@ -12,6 +12,9 @@ public Animator transition;
     public CanvasGroup Bodytext;
 
     public CanvasGroup Image;
+    public GameObject Articles;
+    public GameObject SearchMover; 
+
 
 
 public void ArticlePageLoader()
@@ -25,6 +28,13 @@ public void ArticlePageLoader()
       Image.alpha = 0;
        Image.LeanAlpha(1,2f).setEaseInElastic();
        
+}
+public void SearchMove(){
+
+Articles.SetActive(true);
+ SearchMover.LeanMove(new Vector2(8,-2),1).setEaseInOutQuart();
+
+
 }
     
     // void Update()

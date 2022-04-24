@@ -61,6 +61,7 @@ public class StateMachine : MonoBehaviour
         newsfeed.onClick.AddListener(() => ChangeTab(Tab.Newsfeed));
         chat.onClick.AddListener(() =>
         {
+            Debug.Log("Clicking the chat");
             ChangeTab(Tab.Chat);
             chatCanvas.GetComponent<ChatManager>().NewNot.SetActive(false);
         }
