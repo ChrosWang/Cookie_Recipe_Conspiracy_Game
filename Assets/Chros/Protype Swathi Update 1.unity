@@ -12190,6 +12190,9 @@ MonoBehaviour:
   newPost: {fileID: 3373421601906295784, guid: 832596dc42944b3438495c2e50af5605, type: 3}
   NewPostButton: {fileID: 1345922168}
   VerticalLayoutGroup: {fileID: 1541956475}
+  myCommentCollection:
+    usercomments: []
+  SpreadSheetJSON: {fileID: 4900000, guid: 9ceddfc050a2c144bb11d316db4077d9, type: 3}
 --- !u!1 &1131350973
 GameObject:
   m_ObjectHideFlags: 0

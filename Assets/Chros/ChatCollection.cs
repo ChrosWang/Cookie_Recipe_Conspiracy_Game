@@ -12,6 +12,8 @@ public class ChatMessage
     public string Text;
     public string TimeSent;
     public string Keywords;
+    public float TypeTime;
+    public string Notes;
 }
 
 //[System.Serializable]
