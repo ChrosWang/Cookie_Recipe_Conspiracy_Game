@@ -14,18 +14,13 @@ public class NarrativeControl : MonoBehaviour
     public StateMachine stateMachine;
     public NewPostCreator newPostCreator;
 
-    public Button Test; 
 
     public void Start()
     {
         currentDay = 0;
         
 
-        Test.onClick.AddListener(() =>
-        {
-            chatManager.NewNotification();
-        }
-        );
+       
     }
     public void NewChatComing (int ID)
     {

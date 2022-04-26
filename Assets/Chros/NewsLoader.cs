@@ -40,7 +40,9 @@ public class NewsLoader : MonoBehaviour
     public TMP_Text Algorithm2Body;
 
     public TMP_Text SearchResultStats;
-    public NewPostCreator newPostCreater; 
+    public NewPostCreator newPostCreater;
+
+    public Button TestButton;
 
 
 
@@ -66,6 +68,11 @@ public class NewsLoader : MonoBehaviour
         ShareButton2.onClick.AddListener(() => UpdateShare2());
 
         ShareButton3.onClick.AddListener(() => UpdateShare3());
+
+        //TestButton.onClick.AddListener(() => {
+            Debug.Log("CLicked");
+            newPostCreater.MakePost(myNewsCollection.News[4]);
+            //});
 
     }
 

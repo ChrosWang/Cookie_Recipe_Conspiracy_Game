@@ -14,4 +14,6 @@ public class NewPost : MonoBehaviour
     public TMP_Text shares;
     public TMP_Text NewsArticleTitle;
     public TMP_Text BodyArticle;
+    public TMP_Text comment1;
+    public TMP_Text comment2;
 }
