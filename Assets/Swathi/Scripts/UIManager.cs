@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     
-public Animator transition;
     public GameObject chatCanvas;
     public GameObject Article;
      public CanvasGroup Title;
@@ -32,7 +31,7 @@ public void ArticlePageLoader()
 public void SearchMove(){
 
 Articles.SetActive(true);
- SearchMover.LeanMove(new Vector2(8,-2),1).setEaseInOutQuart();
+SearchMover.LeanMove(new Vector2(8,-2),1).setEaseInOutQuart();
 
 
 }
