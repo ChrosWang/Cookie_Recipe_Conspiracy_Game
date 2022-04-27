@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class ChatManager : MonoBehaviour
     public float yTop;
     public float yInc;
 
+    public Button BackButton;
     public Canvas canvas1;
 
     public void Start()
@@ -31,6 +33,7 @@ public class ChatManager : MonoBehaviour
         Debug.Log(myChatCollection.chatmessages[0].Text);
         
         PlayChat(1);
+        BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
 
     }
 
@@ -111,6 +114,8 @@ public class ChatManager : MonoBehaviour
                 //yield WaitForSeconds(3);
             }
         }
+
+
     }
 
 
