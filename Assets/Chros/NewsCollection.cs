@@ -13,6 +13,12 @@ public class NewsArticle
     public int Multipiler;
     public int Score;
     public int Priority;
+    public int GameState;
+    public bool KeyArticle;
+    public string Source;
+    public int SourceNum;
+    public string Note;
+    public string HeaderText;
     public bool Is_shared;
 }
 

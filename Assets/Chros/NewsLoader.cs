@@ -45,6 +45,16 @@ public class NewsLoader : MonoBehaviour
     public Button TestButton;
 
 
+    public GameObject Article1;
+    public GameObject Article2;
+    public GameObject Article3;
+    public GameObject Article4;
+    public GameObject Article5;
+    public GameObject Article6;
+    public GameObject Article7;
+
+    public GameObject SearchResultGroup;
+
 
     public int currentCP;
 
@@ -72,7 +82,9 @@ public class NewsLoader : MonoBehaviour
         //TestButton.onClick.AddListener(() => {
             Debug.Log("CLicked");
             newPostCreater.MakePost(myNewsCollection.News[4]);
-            //});
+        newPostCreater.MakePost(myNewsCollection.News[13]);
+        newPostCreater.MakePost(myNewsCollection.News[24]);
+        //});
 
     }
 
@@ -120,6 +132,10 @@ public class NewsLoader : MonoBehaviour
     }
     void SearchMyCollection(string keyword)
     {
+        foreach (Transform child in SearchResultGroup.GetComponent<Transform>())
+        {
+            GameObject.Destroy(child.gameObject);
+        }
         // Debug.Log("Search with " + keyword);
         searchCount = searchCount + 1; 
         ShareStats1.SetActive(false);
@@ -127,7 +143,9 @@ public class NewsLoader : MonoBehaviour
         ShareStats3.SetActive(false);
         myNewsCollection.SearchForKeyWord(keyword);
         SearchResultStats.text = "Found " + myNewsCollection.searchResultStat.ToString() + " matched results."; 
-        RetrieveTopThree();
+        RetrieveNumber(0);
+        RetrieveNumber(1);
+        RetrieveNumber(2);
     }
     // Update is called once per frame
     void Update()
@@ -167,13 +185,53 @@ public class NewsLoader : MonoBehaviour
         Algorithm2Body.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body;
     }
 
-    void RetrieveTopThree ()
+    void RetrieveNumber (int index)
     {
+        GameObject myNews;
+
+        switch (myNewsCollection.RetrieveNewsArticle(index).SourceNum)
+        {
+            case 1:
+                myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+
+            case 2:
+                myNews = Instantiate(Article2, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            case 3:
+                myNews = Instantiate(Article3, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            case 4:
+                myNews = Instantiate(Article4, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            case 5:
+                myNews = Instantiate(Article5, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            case 6:
+                myNews = Instantiate(Article6, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            case 7:
+                myNews = Instantiate(Article7, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+            default:
+                myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                break;
+        }
+
+        myNews.GetComponent<SearchResultArt>().NewsSite.text = myNewsCollection.RetrieveNewsArticle(index).Source;
+        myNews.GetComponent<SearchResultArt>().Date.text = myNewsCollection.RetrieveNewsArticle(index).Date;
+        myNews.GetComponent<SearchResultArt>().Title.text = myNewsCollection.RetrieveNewsArticle(index).Title;
+        myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
+        Canvas.ForceUpdateCanvases();
+        myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = false;
+        myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = true;
+        /*
         SearchResult1Title.text = myNewsCollection.RetrieveNewsArticle(0).Title + " " + myNewsCollection.RetrieveNewsArticle(0).Date;
         SearchResult1Body.text = myNewsCollection.RetrieveNewsArticle(0).Body;
         SearchResult2Title.text = myNewsCollection.RetrieveNewsArticle(1).Title + " " + myNewsCollection.RetrieveNewsArticle(1).Date;
         SearchResult2Body.text = myNewsCollection.RetrieveNewsArticle(1).Body;
         SearchResult3Title.text = myNewsCollection.RetrieveNewsArticle(2).Title + " " + myNewsCollection.RetrieveNewsArticle(2).Date;
         SearchResult3Body.text = myNewsCollection.RetrieveNewsArticle(2).Body;
+        */
     }
 }
