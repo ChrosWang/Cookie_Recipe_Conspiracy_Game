@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TaskAnimation : MonoBehaviour
 {
@@ -12,8 +14,33 @@ public class TaskAnimation : MonoBehaviour
    public GameObject chatbutton;
    public GameObject Newsbutton;
    public GameObject Socialbutton;
+
+   bool open;
    
 
+    
+ 
+        private void Update()
+    {
+        
+        if (Input.GetMouseButtonDown(0) && open == true)
+  {
+      Debug.Log(Camera.main.name);
+  	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+   	RaycastHit hit;
+       if (Physics.Raycast(ray, out hit, 100f)) {
+           Debug.Log("hit: " + hit.collider.name);
+           if (hit.collider.gameObject.tag != "Taskbar") {
+               taskdenimation();
+           }
+       }
+       else {
+           taskdenimation();
+       }
+
+    }
+       
+    }
    
 
 
@@ -37,7 +64,7 @@ public class TaskAnimation : MonoBehaviour
         Newsbutton.SetActive(true);
         chatbutton.SetActive(true);
 
-
+        open = true;
 
 
     }
@@ -50,7 +77,7 @@ public class TaskAnimation : MonoBehaviour
         Socialbutton.SetActive(false);
         Newsbutton.SetActive(false);
         chatbutton.SetActive(false);
-
+        open = false; 
 
 
 
