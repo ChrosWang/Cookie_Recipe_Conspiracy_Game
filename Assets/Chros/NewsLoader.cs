@@ -15,9 +15,9 @@ public class NewsLoader : MonoBehaviour
 
     public Button SearchButton;
     public Button CurrentScoreButton;
-    public Button ShareButton1;
-    public Button ShareButton2;
-    public Button ShareButton3;
+    //public Button ShareButton1;
+    //public Button ShareButton2;
+   // public Button ShareButton3;
 
     public GameObject ShareStats1;
     public GameObject ShareStats2;
@@ -74,17 +74,17 @@ public class NewsLoader : MonoBehaviour
         SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
         CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
 
-        ShareButton1.onClick.AddListener(() => UpdateShare1());
+       // ShareButton1.onClick.AddListener(() => UpdateShare1());
 
-        ShareButton2.onClick.AddListener(() => UpdateShare2());
+      //  ShareButton2.onClick.AddListener(() => UpdateShare2());
 
-        ShareButton3.onClick.AddListener(() => UpdateShare3());
+      //  ShareButton3.onClick.AddListener(() => UpdateShare3());
 
         //TestButton.onClick.AddListener(() => {
             Debug.Log("CLicked");
             newPostCreater.MakePost(myNewsCollection.News[4]);
-        newPostCreater.MakePost(myNewsCollection.News[13]);
-        newPostCreater.MakePost(myNewsCollection.News[24]);
+    //    newPostCreater.MakePost(myNewsCollection.News[4]);
+      //  newPostCreater.MakePost(myNewsCollection.News[5]);
         //});
 
     }
@@ -95,19 +95,20 @@ public class NewsLoader : MonoBehaviour
         RefreshTwo(RefreshOne());
     }
     
-    void  UpdateShare1()
+    void  UpdateShare(int index)
     {
-        if (!myNewsCollection.RetrieveNewsArticle(0).Is_shared) {
+        if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
             Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
-            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(0).Score;
+            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
             myNewsCollection.RetrieveNewsArticle(0).Is_shared = true;
+            ShareStats1.SetActive(true);
+            ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+            newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(index));
         }
         Debug.Log("current cp is " + currentCP);
-        ShareStats1.SetActive(true);
-        ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
-        newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(0)); 
+        
     }
-    void UpdateShare2()
+   /* void UpdateShare2()
     {
         if (!myNewsCollection.RetrieveNewsArticle(1).Is_shared)
         {
@@ -131,6 +132,7 @@ public class NewsLoader : MonoBehaviour
         ShareStats3.SetActive(true);
         ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(2).Score, myNewsCollection.RetrieveNewsArticle(2).Priority);
     }
+   */
     void SearchMyCollection(string keyword)
     {
         foreach (Transform child in SearchResultGroup.GetComponent<Transform>())
@@ -234,6 +236,8 @@ public class NewsLoader : MonoBehaviour
         //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
         myNews.GetComponent<SearchResultArt>().Body.text = "";
         myNews.GetComponent<SearchResultArt>().Author.text = "";
+
+        myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
 
         DOTween.To(
             () => txt,
