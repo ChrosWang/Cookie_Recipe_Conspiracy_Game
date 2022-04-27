@@ -800,9 +800,10 @@ GameObject:
   - component: {fileID: 8805828045480321850}
   - component: {fileID: 7429553057970658587}
   - component: {fileID: 2687455385440525699}
+  - component: {fileID: 1470187299435260344}
   m_Layer: 0
   m_Name: Taskbar
-  m_TagString: Untagged
+  m_TagString: Taskbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -884,6 +885,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!65 &1470187299435260344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095788700544041753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.0399995, y: 1.7999998, z: 0.19999999}
+  m_Center: {x: -0.00000023841858, y: 0.00000023841858, z: 0}
 --- !u!1 &5377960035928406337
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5633272645004385059
 RectTransform:
   m_ObjectHideFlags: 0
