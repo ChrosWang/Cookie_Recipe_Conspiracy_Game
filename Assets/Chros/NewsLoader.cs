@@ -19,9 +19,9 @@ public class NewsLoader : MonoBehaviour
     //public Button ShareButton2;
    // public Button ShareButton3;
 
-    public GameObject ShareStats1;
-    public GameObject ShareStats2;
-    public GameObject ShareStats3;
+   // public GameObject ShareStats1;
+    //public GameObject ShareStats2;
+   // public GameObject ShareStats3;
     //public Image ShareStats2;
     // public Image ShareStats3;
 
@@ -53,13 +53,15 @@ public class NewsLoader : MonoBehaviour
     public GameObject Article5;
     public GameObject Article6;
     public GameObject Article7;
-
+    public GameObject YouMightLike;
     public GameObject SearchResultGroup;
 
 
     public int currentCP;
 
     public int searchCount;
+
+    public PopUpSystem popupsystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,10 +71,10 @@ public class NewsLoader : MonoBehaviour
         Debug.Log(myNewsCollection.News[0].Body);
 
         currentCP = 0;
-        RefreshNewsFeed();
+        //RefreshNewsFeed();
 
         SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
-        CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
+       // CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
 
        // ShareButton1.onClick.AddListener(() => UpdateShare1());
 
@@ -88,21 +90,22 @@ public class NewsLoader : MonoBehaviour
         //});
 
     }
-
+    /*
     void RefreshNewsFeed ()
     {
         myNewsCollection.generateNewsFeed(currentCP);
         RefreshTwo(RefreshOne());
     }
-    
+    */
     void  UpdateShare(int index)
     {
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
             Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
             myNewsCollection.RetrieveNewsArticle(0).Is_shared = true;
-            ShareStats1.SetActive(true);
-            ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+            popupsystem.CreatePopUp(4);
+           // ShareStats1.SetActive(true);
+          //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(index));
         }
         Debug.Log("current cp is " + currentCP);
@@ -141,15 +144,19 @@ public class NewsLoader : MonoBehaviour
         }
         // Debug.Log("Search with " + keyword);
         searchCount = searchCount + 1; 
-        ShareStats1.SetActive(false);
-        ShareStats2.SetActive(false);
-        ShareStats3.SetActive(false);
+        //ShareStats1.SetActive(false);
+        //ShareStats2.SetActive(false);
+        //ShareStats3.SetActive(false);
         myNewsCollection.SearchForKeyWord(keyword);
         SearchResultStats.text = "Found " + myNewsCollection.searchResultStat.ToString() + " matched results.";
         int delay = 0;
         delay = delay + RetrieveNumber(0, 0);
         delay = delay + RetrieveNumber(1, delay);
         delay = delay + RetrieveNumber(2, delay);
+        GameObject myUml = Instantiate(YouMightLike, SearchResultGroup.GetComponent<RectTransform>());
+        LeanTween.alpha(myUml.GetComponent<RectTransform>(), 1, 0.3f).setDelay(0.1f * delay).setEase(LeanTweenType.easeInExpo);
+        delay = delay + RetrieveNumber(-1, delay);
+        delay = delay + RetrieveNumber(-1, delay);
     }
     // Update is called once per frame
     void Update()
@@ -159,13 +166,15 @@ public class NewsLoader : MonoBehaviour
             SearchMyCollection(textField.text);
         }
 
-        if (searchCount >=3)
-        {
-            RefreshNewsFeed();
-            searchCount = 0;
-        }
+        //if (searchCount >=3)
+      ///  {
+      //      RefreshNewsFeed();
+        //    searchCount = 0;
+       // }
 
     }
+
+    /*
     int RefreshOne ()
     {
         int randomIndex  = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
@@ -188,99 +197,191 @@ public class NewsLoader : MonoBehaviour
         Algorithm2Title.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Title + " " + myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Date;
         Algorithm2Body.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body;
     }
+    */
 
     int RetrieveNumber (int index, int order)
     {
-        if (myNewsCollection.SearchList[index] == 0)
-        {
-            return 0;
-        }
         GameObject myNews;
         string txt = "";
-        switch (myNewsCollection.RetrieveNewsArticle(index).SourceNum)
+
+        if (index >= 0)
         {
-            case 1:
-                myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
-                break;
+            if (myNewsCollection.SearchList[index] == 0)
+            {
+                return 0;
+            }
+            
+            switch (myNewsCollection.RetrieveNewsArticle(index).SourceNum)
+            {
+                case 1:
+                    myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
 
-            case 2:
-                myNews = Instantiate(Article2, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            case 3:
-                myNews = Instantiate(Article3, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            case 4:
-                myNews = Instantiate(Article4, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            case 5:
-                myNews = Instantiate(Article5, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            case 6:
-                myNews = Instantiate(Article6, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            case 7:
-                myNews = Instantiate(Article7, SearchResultGroup.GetComponent<RectTransform>());
-                break;
-            default:
-                myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
-                break;
+                case 2:
+                    myNews = Instantiate(Article2, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 3:
+                    myNews = Instantiate(Article3, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 4:
+                    myNews = Instantiate(Article4, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 5:
+                    myNews = Instantiate(Article5, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 6:
+                    myNews = Instantiate(Article6, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 7:
+                    myNews = Instantiate(Article7, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                default:
+                    myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+            }
+
+            LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 0, 0);
+            LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1.3f, 1.3f, 1.3f), 0);
+            //myNews.GetComponent<SearchResultArt>().NewsSite.text = myNewsCollection.RetrieveNewsArticle(index).Source;
+            myNews.GetComponent<SearchResultArt>().NewsSite.text = "";
+            //myNews.GetComponent<SearchResultArt>().Date.text = myNewsCollection.RetrieveNewsArticle(index).Date;
+            myNews.GetComponent<SearchResultArt>().Date.text = "";
+            //myNews.GetComponent<SearchResultArt>().Title.text = myNewsCollection.RetrieveNewsArticle(index).Title;
+            myNews.GetComponent<SearchResultArt>().Title.text = "";
+            //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
+            myNews.GetComponent<SearchResultArt>().Body.text = "";
+            myNews.GetComponent<SearchResultArt>().Author.text = "";
+
+            myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
+
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveNewsArticle(index).Source,
+                0.1f).SetDelay(0.2f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().NewsSite.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveNewsArticle(index).Date,
+                0.1f).SetDelay(0.3f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Date.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveNewsArticle(index).Title,
+                0.2f).SetDelay(0.4f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Title.text = txt);
+            DOTween.To(
+               () => txt,
+               x => txt = x,
+               "Written By Random Person",
+               0.1f).SetDelay(0.6f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Author.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveNewsArticle(index).Body,
+                0.5f).SetDelay(0.7f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Body.text = txt);
+
+
+
+            //Canvas.ForceUpdateCanvases();
+            //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = false;
+            //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = true;
+            LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1f, 1f, 1f), 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
+            LeanTween.moveLocalX(myNews.GetComponent<SearchResultArt>().AnimationHelper, 0, 0.4f).setDelay(0.1f * order).setEase(LeanTweenType.easeInOutCubic);
+            LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 1, 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
+            /*
+            SearchResult1Title.text = myNewsCollection.RetrieveNewsArticle(0).Title + " " + myNewsCollection.RetrieveNewsArticle(0).Date;
+            SearchResult1Body.text = myNewsCollection.RetrieveNewsArticle(0).Body;
+            SearchResult2Title.text = myNewsCollection.RetrieveNewsArticle(1).Title + " " + myNewsCollection.RetrieveNewsArticle(1).Date;
+            SearchResult2Body.text = myNewsCollection.RetrieveNewsArticle(1).Body;
+            SearchResult3Title.text = myNewsCollection.RetrieveNewsArticle(2).Title + " " + myNewsCollection.RetrieveNewsArticle(2).Date;
+            SearchResult3Body.text = myNewsCollection.RetrieveNewsArticle(2).Body;
+            */
+        } else
+        {
+            myNewsCollection.generateNewsFeed(currentCP);
+            int randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
+            switch (myNewsCollection.RetrieveAlgoritmArticle(randomIndex).SourceNum)
+            {
+                case 1:
+                    myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+
+                case 2:
+                    myNews = Instantiate(Article2, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 3:
+                    myNews = Instantiate(Article3, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 4:
+                    myNews = Instantiate(Article4, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 5:
+                    myNews = Instantiate(Article5, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 6:
+                    myNews = Instantiate(Article6, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                case 7:
+                    myNews = Instantiate(Article7, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+                default:
+                    myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
+                    break;
+            }
+
+            LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 0, 0);
+            LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1.3f, 1.3f, 1.3f), 0);
+            //myNews.GetComponent<SearchResultArt>().NewsSite.text = myNewsCollection.RetrieveNewsArticle(index).Source;
+            myNews.GetComponent<SearchResultArt>().NewsSite.text = "";
+            //myNews.GetComponent<SearchResultArt>().Date.text = myNewsCollection.RetrieveNewsArticle(index).Date;
+            myNews.GetComponent<SearchResultArt>().Date.text = "";
+            //myNews.GetComponent<SearchResultArt>().Title.text = myNewsCollection.RetrieveNewsArticle(index).Title;
+            myNews.GetComponent<SearchResultArt>().Title.text = "";
+            //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
+            myNews.GetComponent<SearchResultArt>().Body.text = "";
+            myNews.GetComponent<SearchResultArt>().Author.text = "";
+
+            myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
+
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Source,
+                0.1f).SetDelay(0.2f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().NewsSite.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Date,
+                0.1f).SetDelay(0.3f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Date.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Title,
+                0.2f).SetDelay(0.4f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Title.text = txt);
+            DOTween.To(
+               () => txt,
+               x => txt = x,
+               "Written By Random Person",
+               0.1f).SetDelay(0.6f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Author.text = txt);
+            DOTween.To(
+                () => txt,
+                x => txt = x,
+                myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body,
+                0.5f).SetDelay(0.7f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Body.text = txt);
+
+
+
+            //Canvas.ForceUpdateCanvases();
+            //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = false;
+            //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = true;
+            LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1f, 1f, 1f), 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
+            LeanTween.moveLocalX(myNews.GetComponent<SearchResultArt>().AnimationHelper, 0, 0.4f).setDelay(0.1f * order).setEase(LeanTweenType.easeInOutCubic);
+            LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 1, 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
+            
+
+
         }
-        LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 0, 0);
-        LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1.3f, 1.3f, 1.3f), 0);
-        //myNews.GetComponent<SearchResultArt>().NewsSite.text = myNewsCollection.RetrieveNewsArticle(index).Source;
-        myNews.GetComponent<SearchResultArt>().NewsSite.text = "";
-        //myNews.GetComponent<SearchResultArt>().Date.text = myNewsCollection.RetrieveNewsArticle(index).Date;
-        myNews.GetComponent<SearchResultArt>().Date.text = "";
-        //myNews.GetComponent<SearchResultArt>().Title.text = myNewsCollection.RetrieveNewsArticle(index).Title;
-        myNews.GetComponent<SearchResultArt>().Title.text = "";
-        //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
-        myNews.GetComponent<SearchResultArt>().Body.text = "";
-        myNews.GetComponent<SearchResultArt>().Author.text = "";
-
-        myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
-
-        DOTween.To(
-            () => txt,
-            x => txt = x,
-            myNewsCollection.RetrieveNewsArticle(index).Source,
-            0.1f).SetDelay(0.2f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().NewsSite.text = txt);
-        DOTween.To(
-            () => txt,
-            x => txt = x,
-            myNewsCollection.RetrieveNewsArticle(index).Date,
-            0.1f).SetDelay(0.3f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Date.text = txt);
-        DOTween.To(
-            () => txt,
-            x => txt = x,
-            myNewsCollection.RetrieveNewsArticle(index).Title,
-            0.2f).SetDelay(0.4f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Title.text = txt);
-        DOTween.To(
-           () => txt,
-           x => txt = x,
-           "Written By Random Person",
-           0.1f).SetDelay(0.6f + 0.2f * order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Author.text = txt);
-        DOTween.To(
-            () => txt,
-            x => txt = x,
-            myNewsCollection.RetrieveNewsArticle(index).Body,
-            0.5f).SetDelay(0.7f + 0.2f*order).OnUpdate(() => myNews.GetComponent<SearchResultArt>().Body.text = txt);
-
-
-
-        //Canvas.ForceUpdateCanvases();
-        //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = false;
-        //myNews.GetComponent<SearchResultArt>().MagicFix.GetComponent<VerticalLayoutGroup>().enabled = true;
-        LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1f,1f,1f), 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
-        LeanTween.moveLocalX(myNews.GetComponent<SearchResultArt>().AnimationHelper, 0, 0.4f).setDelay(0.1f*order).setEase(LeanTweenType.easeInOutCubic);
-        LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 1, 0.3f).setDelay(0.1f * order).setEase(LeanTweenType.easeInExpo);
-        /*
-        SearchResult1Title.text = myNewsCollection.RetrieveNewsArticle(0).Title + " " + myNewsCollection.RetrieveNewsArticle(0).Date;
-        SearchResult1Body.text = myNewsCollection.RetrieveNewsArticle(0).Body;
-        SearchResult2Title.text = myNewsCollection.RetrieveNewsArticle(1).Title + " " + myNewsCollection.RetrieveNewsArticle(1).Date;
-        SearchResult2Body.text = myNewsCollection.RetrieveNewsArticle(1).Body;
-        SearchResult3Title.text = myNewsCollection.RetrieveNewsArticle(2).Title + " " + myNewsCollection.RetrieveNewsArticle(2).Date;
-        SearchResult3Body.text = myNewsCollection.RetrieveNewsArticle(2).Body;
-        */
-        return 1;
+            return 1;
+        
     }
 }

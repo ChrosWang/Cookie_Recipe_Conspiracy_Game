@@ -28,7 +28,7 @@ public class TaskAnimation : MonoBehaviour
       Debug.Log(Camera.main.name);
   	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
    	RaycastHit hit;
-       if (Physics.Raycast(ray, out hit, 100f)) {
+       if (Physics.Raycast(ray, out hit, 1000f)) {
            Debug.Log("hit: " + hit.collider.name);
            if (hit.collider.gameObject.tag != "Taskbar") {
                taskdenimation();
