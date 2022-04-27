@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SearchResultArt : MonoBehaviour
 {
@@ -12,4 +13,5 @@ public class SearchResultArt : MonoBehaviour
     public TMP_Text Body;
     public GameObject MagicFix;
     public GameObject AnimationHelper;
+    public Button ShareButton;
 }
