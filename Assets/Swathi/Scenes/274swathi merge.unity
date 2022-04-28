@@ -8679,9 +8679,6 @@ MonoBehaviour:
   Chat: {fileID: 2053982283}
   SearchButton: {fileID: 1048491648}
   CurrentScoreButton: {fileID: 2048965993}
-  ShareButton1: {fileID: 297784351}
-  ShareButton2: {fileID: 1982057523}
-  ShareButton3: {fileID: 239203451}
   ShareStats1: {fileID: 1064526366}
   ShareStats2: {fileID: 2096252006}
   ShareStats3: {fileID: 1994326240}
@@ -9465,6 +9462,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2247760101126878020, guid: 379745726fed67943bbbe2f85fe524d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489407733159127709, guid: 379745726fed67943bbbe2f85fe524d9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489407733159127709, guid: 379745726fed67943bbbe2f85fe524d9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489407733159127709, guid: 379745726fed67943bbbe2f85fe524d9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489407733159127709, guid: 379745726fed67943bbbe2f85fe524d9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
