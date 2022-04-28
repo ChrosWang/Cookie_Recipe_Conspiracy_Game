@@ -32,7 +32,7 @@ public class ChatManager : MonoBehaviour
         myChatCollection = JsonUtility.FromJson<ChatCollection>("{\"chatmessages\":" + SpreadSheetJSON.text + "}");
         Debug.Log(myChatCollection.chatmessages[0].Text);
         
-        PlayChat(1);
+        //PlayChat(1);
         BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
 
     }
