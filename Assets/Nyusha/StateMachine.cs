@@ -75,12 +75,14 @@ public class StateMachine : MonoBehaviour
         { //if the newTab is...
             case Tab.Social:
                 socialCanvas.SetActive(true);
+                socialCanvas.GetComponent<NewPostCreator>().RefreshEverything();
                 newsfeedCanvas.SetActive(false);
                 chatCanvas.SetActive(false);
                 Debug.Log("Change to tab social");
                 break;
             case Tab.Newsfeed:
-                //socialCanvas.SetActive(false);
+                socialCanvas.SetActive(false);
+                socialCanvas.GetComponent<NewPostCreator>().RefreshEverything();
                 newsfeedCanvas.SetActive(true);
                 chatCanvas.SetActive(false);
                 Debug.Log("Change to tab newsfeed");

@@ -34,8 +34,28 @@ public class NewPostCreator : MonoBehaviour
     {
         
     }
-
-    void PostRefresher(GameObject myPost)
+    public void RefreshEverything()
+    {
+        Canvas.ForceUpdateCanvases();
+        VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = false;
+        VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = true;
+        VerticalLayoutGroup vg;
+        HorizontalLayoutGroup hg;
+        foreach (Transform child in VerticalLayoutGroup)
+        {
+            Canvas.ForceUpdateCanvases();
+            child.GetComponent<NewPost>().LayoutGroup1.GetComponent<HorizontalLayoutGroup>().enabled = false;
+            child.GetComponent<NewPost>().LayoutGroup1.GetComponent<HorizontalLayoutGroup>().enabled = true;
+            Canvas.ForceUpdateCanvases();
+            child.GetComponent<NewPost>().LayoutGroup2.GetComponent<VerticalLayoutGroup>().enabled = false;
+            child.GetComponent<NewPost>().LayoutGroup2.GetComponent<VerticalLayoutGroup>().enabled = true;
+            Canvas.ForceUpdateCanvases();
+            child.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = false;
+            child.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
+        }
+    
+    }
+    public void PostRefresher(GameObject myPost)
     {
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = false;
