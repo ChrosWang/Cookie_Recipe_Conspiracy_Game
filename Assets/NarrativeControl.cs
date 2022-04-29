@@ -71,7 +71,7 @@ public class NarrativeControl : MonoBehaviour
             case 1:
                 if (toggle == 1)
                 {
-                    //chatManager.NewNotification(2);
+                    chatManager.NewNotification(2);
                     toggle = toggle + 1;
                 }
                 break;

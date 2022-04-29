@@ -1326,6 +1326,7 @@ MonoBehaviour:
   MagicFix: {fileID: 6072516784662632308}
   AnimationHelper: {fileID: 4631828956488770475}
   ShareButton: {fileID: 1495745125401810690}
+  MyFullArticlePage: {fileID: 8825737277295778204, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
 --- !u!1 &8080224207384997796
 GameObject:
   m_ObjectHideFlags: 0

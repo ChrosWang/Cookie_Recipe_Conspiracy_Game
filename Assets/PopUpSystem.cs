@@ -59,7 +59,7 @@ public class PopUpSystem : MonoBehaviour
                 break;
         }
 
-        LeanTween.scale(myPopUp.GetComponent<PopUpNotification>().AnimationHelper, new Vector3(1f, 1f, 1f), 0.3f).setEase(LeanTweenType.easeInOutElastic);
+        LeanTween.scale(myPopUp.GetComponent<PopUpNotification>().AnimationHelper, new Vector3(0.7f, 0.7f, 0.7f), 0.3f).setEase(LeanTweenType.easeInOutElastic);
         LTDescr d = LeanTween.moveLocalX(myPopUp.GetComponent<PopUpNotification>().AnimationHelper, 790, 0.3f).setDelay(8f).setEase(LeanTweenType.easeInOutCubic);
         d.destroyOnComplete = true;
         LTDescr e = LeanTween.moveLocalX(myPopUp, 790, 0.3f).setDelay(8f).setEase(LeanTweenType.easeInOutCubic);

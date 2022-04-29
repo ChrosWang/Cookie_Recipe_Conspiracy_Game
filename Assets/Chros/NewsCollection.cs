@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class NewsArticle
 {
+    public int ReferenceNr;
     public string Title;
     public string Date;
     public string Body;
