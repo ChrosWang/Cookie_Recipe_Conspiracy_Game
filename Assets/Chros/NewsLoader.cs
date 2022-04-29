@@ -64,6 +64,8 @@ public class NewsLoader : MonoBehaviour
     public PopUpSystem popupsystem;
 
     public int numArticleShared;
+
+    public GameObject Scroller;
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +151,7 @@ public class NewsLoader : MonoBehaviour
    */
     void SearchMyCollection(string keyword)
     {
+
         foreach (Transform child in SearchResultGroup.GetComponent<Transform>())
         {
             GameObject.Destroy(child.gameObject);
@@ -209,9 +212,15 @@ public class NewsLoader : MonoBehaviour
         Algorithm2Body.text = myNewsCollection.RetrieveAlgoritmArticle(randomIndex).Body;
     }
     */
+    void UpdateScroller()
+    {
+        Scroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = 1f;
+        Scroller.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
+    }
 
     int RetrieveNumber (int index, int order)
     {
+        UpdateScroller();
         GameObject myNews;
         string txt = "";
 

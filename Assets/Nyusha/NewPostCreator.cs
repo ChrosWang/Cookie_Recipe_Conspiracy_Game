@@ -61,7 +61,7 @@ public class NewPostCreator : MonoBehaviour
         
         GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
         myPost.transform.SetAsFirstSibling();
-        //PostRefresher(myPost);
+        PostRefresher(myPost);
         //PostRefresher(myPost);
         myPost.GetComponent<NewPost>().nameTag.text = GenerateUserName();
         myPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
