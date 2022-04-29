@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour
 {
     public GameObject ChatCanvas;
-    public GameObject ChatButton;
-    public GameObject NewNot;
+    //public GameObject ChatButton;
+    //public GameObject NewNot;
 
     public ChatCollection myChatCollection = new ChatCollection();
     public ConvCollection myConvCollection = new ConvCollection();
@@ -18,6 +18,8 @@ public class ChatManager : MonoBehaviour
     public GameObject chatBubble;
     public GameObject chatBubbleSarah;
 
+    public PopUpSystem popUpSystem;
+
     public float r1;
     public float l1;
     public float yTop;
@@ -26,19 +28,42 @@ public class ChatManager : MonoBehaviour
     public Button BackButton;
     public Canvas canvas1;
 
+    string[] NameList = {"","Daniel", 
+        "Daniel", 
+        "Wendy", 
+        "Daniel", 
+        "Wendy", 
+        "Moderator", 
+        "Chris", 
+        "Hearthfoot Wellness and Medical Center", 
+        "Hearthfoot Wellness and Medical Center", 
+        "Wendy", 
+        "Daniel", 
+        "Wendy", 
+        "Chris" };
     public void Start()
     {
 
+        
+
+    }
+
+    public void Initialization()
+    {
         myChatCollection = JsonUtility.FromJson<ChatCollection>("{\"chatmessages\":" + SpreadSheetJSON.text + "}");
         Debug.Log(myChatCollection.chatmessages[0].Text);
-        
+
         //PlayChat(1);
         BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
-
     }
 
     public void PlayChat(int order)
     {
+        foreach (Transform child in layoutGroup.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
         int count = 0;
         bool toggleName = false;
         float Delay = 0.5f;
@@ -58,6 +83,7 @@ public class ChatManager : MonoBehaviour
                     
                 }
 
+                
                 if (toggleName)
                 {
                     Debug.Log(chatmessage.Character + ": " + chatmessage.Text);
@@ -119,9 +145,13 @@ public class ChatManager : MonoBehaviour
     }
 
 
-    public void NewNotification ()
+    public void NewNotification (int index)
     {
-        NewNot.SetActive(true); 
+        //NewNot.SetActive(true);
+        popUpSystem.CreatePopUp(2, new PopUpMessage(NameList[index], "", 0, 0));
+        this.gameObject.SetActive(true);
+        PlayChat(index);
+
     }
 
     public void GenerateNewChat(int ConvoID)

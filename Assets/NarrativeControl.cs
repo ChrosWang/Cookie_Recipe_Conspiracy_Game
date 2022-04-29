@@ -5,30 +5,79 @@ using UnityEngine.UI;
 
 public class NarrativeControl : MonoBehaviour
 {
-    public int currentDay;
+    public int currentGameState;
 
-    public int currentChat; 
+    public int currentChat;
+    int toggle = 1;
 
     public ChatManager chatManager;
     public NewsLoader articleLoader;
     public StateMachine stateMachine;
     public NewPostCreator newPostCreator;
+    public PopUpSystem popUpSystem;
 
 
     public void Start()
     {
-        currentDay = 0;
-        
+        currentGameState = 0;
+        articleLoader.Initialization();
+        newPostCreator.Initialization();
+        chatManager.Initialization();
 
+        articleLoader.MakePost(1);
+        articleLoader.MakePost(2);
+        articleLoader.MakePost(3);
+
+        NewChatComing(1);
        
     }
     public void NewChatComing (int ID)
     {
-        chatManager.NewNotification(); 
+        chatManager.NewNotification(ID);
+        //chatManager.PlayChat(ID);
+        
+        //chatManager.NewNotification(); 
+    }
+
+    public void ChangeGameState()
+    {
+        currentGameState++;
+        switch (currentGameState)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
     }
 
     public void Update()
     {
-        
+       
+        switch (articleLoader.numArticleShared)
+        {
+            case 1:
+                if (toggle == 1)
+                {
+                    chatManager.NewNotification(2);
+                    toggle = toggle + 1;
+                }
+                break;
+            default:
+                break;
+        }
     }
+
 }

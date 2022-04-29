@@ -28,22 +28,22 @@ public class NewsLoader : MonoBehaviour
     public Text textField;
     public Text scoreField; 
 
-    public TMP_Text SearchResult1Title;
-    public TMP_Text SearchResult2Title;
-    public TMP_Text SearchResult3Title;
-    public TMP_Text Algorithm1Title;
-    public TMP_Text Algorithm2Title;
+    //public TMP_Text SearchResult1Title;
+   // public TMP_Text SearchResult2Title;
+   // public TMP_Text SearchResult3Title;
+   // public TMP_Text Algorithm1Title;
+   // public TMP_Text Algorithm2Title;
 
-    public TMP_Text SearchResult1Body;
-    public TMP_Text SearchResult2Body;
-    public TMP_Text SearchResult3Body;
-    public TMP_Text Algorithm1Body;
-    public TMP_Text Algorithm2Body;
+   // public TMP_Text SearchResult1Body;
+   // public TMP_Text SearchResult2Body;
+   // public TMP_Text SearchResult3Body;
+   // public TMP_Text Algorithm1Body;
+   // public TMP_Text Algorithm2Body;
 
     public TMP_Text SearchResultStats;
     public NewPostCreator newPostCreater;
 
-    public Button TestButton;
+   // public Button TestButton;
 
 
     public GameObject Article1;
@@ -62,18 +62,12 @@ public class NewsLoader : MonoBehaviour
     public int searchCount;
 
     public PopUpSystem popupsystem;
+
+    public int numArticleShared;
     // Start is called before the first frame update
     void Start()
     {
-        myNewsCollection = JsonUtility.FromJson<NewsCollection>("{\"News\":" + SpreadSheetJSON.text+"}");
-        Debug.Log(myNewsCollection.News[0].Title);
-        Debug.Log(myNewsCollection.News[0].Date);
-        Debug.Log(myNewsCollection.News[0].Body);
-
-        currentCP = 0;
-        //RefreshNewsFeed();
-
-        SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
+        
        // CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
 
        // ShareButton1.onClick.AddListener(() => UpdateShare1());
@@ -83,8 +77,8 @@ public class NewsLoader : MonoBehaviour
       //  ShareButton3.onClick.AddListener(() => UpdateShare3());
 
         //TestButton.onClick.AddListener(() => {
-            Debug.Log("CLicked");
-            newPostCreater.MakePost(myNewsCollection.News[4]);
+           // Debug.Log("CLicked");
+            //newPostCreater.MakePost(myNewsCollection.News[4]);
     //    newPostCreater.MakePost(myNewsCollection.News[4]);
       //  newPostCreater.MakePost(myNewsCollection.News[5]);
         //});
@@ -97,13 +91,30 @@ public class NewsLoader : MonoBehaviour
         RefreshTwo(RefreshOne());
     }
     */
+    public void Initialization()
+    {
+        myNewsCollection = JsonUtility.FromJson<NewsCollection>("{\"News\":" + SpreadSheetJSON.text + "}");
+        Debug.Log(myNewsCollection.News[0].Title);
+        Debug.Log(myNewsCollection.News[0].Date);
+        Debug.Log(myNewsCollection.News[0].Body);
+
+        currentCP = 0;
+        //RefreshNewsFeed();
+
+        SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
+    }
+    public void MakePost(int index)
+    {
+        newPostCreater.MakePost(myNewsCollection.News[index]);
+    }
     void  UpdateShare(int index)
     {
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
             Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
             myNewsCollection.RetrieveNewsArticle(0).Is_shared = true;
-            popupsystem.CreatePopUp(4);
+            popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
+            numArticleShared++;
            // ShareStats1.SetActive(true);
           //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(index));

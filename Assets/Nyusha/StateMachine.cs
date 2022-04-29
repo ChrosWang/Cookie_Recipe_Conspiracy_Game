@@ -63,7 +63,7 @@ public class StateMachine : MonoBehaviour
         {
             Debug.Log("Clicking the chat");
             ChangeTab(Tab.Chat);
-            chatCanvas.GetComponent<ChatManager>().NewNot.SetActive(false);
+            //chatCanvas.GetComponent<ChatManager>().NewNot.SetActive(false);
         }
         );
     }

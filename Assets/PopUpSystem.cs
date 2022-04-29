@@ -2,6 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PopUpMessage
+{
+    public string username;
+    public string content;
+    public int followers;
+    public int likes;
+
+    public PopUpMessage(string u, string c, int f, int l)
+    {
+        username = u;
+        content = c;
+        followers = f;
+        likes = l;
+    }
+}
+
 public class PopUpSystem : MonoBehaviour
 {
     public GameObject PopUpStack;
@@ -20,7 +36,7 @@ public class PopUpSystem : MonoBehaviour
        8 - Someone else's post: xxx just posted: "check this out!"
     */
 
-    public void CreatePopUp(int index)
+    public void CreatePopUp(int index, PopUpMessage popUpMessage)
     {
         GameObject myPopUp = Instantiate(PopUpNotification, PopUpStack.GetComponent<RectTransform>()); ;
 
@@ -28,9 +44,13 @@ public class PopUpSystem : MonoBehaviour
         {
             case 1:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "New Comments";
-                myPopUp.GetComponent<PopUpNotification>().Content.text = "";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just commented on your post: " + popUpMessage.content;
                 break;
 
+            case 2:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "New Message";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = "You receive a message from " + popUpMessage.username;
+                break;
             case 4:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = "Your post is successfully shared!";
