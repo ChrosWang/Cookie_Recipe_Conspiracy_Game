@@ -28,6 +28,8 @@ public class ChatManager : MonoBehaviour
     public Button BackButton;
     public Canvas canvas1;
 
+    public GameObject Scroller;
+
     string[] NameList = {"","Daniel", 
         "Daniel", 
         "Wendy", 
@@ -47,6 +49,11 @@ public class ChatManager : MonoBehaviour
         
 
     }
+    void UpdateScroller()
+    {
+        Scroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = 1f;
+        Scroller.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
+    }
 
     public void Initialization()
     {
@@ -59,6 +66,7 @@ public class ChatManager : MonoBehaviour
 
     public void PlayChat(int order)
     {
+        UpdateScroller();
         foreach (Transform child in layoutGroup.transform)
         {
             GameObject.Destroy(child.gameObject);
