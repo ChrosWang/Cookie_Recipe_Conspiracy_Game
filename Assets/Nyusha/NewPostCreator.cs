@@ -19,9 +19,14 @@ public class NewPostCreator : MonoBehaviour
     void Start()
     {
 
-        myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON.text + "}");
-        Debug.Log(myCommentCollection.usercomments[0].Comment);
+        
+       // Debug.Log(myCommentCollection.usercomments[0].Comment);
 
+    }
+
+    public void Initialization()
+    {
+        myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON.text + "}");
     }
 
     // Update is called once per frame
@@ -30,22 +35,8 @@ public class NewPostCreator : MonoBehaviour
         
     }
 
-    public void MakePost(NewsArticle newsarticle)
-     {
-        int trendValue = newsarticle.Score;
-        int priority = newsarticle.Priority;
-        
-        GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
-        myPost.transform.SetAsFirstSibling();
-        myPost.GetComponent<NewPost>().nameTag.text = GenerateUserName();
-        myPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
-        myPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
-        myPost.GetComponent<NewPost>().profilePic.sprite = GenerateProfilePic();
-        myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
-        myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
-        myPost.GetComponent<NewPost>().comment1.text = GenerateRandomComment();
-        myPost.GetComponent<NewPost>().comment2.text = GenerateRandomComment();
-
+    void PostRefresher(GameObject myPost)
+    {
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = false;
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = true;
@@ -61,6 +52,27 @@ public class NewPostCreator : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = false;
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
+    }
+
+    public void MakePost(NewsArticle newsarticle)
+     {
+        int trendValue = newsarticle.Score;
+        int priority = newsarticle.Priority;
+        
+        GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
+        myPost.transform.SetAsFirstSibling();
+        //PostRefresher(myPost);
+        //PostRefresher(myPost);
+        myPost.GetComponent<NewPost>().nameTag.text = GenerateUserName();
+        myPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
+        myPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
+        myPost.GetComponent<NewPost>().profilePic.sprite = GenerateProfilePic();
+        myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
+        myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
+        myPost.GetComponent<NewPost>().comment1.text = GenerateRandomComment();
+        myPost.GetComponent<NewPost>().comment2.text = GenerateRandomComment();
+
+        PostRefresher(myPost);
         //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         //LayoutRebuilder.ForceRebuildLayoutImmediate(myPost.GetComponent<NewPost>().Twik.GetComponent<RectTransform>());
         //LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutPanel);
