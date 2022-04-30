@@ -77,7 +77,7 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
         myFullArticle.GetComponent<FullArticle>().Author.text = Author.text;
         myFullArticle.GetComponent<FullArticle>().Body.text = "";
         myFullArticle.GetComponent<FullArticle>().news = news;
-
+        LeanTween.moveLocal(myFullArticle, new Vector2(40.79f, -893.25f), 0f);
         LeanTween.scale(myFullArticle, new Vector3(1f, 1f,1f), 0.3f).setEaseInOutCubic();
         DOTween.To(
                 () => txt,
