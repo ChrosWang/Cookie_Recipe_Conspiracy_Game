@@ -100,7 +100,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1162,8 +1162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 282, y: -40}
-  m_SizeDelta: {x: 295.432, y: 57.7611}
+  m_AnchoredPosition: {x: 757.8336, y: -40}
+  m_SizeDelta: {x: 324.2207, y: 57.7611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6286259788212715405
 CanvasRenderer:
@@ -1322,7 +1322,7 @@ MonoBehaviour:
     m_Top: 100
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 13
+  m_Spacing: 18.5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1634,8 +1634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1355, y: -903.3922}
-  m_SizeDelta: {x: 794.6588, y: 1920.0925}
+  m_AnchoredPosition: {x: 1355, y: -894.29504}
+  m_SizeDelta: {x: 794.6588, y: 1938.2499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1836168976834481238
 CanvasRenderer:
@@ -1698,15 +1698,15 @@ MonoBehaviour:
     interdum pellentesque odio sit amet feugiat. Sed accumsan lorem id ex malesuada
     aliquam. Morbi interdum euismod diam. Nulla interdum id purus non tincidunt.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5d744071cada4cd4f83e1f54ac665bb6, type: 2}
-  m_sharedMaterial: {fileID: -2208356067670391394, guid: 5d744071cada4cd4f83e1f54ac665bb6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26c0ecf6f9d5e4e48a71621c5a840f79, type: 2}
+  m_sharedMaterial: {fileID: 5167623566286348555, guid: 26c0ecf6f9d5e4e48a71621c5a840f79, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282795590
-  m_fontColor: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
+    rgba: 4282006074
+  m_fontColor: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
