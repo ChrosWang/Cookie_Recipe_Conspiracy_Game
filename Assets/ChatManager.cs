@@ -14,7 +14,9 @@ public class ChatManager : MonoBehaviour
     public ConvCollection myConvCollection = new ConvCollection();
     public TextAsset SpreadSheetJSON;
 
-    public Transform layoutGroup;
+    public Transform mylayoutGroup;
+    public GameObject content;
+
     public GameObject chatBubble;
     public GameObject chatBubbleSarah;
 
@@ -22,7 +24,7 @@ public class ChatManager : MonoBehaviour
 
     public float r1;
     public float l1;
-    public float yTop;
+   // public float yTop;
     public float yInc;
 
     public Button BackButton;
@@ -66,11 +68,17 @@ public class ChatManager : MonoBehaviour
 
     public void PlayChat(int order)
     {
+        float yTop = -46.79f;
         UpdateScroller();
-        foreach (Transform child in layoutGroup.transform)
+
+        
+
+       foreach (Transform child in content.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
+
+        GameObject layoutGroup = Instantiate(mylayoutGroup.gameObject, content.transform);
 
         int count = 0;
         bool toggleName = false;
@@ -98,7 +106,7 @@ public class ChatManager : MonoBehaviour
                     
                     Debug.Log("Length is " + chatmessage.Text.Length);
                    
-                    GameObject myChat = Instantiate(chatBubbleSarah, layoutGroup);
+                    GameObject myChat = Instantiate(chatBubbleSarah, layoutGroup.transform);
                     myChat.GetComponent<ChatBubble>().Character.text = chatmessage.Character;
                     myChat.GetComponent<ChatBubble>().Text.text = chatmessage.Text;
                     myChat.GetComponent<ChatBubble>().TimeSent.text = chatmessage.TimeSent;
@@ -120,7 +128,7 @@ public class ChatManager : MonoBehaviour
                     
                     //chatBubble.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, chatBubble.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().sizeDelta.y);
 
-                    GameObject myChat = Instantiate(chatBubble, layoutGroup);
+                    GameObject myChat = Instantiate(chatBubble, layoutGroup.transform);
                     myChat.GetComponent<ChatBubble>().Character.text = chatmessage.Character;
                     myChat.GetComponent<ChatBubble>().Text.text = chatmessage.Text;
                     myChat.GetComponent<ChatBubble>().TimeSent.text = chatmessage.TimeSent;

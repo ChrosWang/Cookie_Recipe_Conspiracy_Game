@@ -106,7 +106,7 @@ public class NewPostCreator : MonoBehaviour
 
     public string GenerateUserName()
     {
-        return "ARandomPerson";
+        return "Sarah";
     }
 
     public Sprite GenerateProfilePic()

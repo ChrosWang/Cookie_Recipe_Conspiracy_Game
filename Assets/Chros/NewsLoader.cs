@@ -66,6 +66,8 @@ public class NewsLoader : MonoBehaviour
     public int numArticleShared;
 
     public GameObject Scroller;
+
+    public GameObject FullArticlePage;
     // Start is called before the first frame update
     void Start()
     {
@@ -114,7 +116,7 @@ public class NewsLoader : MonoBehaviour
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
             Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
-            myNewsCollection.RetrieveNewsArticle(0).Is_shared = true;
+            myNewsCollection.RetrieveNewsArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
             numArticleShared++;
            // ShareStats1.SetActive(true);
@@ -124,31 +126,63 @@ public class NewsLoader : MonoBehaviour
         Debug.Log("current cp is " + currentCP);
         
     }
-   /* void UpdateShare2()
+
+    public void ShareFullArticle(NewsArticle Article)
     {
-        if (!myNewsCollection.RetrieveNewsArticle(1).Is_shared)
+        if (Article.Is_shared)
         {
-            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(1).Score);
-            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(1).Score;
-            myNewsCollection.RetrieveNewsArticle(1).Is_shared = true;
+
+            currentCP = currentCP + Article.Score;
+            Article.Is_shared = true;
+            popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
+            numArticleShared++;
+            // ShareStats1.SetActive(true);
+            //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+            newPostCreater.MakePost(Article);
+        }
+    }
+
+    void UpdateShareYML(int index)
+    {
+        if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared)
+        {
+            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveAlgoritmArticle(index).Score);
+            currentCP = currentCP + myNewsCollection.RetrieveAlgoritmArticle(index).Score;
+            myNewsCollection.RetrieveAlgoritmArticle(index).Is_shared = true;
+            popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
+            numArticleShared++;
+            // ShareStats1.SetActive(true);
+            //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
+            newPostCreater.MakePost(myNewsCollection.RetrieveAlgoritmArticle(index));
         }
         Debug.Log("current cp is " + currentCP);
-        ShareStats2.SetActive(true);
-        ShareStats2.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(1).Score, myNewsCollection.RetrieveNewsArticle(1).Priority);
+
     }
-    void UpdateShare3()
-    {
-        if (!myNewsCollection.RetrieveNewsArticle(2).Is_shared)
-        {
-            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(2).Score);
-            currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(2).Score;
-            myNewsCollection.RetrieveNewsArticle(2).Is_shared = true;
-        }
-        Debug.Log("current cp is " + currentCP);
-        ShareStats3.SetActive(true);
-        ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(2).Score, myNewsCollection.RetrieveNewsArticle(2).Priority);
-    }
-   */
+    /* void UpdateShare2()
+     {
+         if (!myNewsCollection.RetrieveNewsArticle(1).Is_shared)
+         {
+             Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(1).Score);
+             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(1).Score;
+             myNewsCollection.RetrieveNewsArticle(1).Is_shared = true;
+         }
+         Debug.Log("current cp is " + currentCP);
+         ShareStats2.SetActive(true);
+         ShareStats2.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(1).Score, myNewsCollection.RetrieveNewsArticle(1).Priority);
+     }
+     void UpdateShare3()
+     {
+         if (!myNewsCollection.RetrieveNewsArticle(2).Is_shared)
+         {
+             Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveNewsArticle(2).Score);
+             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(2).Score;
+             myNewsCollection.RetrieveNewsArticle(2).Is_shared = true;
+         }
+         Debug.Log("current cp is " + currentCP);
+         ShareStats3.SetActive(true);
+         ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(2).Score, myNewsCollection.RetrieveNewsArticle(2).Priority);
+     }
+    */
     void SearchMyCollection(string keyword)
     {
 
@@ -271,6 +305,7 @@ public class NewsLoader : MonoBehaviour
             //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
             myNews.GetComponent<SearchResultArt>().Body.text = "";
             myNews.GetComponent<SearchResultArt>().Author.text = "";
+            myNews.GetComponent<SearchResultArt>().news = myNewsCollection.RetrieveNewsArticle(index);
 
             myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
 
@@ -360,8 +395,9 @@ public class NewsLoader : MonoBehaviour
             //myNews.GetComponent<SearchResultArt>().Body.text = myNewsCollection.RetrieveNewsArticle(index).Body;
             myNews.GetComponent<SearchResultArt>().Body.text = "";
             myNews.GetComponent<SearchResultArt>().Author.text = "";
+            myNews.GetComponent<SearchResultArt>().news = myNewsCollection.RetrieveAlgoritmArticle(randomIndex);
 
-            myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShare(index));
+            myNews.GetComponent<SearchResultArt>().ShareButton.onClick.AddListener(() => UpdateShareYML(randomIndex));
 
             DOTween.To(
                 () => txt,
