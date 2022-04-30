@@ -2240,7 +2240,7 @@ GameObject:
   - component: {fileID: 8825737277295778202}
   - component: {fileID: 4966796690989307722}
   m_Layer: 5
-  m_Name: FullArticlePage
+  m_Name: FullArticlePage 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
