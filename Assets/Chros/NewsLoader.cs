@@ -98,9 +98,9 @@ public class NewsLoader : MonoBehaviour
     public void Initialization()
     {
         myNewsCollection = JsonUtility.FromJson<NewsCollection>("{\"News\":" + SpreadSheetJSON.text + "}");
-        Debug.Log(myNewsCollection.News[0].Title);
-        Debug.Log(myNewsCollection.News[0].Date);
-        Debug.Log(myNewsCollection.News[0].Body);
+       // Debug.Log(myNewsCollection.News[0].Title);
+      //  Debug.Log(myNewsCollection.News[0].Date);
+       // Debug.Log(myNewsCollection.News[0].Body);
 
         currentCP = 0;
         //RefreshNewsFeed();
@@ -114,7 +114,7 @@ public class NewsLoader : MonoBehaviour
     void  UpdateShare(int index)
     {
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
-            Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
+          //  Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
             myNewsCollection.RetrieveNewsArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
@@ -123,15 +123,16 @@ public class NewsLoader : MonoBehaviour
           //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(index));
         }
-        Debug.Log("current cp is " + currentCP);
+   //     Debug.Log("current cp is " + currentCP);
         
     }
 
     public void ShareFullArticle(NewsArticle Article)
     {
-        if (Article.Is_shared)
+        //Debug.Log("Full Article shared here");
+        if (!Article.Is_shared)
         {
-
+           // Debug.Log("Full Article shared");
             currentCP = currentCP + Article.Score;
             Article.Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
@@ -146,7 +147,7 @@ public class NewsLoader : MonoBehaviour
     {
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared)
         {
-            Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveAlgoritmArticle(index).Score);
+       //     Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveAlgoritmArticle(index).Score);
             currentCP = currentCP + myNewsCollection.RetrieveAlgoritmArticle(index).Score;
             myNewsCollection.RetrieveAlgoritmArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
@@ -155,7 +156,7 @@ public class NewsLoader : MonoBehaviour
             //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveAlgoritmArticle(index));
         }
-        Debug.Log("current cp is " + currentCP);
+   //     Debug.Log("current cp is " + currentCP);
 
     }
     /* void UpdateShare2()

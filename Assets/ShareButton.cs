@@ -22,6 +22,7 @@ public class ShareButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerClick(PointerEventData eventData)
     {
         GameObject canvas = GameObject.Find("ArticleLoader");
+        Debug.Log("Article Loader");
         canvas.GetComponent<NewsLoader>().ShareFullArticle(Article.GetComponent<FullArticle>().news);
 
     }

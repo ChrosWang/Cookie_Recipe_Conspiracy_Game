@@ -39,8 +39,7 @@ public class NewPostCreator : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = false;
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = true;
-        VerticalLayoutGroup vg;
-        HorizontalLayoutGroup hg;
+        
         foreach (Transform child in VerticalLayoutGroup)
         {
             Canvas.ForceUpdateCanvases();
@@ -55,6 +54,31 @@ public class NewPostCreator : MonoBehaviour
         }
     
     }
+
+    public void RefreshList(GameObject myPost)
+    {
+        Canvas.ForceUpdateCanvases();
+        VerticalLayoutGroup vg;
+        HorizontalLayoutGroup hg;
+        for (int i = 0; i< myPost.GetComponent<NewPost>().LayoutGroups.Length; i++)
+        {
+            Canvas.ForceUpdateCanvases();
+            hg = myPost.GetComponent<NewPost>().LayoutGroups[i].GetComponent<HorizontalLayoutGroup>();
+            if (hg != null)
+            {
+                hg.enabled = false;
+                hg.enabled = true;
+            }
+            Canvas.ForceUpdateCanvases();
+            vg = myPost.GetComponent<NewPost>().LayoutGroups[i].GetComponent<VerticalLayoutGroup>();
+            if (vg != null)
+            {
+                vg.enabled = false;
+                vg.enabled = true;
+            }
+        }
+    }
+
     public void PostRefresher(GameObject myPost)
     {
         Canvas.ForceUpdateCanvases();
@@ -117,6 +141,6 @@ public class NewPostCreator : MonoBehaviour
     public string GenerateRandomComment()
     {
         int index = Random.Range(0, myCommentCollection.usercomments.Length-1);
-        return myCommentCollection.usercomments[index].User + ": " + myCommentCollection.usercomments[index].Comment;
+        return "<color=#FF5555>" + myCommentCollection.usercomments[index].User + ":</color>   " + myCommentCollection.usercomments[index].Comment;
     }
 }

@@ -16,6 +16,7 @@ public class FullArticle : MonoBehaviour
     public Button ShareButton;
     public Button XButton;
     public NewsArticle news;
+    public GameObject PayWall;
     //public GameObject MyFullArticlePage;
 
     private void Start()

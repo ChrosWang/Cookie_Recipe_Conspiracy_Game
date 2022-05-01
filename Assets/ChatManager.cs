@@ -60,7 +60,7 @@ public class ChatManager : MonoBehaviour
     public void Initialization()
     {
         myChatCollection = JsonUtility.FromJson<ChatCollection>("{\"chatmessages\":" + SpreadSheetJSON.text + "}");
-        Debug.Log(myChatCollection.chatmessages[0].Text);
+     //   Debug.Log(myChatCollection.chatmessages[0].Text);
 
         //PlayChat(1);
         BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
@@ -102,9 +102,9 @@ public class ChatManager : MonoBehaviour
                 
                 if (toggleName)
                 {
-                    Debug.Log(chatmessage.Character + ": " + chatmessage.Text);
+                   // Debug.Log(chatmessage.Character + ": " + chatmessage.Text);
                     
-                    Debug.Log("Length is " + chatmessage.Text.Length);
+                  //  Debug.Log("Length is " + chatmessage.Text.Length);
                    
                     GameObject myChat = Instantiate(chatBubbleSarah, layoutGroup.transform);
                     myChat.GetComponent<ChatBubble>().Character.text = chatmessage.Character;
@@ -118,12 +118,12 @@ public class ChatManager : MonoBehaviour
                     {
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y + yInc;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
-                        Debug.Log(yTop);
+                     //   Debug.Log(yTop);
 
                     }
                 } else
                 {
-                    Debug.Log(chatmessage.Character + ": " + chatmessage.Text);
+                   // Debug.Log(chatmessage.Character + ": " + chatmessage.Text);
                     
                     
                     //chatBubble.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, chatBubble.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().sizeDelta.y);
@@ -143,7 +143,7 @@ public class ChatManager : MonoBehaviour
                         
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y + yInc;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
-                        Debug.Log(yTop);
+                    //    Debug.Log(yTop);
 
                     }
                 }

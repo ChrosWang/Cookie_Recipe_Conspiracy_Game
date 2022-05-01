@@ -1326,7 +1326,26 @@ MonoBehaviour:
   MagicFix: {fileID: 6072516784662632308}
   AnimationHelper: {fileID: 4631828956488770475}
   ShareButton: {fileID: 1495745125401810690}
-  MyFullArticlePage: {fileID: 8825737277295778204, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
+  MyFullArticlePage: {fileID: 8825737277295778204, guid: 67dff7d54ccc81b4cb9a069125a66437, type: 3}
+  news:
+    ReferenceNr: 0
+    Title: 
+    Date: 
+    Body: 
+    Paywall: 0
+    Multipiler: 0
+    Score: 0
+    Priority: 0
+    GameState: 0
+    KeyArticle: 0
+    Source: 
+    SourceNum: 0
+    Note: 
+    HeaderText: 
+    Is_shared: 0
+  x: 0
+  y: 0
+  z: 0
 --- !u!1 &8080224207384997796
 GameObject:
   m_ObjectHideFlags: 0

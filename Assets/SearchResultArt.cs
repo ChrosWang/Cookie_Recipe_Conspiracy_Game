@@ -19,6 +19,8 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public GameObject MyFullArticlePage;
     public LTDescr liftupanimation;
     public NewsArticle news;
+
+    public bool is_Paywalled;
     // public GameObject content;
     public float x;
     public float y;
@@ -77,6 +79,14 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
         myFullArticle.GetComponent<FullArticle>().Author.text = Author.text;
         myFullArticle.GetComponent<FullArticle>().Body.text = "";
         myFullArticle.GetComponent<FullArticle>().news = news;
+        if (news.Paywall)
+        {
+            myFullArticle.GetComponent<FullArticle>().PayWall.SetActive(true);
+            
+        } else
+        {
+            myFullArticle.GetComponent<FullArticle>().PayWall.SetActive(false);
+        }
         Debug.Log("current location local is:" + myFullArticle.transform.localPosition.x + "  " + myFullArticle.transform.localPosition.y);
         LeanTween.moveLocal(content, new Vector2(0f, 0f), 0f);
         LeanTween.moveLocal(myFullArticle, new Vector2(1000f, -1043f), 0f);
