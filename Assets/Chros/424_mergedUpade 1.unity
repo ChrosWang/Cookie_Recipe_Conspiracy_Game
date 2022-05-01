@@ -4789,7 +4789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586436095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610a1143543381542ae0701ccdc407ff, type: 3}
   m_Name: 
@@ -12461,7 +12461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581.99756, y: 0.000037949532}
+  m_AnchoredPosition: {x: 581.99756, y: -0.0011317569}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1523678094
@@ -13940,8 +13940,8 @@ MonoBehaviour:
   m_Content: {fileID: 1517531121}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
-  m_Elasticity: 0.1
+  m_MovementType: 1
+  m_Elasticity: 99
   m_Inertia: 0
   m_DecelerationRate: 5
   m_ScrollSensitivity: 30
@@ -14683,9 +14683,9 @@ MonoBehaviour:
   m_Content: {fileID: 288235637}
   m_Horizontal: 1
   m_Vertical: 0
-  m_MovementType: 0
-  m_Elasticity: 0.1
-  m_Inertia: 1
+  m_MovementType: 1
+  m_Elasticity: 99
+  m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 1305086040}

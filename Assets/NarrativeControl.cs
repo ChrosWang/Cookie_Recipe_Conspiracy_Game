@@ -26,7 +26,7 @@ public class NarrativeControl : MonoBehaviour
 
         articleLoader.MakePost(1);
         articleLoader.MakePost(2);
-        articleLoader.MakePost(3);
+        //articleLoader.MakePost(3);
 
         NewChatComing(1);
        
@@ -73,6 +73,7 @@ public class NarrativeControl : MonoBehaviour
                 if (toggle == 1)
                 {
                     StartCoroutine(PlayChatDelay(2f, 2));
+                    StartCoroutine(NewComingDelay(25f, 3));
                     toggle = toggle + 1;
 
                 }
@@ -93,6 +94,12 @@ public class NarrativeControl : MonoBehaviour
         yield return new WaitForSecondsRealtime(Delay);
         chatManager.gameObject.SetActive(true);
         chatManager.GetComponent<ChatManager>().PlayChat(index);
+
+    }
+    IEnumerator NewComingDelay(float Delay, int index)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        NewChatComing(index);
 
     }
 }
