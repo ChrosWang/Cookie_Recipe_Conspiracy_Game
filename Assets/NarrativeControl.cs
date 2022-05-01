@@ -33,7 +33,8 @@ public class NarrativeControl : MonoBehaviour
     }
     public void NewChatComing (int ID)
     {
-        chatManager.NewNotification(ID);
+        popUpSystem.CreatePopUp(2, new PopUpMessage(chatManager.GetComponent<ChatManager>().NameList[ID], "", 0, 0));
+        StartCoroutine(PlayChatDelay(8f, ID));
         //chatManager.PlayChat(ID);
         
         //chatManager.NewNotification(); 
@@ -71,8 +72,9 @@ public class NarrativeControl : MonoBehaviour
             case 1:
                 if (toggle == 1)
                 {
-                    chatManager.NewNotification(2);
+                    StartCoroutine(PlayChatDelay(2f, 2));
                     toggle = toggle + 1;
+
                 }
                 break;
             default:
@@ -80,4 +82,17 @@ public class NarrativeControl : MonoBehaviour
         }
     }
 
+    IEnumerator DelayNotification(float Delay, int index)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        chatManager.NewNotification(index);
+    }
+
+    IEnumerator PlayChatDelay(float Delay, int index)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        chatManager.gameObject.SetActive(true);
+        chatManager.GetComponent<ChatManager>().PlayChat(index);
+
+    }
 }

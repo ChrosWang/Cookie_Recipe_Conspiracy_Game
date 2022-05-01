@@ -39,6 +39,7 @@ public class PopUpSystem : MonoBehaviour
     public void CreatePopUp(int index, PopUpMessage popUpMessage)
     {
         GameObject myPopUp = Instantiate(PopUpNotification, PopUpStack.GetComponent<RectTransform>()); ;
+        this.GetComponent<AudioSource>().Play();
 
         switch (index)
         {

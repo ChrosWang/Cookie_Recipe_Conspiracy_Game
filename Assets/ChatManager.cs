@@ -32,7 +32,7 @@ public class ChatManager : MonoBehaviour
 
     public GameObject Scroller;
 
-    string[] NameList = {"","Daniel", 
+    public string[] NameList = {"","Daniel", 
         "Daniel", 
         "Wendy", 
         "Daniel", 
@@ -164,11 +164,14 @@ public class ChatManager : MonoBehaviour
     public void NewNotification (int index)
     {
         //NewNot.SetActive(true);
-        popUpSystem.CreatePopUp(2, new PopUpMessage(NameList[index], "", 0, 0));
-        this.gameObject.SetActive(true);
-        PlayChat(index);
+        
+        
+        //this.gameObject.SetActive(true);
+       // PlayChat(index);
 
     }
+
+
 
     public void GenerateNewChat(int ConvoID)
     {
