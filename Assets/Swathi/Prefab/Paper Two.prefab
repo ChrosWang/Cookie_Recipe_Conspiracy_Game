@@ -634,6 +634,25 @@ MonoBehaviour:
   AnimationHelper: {fileID: 5958675364549401890}
   ShareButton: {fileID: 1003976204134107785}
   MyFullArticlePage: {fileID: 8825737277295778204, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
+  news:
+    ReferenceNr: 0
+    Title: 
+    Date: 
+    Body: 
+    Paywall: 0
+    Multipiler: 0
+    Score: 0
+    Priority: 0
+    GameState: 0
+    KeyArticle: 0
+    Source: 
+    SourceNum: 0
+    Note: 
+    HeaderText: 
+    Is_shared: 0
+  x: 0
+  y: 0
+  z: 0
 --- !u!1 &8571323509320154862
 GameObject:
   m_ObjectHideFlags: 0
