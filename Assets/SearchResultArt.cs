@@ -79,6 +79,7 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
         myFullArticle.GetComponent<FullArticle>().Author.text = Author.text;
         myFullArticle.GetComponent<FullArticle>().Body.text = "";
         myFullArticle.GetComponent<FullArticle>().news = news;
+        myFullArticle.GetComponent<FullArticle>().newsimage.sprite = Resources.Load<Sprite>("Pictures/GSIIArticlePics/"+ myFullArticle.GetComponent<FullArticle>().news.ReferenceNr);
         if (news.Paywall)
         {
             myFullArticle.GetComponent<FullArticle>().PayWall.SetActive(true);

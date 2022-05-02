@@ -69,7 +69,7 @@ public class NewsCollection
         {
             for (int j = 0; j < n - i - 1; j++)
             {
-                if (RetrieveNewsArticle(j).Priority > RetrieveNewsArticle(j).Priority)
+                if (RetrieveNewsArticle(j).Priority > RetrieveNewsArticle(j+1).Priority)
                 {
                     // swap temp and SearchList[i]
                     int temp = SearchList[j];
@@ -79,6 +79,15 @@ public class NewsCollection
             }
         }
         //Debug.Log("Finish Sorting"); 
+        PrintList();
+    }
+
+    void PrintList()
+    {
+        for (int i = 0; i < SearchList.Length; i++)
+        {
+            Debug.Log("Hi my order is " + RetrieveNewsArticle(i).Priority);
+        }
     }
 
     public NewsArticle RetrieveNewsArticle (int index)

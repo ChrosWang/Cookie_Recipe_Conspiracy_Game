@@ -11,7 +11,9 @@ public class NewPostCreator : MonoBehaviour
     public Transform VerticalLayoutGroup;
 
     public CommentCollection myCommentCollection = new CommentCollection();
-    public TextAsset SpreadSheetJSON;
+    public CommentCollection myKeyCommentCollection = new CommentCollection();
+    public TextAsset SpreadSheetJSON1;
+    public TextAsset SpreadSheetJSON2;
 
 
 
@@ -26,7 +28,9 @@ public class NewPostCreator : MonoBehaviour
 
     public void Initialization()
     {
-        myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON.text + "}");
+        myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON1.text + "}");
+        myKeyCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON2.text + "}");
+
     }
 
     // Update is called once per frame
@@ -113,8 +117,9 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().profilePic.sprite = GenerateProfilePic();
         myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
         myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
-        myPost.GetComponent<NewPost>().comment1.text = GenerateRandomComment();
-        myPost.GetComponent<NewPost>().comment2.text = GenerateRandomComment();
+        myKeyCommentCollection.SearchForKeyWord(newsarticle.ReferenceNr);
+        myPost.GetComponent<NewPost>().comment1.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User+ ":</color>   " + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment;
+        myPost.GetComponent<NewPost>().comment2.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>   " + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment;
 
         PostRefresher(myPost);
         //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
@@ -138,7 +143,7 @@ public class NewPostCreator : MonoBehaviour
         return Resources.Load<Sprite>("Pictures/ProfilePictures/defaultProfilePicture.jpg");
     }
 
-    public string GenerateRandomComment()
+    public string GenerateRandomComment(int rn)
     {
         int index = Random.Range(0, myCommentCollection.usercomments.Length-1);
         return "<color=#FF5555>" + myCommentCollection.usercomments[index].User + ":</color>   " + myCommentCollection.usercomments[index].Comment;
