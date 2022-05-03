@@ -35,7 +35,7 @@ public class NarrativeControl : MonoBehaviour
     public void NewChatComing (int ID)
     {
         popUpSystem.CreatePopUp(2, new PopUpMessage(chatManager.GetComponent<ChatManager>().NameList[ID], "", 0, 0));
-        StartCoroutine(PlayChatDelay(8f, ID));
+        StartCoroutine(PlayChatDelay(4f, ID));
         //chatManager.PlayChat(ID);
         
         //chatManager.NewNotification(); 
@@ -142,7 +142,9 @@ public class NarrativeControl : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(Delay);
         chatManager.gameObject.SetActive(true);
-        chatManager.GetComponent<ChatManager>().PlayChat(index);
+        float OnComplete = chatManager.GetComponent<ChatManager>().PlayChat(index);
+        yield return new WaitForSecondsRealtime(OnComplete);
+        chatManager.GetComponent<ChatManager>().BackButton.gameObject.SetActive(true);
 
     }
     IEnumerator NewComingDelay(float Delay, int index)

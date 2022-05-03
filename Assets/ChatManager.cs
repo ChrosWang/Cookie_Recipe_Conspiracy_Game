@@ -65,8 +65,30 @@ public class ChatManager : MonoBehaviour
         //PlayChat(1);
         BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
     }
-
-    public void PlayChat(int order)
+    void RefreshLayoutGroups(ChatBubble myChat)
+    {
+        Canvas.ForceUpdateCanvases();
+        VerticalLayoutGroup vg;
+        HorizontalLayoutGroup hg;
+        for (int i = 0; i < myChat.GetComponent<ChatBubble>().LayoutGroups.Length; i++)
+        {
+            Canvas.ForceUpdateCanvases();
+            hg = myChat.GetComponent<ChatBubble>().LayoutGroups[i].GetComponent<HorizontalLayoutGroup>();
+            if (hg != null)
+            {
+                hg.enabled = false;
+                hg.enabled = true;
+            }
+            Canvas.ForceUpdateCanvases();
+            vg = myChat.GetComponent<ChatBubble>().LayoutGroups[i].GetComponent<VerticalLayoutGroup>();
+            if (vg != null)
+            {
+                vg.enabled = false;
+                vg.enabled = true;
+            }
+        }
+    }
+    public float PlayChat(int order)
     {
         float yTop = -46.79f;
         UpdateScroller();
@@ -83,6 +105,11 @@ public class ChatManager : MonoBehaviour
         int count = 0;
         bool toggleName = false;
         float Delay = 0.5f;
+
+        float sizeSum = 0;
+
+        BackButton.gameObject.SetActive(false);
+        //float DelayTotal=0;
         foreach (ChatMessage chatmessage in myChatCollection.chatmessages)
         {
             if (chatmessage.Order == order)
@@ -110,16 +137,27 @@ public class ChatManager : MonoBehaviour
                     myChat.GetComponent<ChatBubble>().Character.text = chatmessage.Character;
                     myChat.GetComponent<ChatBubble>().Text.text = chatmessage.Text;
                     myChat.GetComponent<ChatBubble>().TimeSent.text = chatmessage.TimeSent;
-                    myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 112 + 40 * (chatmessage.Text.Length / 35));
+
+
+
+                    RefreshLayoutGroups(myChat.GetComponent<ChatBubble>());
+                    myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 44 + myChat.GetComponent<ChatBubble>().LayoutGroups[1].GetComponent<RectTransform>().sizeDelta.y);
+                    //myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 112 + 40 * (chatmessage.Text.Length / 35));
                     Delay = Delay + chatmessage.TypeTime;
                     LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, r1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
-                    
+                    /*
                     if (count >= 5)
                     {
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y + yInc;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
                      //   Debug.Log(yTop);
 
+                    }*/
+                    sizeSum = sizeSum + myChat.GetComponent<RectTransform>().sizeDelta.y;
+                    if (sizeSum > 1080)
+                    {
+                        yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y;
+                        LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
                     }
                 } else
                 {
@@ -132,20 +170,28 @@ public class ChatManager : MonoBehaviour
                     myChat.GetComponent<ChatBubble>().Character.text = chatmessage.Character;
                     myChat.GetComponent<ChatBubble>().Text.text = chatmessage.Text;
                     myChat.GetComponent<ChatBubble>().TimeSent.text = chatmessage.TimeSent;
-                    myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 112 + 40 * (chatmessage.Text.Length / 35));
+                    RefreshLayoutGroups(myChat.GetComponent<ChatBubble>());
+                    myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920,44+ myChat.GetComponent<ChatBubble>().LayoutGroups[1].GetComponent<RectTransform>().sizeDelta.y);
+                    //myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 112 + 40 * (chatmessage.Text.Length / 35));
                     //myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, myChat.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().rect.height);
                     //Debug.Log("height of child is" + myChat.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().sizeDelta.y);
                     Delay = Delay + chatmessage.TypeTime;
                     LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, l1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
-                   
-                    if (count >= 5)
+
+                    sizeSum = sizeSum + myChat.GetComponent<RectTransform>().sizeDelta.y;
+                    if (sizeSum > 1080)
+                    {
+                        yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y;
+                        LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
+                    }
+                    /*if (count >= 5)
                     {
                         
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y + yInc;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
                     //    Debug.Log(yTop);
 
-                    }
+                    }*/
                 }
 
                 
@@ -156,7 +202,7 @@ public class ChatManager : MonoBehaviour
                 //yield WaitForSeconds(3);
             }
         }
-
+        return Delay;
 
     }
 

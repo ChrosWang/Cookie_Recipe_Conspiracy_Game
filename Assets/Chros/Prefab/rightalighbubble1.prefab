@@ -174,7 +174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1368, y: -27.400002}
+  m_AnchoredPosition: {x: 1380, y: -19}
   m_SizeDelta: {x: 819.5454, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6545475860190410906
@@ -699,6 +699,9 @@ MonoBehaviour:
   Character: {fileID: 6969664279487619824}
   TimeSent: {fileID: 3903721604428947465}
   AnimationHelper: {fileID: 2529533213159198168}
+  LayoutGroups:
+  - {fileID: 1364048760576442626}
+  - {fileID: 6969664279782203579}
 --- !u!1 &6969664280288906984
 GameObject:
   m_ObjectHideFlags: 0

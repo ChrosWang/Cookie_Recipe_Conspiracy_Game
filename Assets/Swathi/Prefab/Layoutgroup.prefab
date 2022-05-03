@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3568480562446936473}
   - component: {fileID: 3568480562446936472}
   - component: {fileID: 3568480562446936479}
+  - component: {fileID: 6792214685471083467}
   m_Layer: 5
   m_Name: Layoutgroup
   m_TagString: Untagged
@@ -55,7 +56,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 70
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -77,3 +78,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &6792214685471083467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568480562446936478}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f65da4bced27249920ecff5a51957c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

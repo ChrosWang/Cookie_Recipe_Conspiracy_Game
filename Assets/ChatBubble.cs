@@ -10,4 +10,5 @@ public class ChatBubble : MonoBehaviour
     public TMP_Text Character;
     public TMP_Text TimeSent;
     public GameObject AnimationHelper;
+    public GameObject[] LayoutGroups;
 }
