@@ -8,8 +8,10 @@ using DG.Tweening;
 public class NewsLoader : MonoBehaviour
 {
     public TextAsset SpreadSheetJSON;
+    public TextAsset SpreadSheetJSONB;
     //google spreadsheet
     public NewsCollection myNewsCollection = new NewsCollection();
+    public NewsCollection myBreakingNewsCollection = new NewsCollection();
 
     public ChatManager Chat;
 
@@ -98,9 +100,10 @@ public class NewsLoader : MonoBehaviour
     public void Initialization()
     {
         myNewsCollection = JsonUtility.FromJson<NewsCollection>("{\"News\":" + SpreadSheetJSON.text + "}");
-       // Debug.Log(myNewsCollection.News[0].Title);
-      //  Debug.Log(myNewsCollection.News[0].Date);
-       // Debug.Log(myNewsCollection.News[0].Body);
+        myBreakingNewsCollection = JsonUtility.FromJson<NewsCollection>("{\"News\":" + SpreadSheetJSONB.text + "}");
+        // Debug.Log(myNewsCollection.News[0].Title);
+        //  Debug.Log(myNewsCollection.News[0].Date);
+        // Debug.Log(myNewsCollection.News[0].Body);
 
         currentCP = 0;
         //RefreshNewsFeed();
