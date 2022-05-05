@@ -16,6 +16,7 @@ public class NarrativeControl : MonoBehaviour
     public NewPostCreator newPostCreator;
     public PopUpSystem popUpSystem;
     public BreakingNewsSwapper breakingNewsSwapper;
+    public CameraBlur BlurControl;
 
 
     public void Start()
@@ -34,6 +35,7 @@ public class NarrativeControl : MonoBehaviour
     }
     public void NewChatComing (int ID)
     {
+        Debug.Log("NewCHat+"+ID);
         popUpSystem.CreatePopUp(2, new PopUpMessage(chatManager.GetComponent<ChatManager>().NameList[ID], "", 0, 0));
         StartCoroutine(PlayChatDelay(4f, ID));
         //chatManager.PlayChat(ID);
@@ -67,20 +69,23 @@ public class NarrativeControl : MonoBehaviour
 
     public void Update()
     {
-
+        
         if (articleLoader.currentCP >= 1 && articleLoader.currentCP < 10)
         {
+            currentGameState = 1;
             if (toggle == 1)
             {
                 breakingNewsSwapper.Swap(1);
                 StartCoroutine(PlayChatDelay(2f, 2));
                 StartCoroutine(NewComingDelay(25f, 3));
                 toggle = toggle + 1;
+                
 
             }
         }
         else if (articleLoader.currentCP >= 10 && articleLoader.currentCP < 50)
-        { 
+        {
+            currentGameState = 2;
             if (toggle == 2)
             {
                 breakingNewsSwapper.Swap(2);
@@ -99,17 +104,18 @@ public class NarrativeControl : MonoBehaviour
 
             if (toggle == 4 && articleLoader.currentCP >= 40)
             {
-                StartCoroutine(PlayChatDelay(2f, 9));
+                StartCoroutine(PlayChatDelay(2f, 8));
                 toggle = toggle + 1;
             }
 
         }    
             else if (articleLoader.currentCP >= 50 && articleLoader.currentCP < 130)
             {
-                if (toggle == 5)
+            currentGameState = 3;
+            if (toggle == 5)
                 {
                     breakingNewsSwapper.Swap(3);
-                    StartCoroutine(PlayChatDelay(5f, 10));
+                    StartCoroutine(PlayChatDelay(5f, 9));
                     toggle = toggle + 1;
                 }
                 if (toggle == 6 && articleLoader.currentCP >= 80)
@@ -128,8 +134,75 @@ public class NarrativeControl : MonoBehaviour
                     StartCoroutine(NewComingDelay(18f, 13));
                     toggle = toggle + 1;
                 }
-            }
+            } 
         
+        /*
+        if (articleLoader.numArticleShared >= 1 && articleLoader.numArticleShared < 3)
+        {
+            currentGameState = 1;
+            if (toggle == 1)
+            {
+                breakingNewsSwapper.Swap(1);
+                StartCoroutine(PlayChatDelay(2f, 2));
+                StartCoroutine(NewComingDelay(25f, 3));
+                toggle = toggle + 1;
+
+
+            }
+        }
+        else if (articleLoader.numArticleShared >= 3 && articleLoader.numArticleShared < 13)
+        {
+            currentGameState = 2;
+            if (toggle == 2)
+            {
+                breakingNewsSwapper.Swap(2);
+                StartCoroutine(PlayChatDelay(2f, 5));
+                toggle = toggle + 1;
+
+            }
+
+            if (toggle == 3 && articleLoader.numArticleShared >= 8)
+            {
+                StartCoroutine(PlayChatDelay(2f, 6));
+                StartCoroutine(NewComingDelay(12f, 7));
+                toggle = toggle + 1;
+            }
+
+
+            if (toggle == 4 && articleLoader.numArticleShared >= 12)
+            {
+                StartCoroutine(PlayChatDelay(2f, 8));
+                toggle = toggle + 1;
+            }
+
+        }
+        else if (articleLoader.numArticleShared >= 13 && articleLoader.numArticleShared < 23)
+        {
+            currentGameState = 3;
+            if (toggle == 5)
+            {
+                breakingNewsSwapper.Swap(3);
+                StartCoroutine(PlayChatDelay(5f, 9));
+                toggle = toggle + 1;
+            }
+            if (toggle == 6 && articleLoader.numArticleShared >= 17)
+            {
+                StartCoroutine(PlayChatDelay(2f, 10));
+                toggle = toggle + 1;
+            }
+            if (toggle == 7 && articleLoader.numArticleShared >= 20)
+            {
+                StartCoroutine(PlayChatDelay(2f, 11));
+                toggle = toggle + 1;
+            }
+            if (toggle == 8 && articleLoader.numArticleShared >= 22)
+            {
+                StartCoroutine(PlayChatDelay(2f, 12));
+                StartCoroutine(NewComingDelay(18f, 13));
+                toggle = toggle + 1;
+            }
+        }
+        */
     }
 
     IEnumerator DelayNotification(float Delay, int index)
@@ -141,10 +214,17 @@ public class NarrativeControl : MonoBehaviour
     IEnumerator PlayChatDelay(float Delay, int index)
     {
         yield return new WaitForSecondsRealtime(Delay);
+       // BlurControl.BlurBegin();
+        //yield return new WaitForSecondsRealtime(0.2f);
         chatManager.gameObject.SetActive(true);
+       // yield return new WaitForSecondsRealtime(0.7f);
+       // BlurControl.BlurEnd();
+       // yield return new WaitForSecondsRealtime(0.7f);
+       // BlurControl.gameObject.GetComponent<Blur>().enabled = false;
+        // BlurControl.BlurEnd();
         float OnComplete = chatManager.GetComponent<ChatManager>().PlayChat(index);
-        yield return new WaitForSecondsRealtime(OnComplete);
-        chatManager.GetComponent<ChatManager>().BackButton.gameObject.SetActive(true);
+        //yield return new WaitForSecondsRealtime(OnComplete);
+        //chatManager.GetComponent<ChatManager>().BackButton.gameObject.SetActive(true);
 
     }
     IEnumerator NewComingDelay(float Delay, int index)

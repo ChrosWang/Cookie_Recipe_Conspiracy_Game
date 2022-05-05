@@ -12,6 +12,7 @@ public class NewsArticle
     public string Body;
     public bool Paywall;
     public int Multipiler;
+    public int AppearDate;
     public int Score;
     public int Priority;
     public int GameState;
@@ -31,7 +32,7 @@ public class NewsCollection
     public int searchResultStat;
     public int[] newsAlgorithm = new int [99]; //First element i.e. newsAlgorithm[0] is the length of the list
 
-    public void SearchForKeyWord(string keyword)
+    public void SearchForKeyWord(string keyword, int index)
     {
         //Debug.Log("Start Searching");
         for(int i = 0; i < SearchList.Length; i++)
@@ -47,10 +48,13 @@ public class NewsCollection
         {
             if ((News[i].Title.ToLower().IndexOf(keyword.ToLower()) >= 0) || (News[i].Body.ToLower().IndexOf(keyword.ToLower()) >= 0))
             {
-                //Debug.Log("Found a matching one with index " + i); 
-                SearchList[currentIndex] = i;
-                currentIndex++;
-                searchResultStat++;
+                if (index >= News[i].AppearDate)
+                {
+                    //Debug.Log("Found a matching one with index " + i); 
+                    SearchList[currentIndex] = i;
+                    currentIndex++;
+                    searchResultStat++;
+                }
             }
             //Debug.Log("index " + i + " not matched"); 
         }
@@ -95,16 +99,19 @@ public class NewsCollection
         return News[SearchList[index]];
     }
     
-    public void generateNewsFeed(int currentScore)
+    public void generateNewsFeed(int currentScore, int currentGS)
     {
         int currentIndex = 1;
         for (int i = 0; i < News.Length; i++)
         {
             if ((News[i].Score >= currentScore / 10) && (News[i].Score <= currentScore))
             {
-                //Debug.Log("Found one in range with index " + i + " with score " + News[i].Score + " in " + currentScore / 10 + " and " + currentScore);
-                newsAlgorithm[currentIndex] = i;
-                currentIndex++;
+                if (currentGS <= News[i].AppearDate)
+                {
+                    //Debug.Log("Found one in range with index " + i + " with score " + News[i].Score + " in " + currentScore / 10 + " and " + currentScore);
+                    newsAlgorithm[currentIndex] = i;
+                    currentIndex++;
+                }
             }
            //
            //Debug.Log("index " + i + " with score " + News[i].Score + " not matched in " + currentScore / 10 + " and "+ currentScore);

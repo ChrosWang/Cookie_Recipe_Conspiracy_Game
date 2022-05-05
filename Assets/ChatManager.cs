@@ -28,8 +28,9 @@ public class ChatManager : MonoBehaviour
     public float yInc;
 
     public Button BackButton;
+    public Button SpeedUpButton;
     public Canvas canvas1;
-
+    bool speedUp = false;
     public GameObject Scroller;
 
     public string[] NameList = {"","Daniel", 
@@ -44,7 +45,7 @@ public class ChatManager : MonoBehaviour
         "Wendy", 
         "Daniel", 
         "Wendy", 
-        "Chris" };
+        "Chris"};
     public void Start()
     {
 
@@ -64,7 +65,17 @@ public class ChatManager : MonoBehaviour
 
         //PlayChat(1);
         BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
+        SpeedUpButton.onClick.AddListener(() => SpeedUpChat());
     }
+
+    void SpeedUpChat()
+    {
+        if (!speedUp)
+            speedUp = true;
+        else
+            speedUp = false;
+    }
+
     void RefreshLayoutGroups(ChatBubble myChat)
     {
         Canvas.ForceUpdateCanvases();
@@ -176,13 +187,26 @@ public class ChatManager : MonoBehaviour
                     //myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, myChat.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().rect.height);
                     //Debug.Log("height of child is" + myChat.GetComponent<ChatBubble>().AnimationHelper.GetComponent<RectTransform>().sizeDelta.y);
                     Delay = Delay + chatmessage.TypeTime;
-                    LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, l1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
+                    LTDescr myTween;
+                    myTween = LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, l1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
 
                     sizeSum = sizeSum + myChat.GetComponent<RectTransform>().sizeDelta.y;
-                    if (sizeSum > 1080)
+
+
+                    if (sizeSum > 980)
                     {
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
+                    }
+
+                    if (chatmessage.is_EndMessage)
+                    {
+                        Action BackButtonAppear = () =>
+                        {
+                            BackButton.gameObject.SetActive(true);
+                            speedUp = false;
+                        };
+                        myTween.setOnComplete(BackButtonAppear);
                     }
                     /*if (count >= 5)
                     {
@@ -223,6 +247,18 @@ public class ChatManager : MonoBehaviour
     {
         //Use the ID to find the corresponding chat in the Chat Collection to generate a chat. 
 
+    }
+
+    public void Update()
+    {
+        if (speedUp)
+        {
+            Time.timeScale = 4f;
+        } else
+        {
+            Time.timeScale = 1f;
+        }
+        
     }
 
 

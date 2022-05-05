@@ -25,6 +25,7 @@ public class BreakingNewsSwapper : MonoBehaviour
         LeanTween.alpha(this.gameObject, 0, 0.3f);
         this.gameObject.GetComponent<Image>().sprite = GS_List[index];
         LeanTween.alpha(this.gameObject, 0, 0.3f).setDelay(0.3f);
+        currentIndex = index;
     }
 
     public void FullPageOpen()

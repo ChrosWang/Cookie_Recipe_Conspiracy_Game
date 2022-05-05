@@ -21,7 +21,7 @@ class Blur : MonoBehaviour {
 	[Tooltip("Improves quality and reduces sharp edges (Downsamples the Image).")]
 	[Range(0,3)] 
 	public int filter = 1;
-
+	
 	void OnRenderImage (RenderTexture sourcert, RenderTexture destinationrt) {	
 
 		if(blurShader == null){

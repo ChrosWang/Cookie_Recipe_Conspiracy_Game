@@ -14,7 +14,7 @@ public class NewsLoader : MonoBehaviour
     public NewsCollection myBreakingNewsCollection = new NewsCollection();
 
     public ChatManager Chat;
-
+    public NarrativeControl narrative;
     public Button SearchButton;
     public Button CurrentScoreButton;
     //public Button ShareButton1;
@@ -67,13 +67,15 @@ public class NewsLoader : MonoBehaviour
 
     public int numArticleShared;
 
+    public ArticleBar articlebar;
+
     public GameObject Scroller;
 
     public GameObject FullArticlePage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        articlebar.UpdateShare();
        // CurrentScoreButton.onClick.AddListener(() => RefreshNewsFeed());
 
        // ShareButton1.onClick.AddListener(() => UpdateShare1());
@@ -108,7 +110,7 @@ public class NewsLoader : MonoBehaviour
         currentCP = 0;
         //RefreshNewsFeed();
 
-        SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text));
+        SearchButton.onClick.AddListener(() => SearchMyCollection(textField.text, narrative.currentGameState));
     }
     public void MakePost(int index)
     {
@@ -122,6 +124,7 @@ public class NewsLoader : MonoBehaviour
             myNewsCollection.RetrieveNewsArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
             numArticleShared++;
+            articlebar.UpdateShare();
            // ShareStats1.SetActive(true);
           //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveNewsArticle(index));
@@ -140,6 +143,8 @@ public class NewsLoader : MonoBehaviour
             Article.Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
             numArticleShared++;
+            articlebar.UpdateShare();
+
             // ShareStats1.SetActive(true);
             //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(Article);
@@ -187,7 +192,7 @@ public class NewsLoader : MonoBehaviour
          ShareStats3.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(2).Score, myNewsCollection.RetrieveNewsArticle(2).Priority);
      }
     */
-    void SearchMyCollection(string keyword)
+    void SearchMyCollection(string keyword, int index)
     {
 
         foreach (Transform child in SearchResultGroup.GetComponent<Transform>())
@@ -199,7 +204,7 @@ public class NewsLoader : MonoBehaviour
         //ShareStats1.SetActive(false);
         //ShareStats2.SetActive(false);
         //ShareStats3.SetActive(false);
-        myNewsCollection.SearchForKeyWord(keyword);
+        myNewsCollection.SearchForKeyWord(keyword, index);
         SearchResultStats.text = "Found " + myNewsCollection.searchResultStat.ToString() + " matched results.";
         int delay = 0;
         delay = delay + RetrieveNumber(0, 0);
@@ -208,14 +213,14 @@ public class NewsLoader : MonoBehaviour
         GameObject myUml = Instantiate(YouMightLike, SearchResultGroup.GetComponent<RectTransform>());
         LeanTween.alpha(myUml.GetComponent<RectTransform>(), 1, 0.3f).setDelay(0.1f * delay).setEase(LeanTweenType.easeInExpo);
         delay = delay + RetrieveNumber(-1, delay);
-        delay = delay + RetrieveNumber(-1, delay);
+        //delay = delay + RetrieveNumber(-1, delay);
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SearchMyCollection(textField.text);
+            SearchMyCollection(textField.text, narrative.currentGameState);
         }
 
         //if (searchCount >=3)
@@ -357,7 +362,7 @@ public class NewsLoader : MonoBehaviour
             */
         } else
         {
-            myNewsCollection.generateNewsFeed(currentCP);
+            myNewsCollection.generateNewsFeed(currentCP,narrative.currentGameState);
             int randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
             switch (myNewsCollection.RetrieveAlgoritmArticle(randomIndex).SourceNum)
             {

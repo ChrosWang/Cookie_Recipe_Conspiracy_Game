@@ -15,6 +15,8 @@ public class NewPostCreator : MonoBehaviour
     public TextAsset SpreadSheetJSON1;
     public TextAsset SpreadSheetJSON2;
 
+    public PopUpSystem popupsystem;
+
 
 
     // Start is called before the first frame update
@@ -130,6 +132,8 @@ public class NewPostCreator : MonoBehaviour
         //LeanTween.scale(myPost.GetComponent<NewPost>().Twik, new Vector2(1.001f, 1.001f), 0.001f);
 
         Debug.Log("it's working!");
+        popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
+        popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 5f);
     }
 
 

@@ -14,6 +14,7 @@ public class ChatMessage
     public string Keywords;
     public float TypeTime;
     public string Notes;
+    public bool is_EndMessage;
 }
 
 //[System.Serializable]

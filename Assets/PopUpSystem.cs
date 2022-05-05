@@ -36,6 +36,17 @@ public class PopUpSystem : MonoBehaviour
        8 - Someone else's post: xxx just posted: "check this out!"
     */
 
+    public void DelayPopUp(int index, PopUpMessage popUpMessage, float Delay)
+    {
+        StartCoroutine(DelaymyPopUp(index, popUpMessage, Delay));
+    }
+
+    IEnumerator DelaymyPopUp(int index, PopUpMessage popUpMessage, float Delay)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        CreatePopUp(index, popUpMessage);
+    }
+
     public void CreatePopUp(int index, PopUpMessage popUpMessage)
     {
         GameObject myPopUp = Instantiate(PopUpNotification, PopUpStack.GetComponent<RectTransform>()); ;
