@@ -18,7 +18,7 @@ public class NewPostCreator : MonoBehaviour
     public PopUpSystem popupsystem;
 
 
-
+    public GameObject Scroller;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,9 +60,15 @@ public class NewPostCreator : MonoBehaviour
         }
     
     }
+    void UpdateScroller()
+    {
+        Scroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = 1f;
+        Scroller.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
+    }
 
     public void RefreshList(GameObject myPost)
     {
+        UpdateScroller();
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup vg;
         HorizontalLayoutGroup hg;
@@ -117,6 +123,8 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().NewsArticleTitle.text = newsarticle.Title;
         myPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
         myPost.GetComponent<NewPost>().profilePic.sprite = GenerateProfilePic();
+        myPost.GetComponent<NewPost>().ArticlePic.sprite = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr);
+        myPost.GetComponent<NewPost>().ArticlePic.rectTransform.sizeDelta = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr).rect.size*0.7f;
         myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
         myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
         myKeyCommentCollection.SearchForKeyWord(newsarticle.ReferenceNr);
