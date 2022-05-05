@@ -214,7 +214,7 @@ public class NarrativeControl : MonoBehaviour
     IEnumerator PlayChatDelay(float Delay, int index)
     {
         yield return new WaitForSecondsRealtime(Delay);
-       // BlurControl.BlurBegin();
+        //BlurControl.BlurBegin();
         //yield return new WaitForSecondsRealtime(0.2f);
         chatManager.gameObject.SetActive(true);
        // yield return new WaitForSecondsRealtime(0.7f);
