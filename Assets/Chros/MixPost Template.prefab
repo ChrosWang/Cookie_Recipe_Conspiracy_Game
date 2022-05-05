@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 8042302624524389263}
   - component: {fileID: 3393505947191014497}
   m_Layer: 5
-  m_Name: Image
+  m_Name: commentsection1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 9123620092302141300}
   - component: {fileID: 6652559744291141668}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: commentsection2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2069,6 +2069,8 @@ MonoBehaviour:
   LayoutGroup2: {fileID: 7471206720279743347}
   LayoutGroup3: {fileID: 7471206721014263959}
   LayoutGroups: []
+  cms1: {fileID: 1566467482999438304}
+  cms2: {fileID: 1686750942444114172}
 --- !u!1 &7471206721014263959
 GameObject:
   m_ObjectHideFlags: 0

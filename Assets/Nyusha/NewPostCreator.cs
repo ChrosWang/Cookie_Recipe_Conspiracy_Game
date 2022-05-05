@@ -120,9 +120,20 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
         myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
         myKeyCommentCollection.SearchForKeyWord(newsarticle.ReferenceNr);
-        myPost.GetComponent<NewPost>().comment1.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User+ ":</color>   " + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment;
-        myPost.GetComponent<NewPost>().comment2.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>   " + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment;
-
+        string comment1 = myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment;
+        string comment2 = myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment;
+        if (comment1.Equals(""))
+        {
+            myPost.GetComponent<NewPost>().cms1.SetActive(false);
+            
+        }
+        if (comment2.Equals(""))
+        {
+            myPost.GetComponent<NewPost>().cms2.SetActive(false);
+           
+        }
+        myPost.GetComponent<NewPost>().comment1.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>   " + comment1;
+        myPost.GetComponent<NewPost>().comment2.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>   " + comment2;
         PostRefresher(myPost);
         //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         //LayoutRebuilder.ForceRebuildLayoutImmediate(myPost.GetComponent<NewPost>().Twik.GetComponent<RectTransform>());
@@ -132,8 +143,18 @@ public class NewPostCreator : MonoBehaviour
         //LeanTween.scale(myPost.GetComponent<NewPost>().Twik, new Vector2(1.001f, 1.001f), 0.001f);
 
         Debug.Log("it's working!");
-        popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
-        popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 5f);
+        if (!comment1.Equals(""))
+        {
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
+
+        }
+        if (!comment2.Equals(""))
+        {
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 5f);
+
+        }
+        
+        
     }
 
 

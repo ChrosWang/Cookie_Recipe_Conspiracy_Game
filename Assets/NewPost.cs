@@ -20,4 +20,6 @@ public class NewPost : MonoBehaviour
     public GameObject LayoutGroup2;
     public GameObject LayoutGroup3;
     public GameObject[] LayoutGroups;
+    public GameObject cms1;
+    public GameObject cms2;
 }
