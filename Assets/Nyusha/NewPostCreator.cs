@@ -24,8 +24,8 @@ public class NewPostCreator : MonoBehaviour
     void Start()
     {
 
-        
-       // Debug.Log(myCommentCollection.usercomments[0].Comment);
+
+        // Debug.Log(myCommentCollection.usercomments[0].Comment);
 
     }
 
@@ -40,14 +40,14 @@ public class NewPostCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void RefreshEverything()
     {
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = false;
         VerticalLayoutGroup.GetComponent<VerticalLayoutGroup>().enabled = true;
-        
+
         foreach (Transform child in VerticalLayoutGroup)
         {
             Canvas.ForceUpdateCanvases();
@@ -60,7 +60,7 @@ public class NewPostCreator : MonoBehaviour
             child.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = false;
             child.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
         }
-    
+
     }
     void UpdateScroller()
     {
@@ -74,7 +74,7 @@ public class NewPostCreator : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         VerticalLayoutGroup vg;
         HorizontalLayoutGroup hg;
-        for (int i = 0; i< myPost.GetComponent<NewPost>().LayoutGroups.Length; i++)
+        for (int i = 0; i < myPost.GetComponent<NewPost>().LayoutGroups.Length; i++)
         {
             Canvas.ForceUpdateCanvases();
             hg = myPost.GetComponent<NewPost>().LayoutGroups[i].GetComponent<HorizontalLayoutGroup>();
@@ -171,10 +171,10 @@ public class NewPostCreator : MonoBehaviour
         popupsystem.DelayPopUp(8, new PopUpMessage("<color=#FF5555>" + myPostCollection.mixpost[index].Username + ":</color>", myPostCollection.mixpost[index].Body, 0, 0), 3f);
     }
     public void MakePost(NewsArticle newsarticle)
-     {
+    {
         int trendValue = newsarticle.Score;
         int priority = newsarticle.Priority;
-        
+
         GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
         myPost.transform.SetAsFirstSibling();
         PostRefresher(myPost);
@@ -196,12 +196,12 @@ public class NewPostCreator : MonoBehaviour
         if (comment1.Equals(""))
         {
             myPost.GetComponent<NewPost>().cms1.SetActive(false);
-            
+
         }
         if (comment2.Equals(""))
         {
             myPost.GetComponent<NewPost>().cms2.SetActive(false);
-           
+
         }
         myPost.GetComponent<NewPost>().comment1.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>   " + comment1;
         myPost.GetComponent<NewPost>().comment2.text = "<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>   " + comment2;
@@ -213,6 +213,10 @@ public class NewPostCreator : MonoBehaviour
         //  myPost.SetActive(true);
         //LeanTween.scale(myPost.GetComponent<NewPost>().Twik, new Vector2(1.001f, 1.001f), 0.001f);
 
+        if (newsarticle.ReferenceNr == 1 || newsarticle.ReferenceNr == 2)
+        {
+            return;
+        }
         Debug.Log("it's working!");
         if (!comment1.Equals(""))
         {

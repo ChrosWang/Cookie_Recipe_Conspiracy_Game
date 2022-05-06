@@ -39,6 +39,7 @@ public class ChatManager : MonoBehaviour
     public int[] CompleteCheckBox = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     public int currentChat = 0;
+    public AudioManager audiomanager;
 
     public string[] NameList = {
         "",
@@ -188,7 +189,8 @@ public class ChatManager : MonoBehaviour
                     myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 44 + myChat.GetComponent<ChatBubble>().LayoutGroups[1].GetComponent<RectTransform>().sizeDelta.y);
                     //myChat.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 112 + 40 * (chatmessage.Text.Length / 35));
                     Delay = Delay + chatmessage.TypeTime;
-                    LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, r1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
+                    LTDescr myTween;
+                    myTween = LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, r1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
                     /*
                     if (count >= 5)
                     {
@@ -198,10 +200,26 @@ public class ChatManager : MonoBehaviour
 
                     }*/
                     sizeSum = sizeSum + myChat.GetComponent<RectTransform>().sizeDelta.y;
-                    if (sizeSum > 1080)
+                    if (sizeSum > 980)
                     {
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
+                    }
+                    Action PlaySound = () =>
+                    {
+                        audiomanager.Message.Play();
+                    };
+                    myTween.setOnComplete(PlaySound);
+
+
+                    if (chatmessage.is_EndMessage)
+                    {
+                        Action BackButtonAppear = () =>
+                        {
+                            BackButton.gameObject.SetActive(true);
+
+                        };
+                        myTween.setOnComplete(BackButtonAppear);
                     }
                 } else
                 {
@@ -222,7 +240,7 @@ public class ChatManager : MonoBehaviour
                     Delay = Delay + chatmessage.TypeTime;
                     LTDescr myTween;
                     myTween = LeanTween.moveLocalX(myChat.GetComponent<ChatBubble>().AnimationHelper, l1, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
-
+                    
                     sizeSum = sizeSum + myChat.GetComponent<RectTransform>().sizeDelta.y;
 
 
@@ -231,6 +249,12 @@ public class ChatManager : MonoBehaviour
                         yTop = yTop + myChat.GetComponent<RectTransform>().sizeDelta.y;
                         LeanTween.moveLocalY(layoutGroup.gameObject, yTop, 0.3f).setDelay(Delay).setEase(LeanTweenType.easeInOutCubic);
                     }
+                    Action PlaySound = () =>
+                    {
+                        audiomanager.Message.Play();
+                    };
+                    myTween.setOnComplete(PlaySound);
+                    
 
                     if (chatmessage.is_EndMessage)
                     {

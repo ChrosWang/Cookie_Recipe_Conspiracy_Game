@@ -10,5 +10,6 @@ public class AudioManager : MonoBehaviour
     public AudioSource Duuu;
     public AudioSource Secret;
     public AudioSource OtherS;
+    public AudioSource Message;
    
 }
