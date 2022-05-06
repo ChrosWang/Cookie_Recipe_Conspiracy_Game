@@ -35,7 +35,7 @@ public class BreakingNewsSwapper : MonoBehaviour
         GameObject canvas = GameObject.Find("ArticleLoader");
         canvas.GetComponent<NewsLoader>().FullArticlePage.SetActive(true);
         GameObject content = GameObject.Find("content_fullarticle");
-        GameObject myFullArticle = Instantiate(FullArticles[currentIndex], content.transform);
+        GameObject myFullArticle = Instantiate(FullArticles[currentIndex%4], content.transform);
         RefreshLayoutGroup(myFullArticle);
         myFullArticle.GetComponent<FullArticle>().NewsSite.text = myArticle.Source;
         myFullArticle.GetComponent<FullArticle>().Date.text = myArticle.Date;

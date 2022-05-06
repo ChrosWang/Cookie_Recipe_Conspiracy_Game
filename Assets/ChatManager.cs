@@ -33,6 +33,13 @@ public class ChatManager : MonoBehaviour
     bool speedUp = false;
     public GameObject Scroller;
 
+    public Sprite whitebuttonsprite;
+    public Sprite redbuttonsprite;
+
+    public int[] CompleteCheckBox = { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
+
+    public int currentChat = 0;
+
     public string[] NameList = {"","Daniel",
         "Daniel",
         "Wendy",
@@ -65,13 +72,18 @@ public class ChatManager : MonoBehaviour
     {
         myChatCollection = JsonUtility.FromJson<ChatCollection>("{\"chatmessages\":" + SpreadSheetJSON.text + "}");
      //   Debug.Log(myChatCollection.chatmessages[0].Text);
-
+        for (int i = 0; i < CompleteCheckBox.Length; i++)
+        {
+            CompleteCheckBox[i] = 0;
+        }
         //PlayChat(1);
         BackButton.onClick.AddListener(() => 
         {
             speedUp = false;
+            SpeedUpButton.gameObject.GetComponent<Image>().sprite = whitebuttonsprite;
             this.gameObject.SetActive(false);
-            
+            CompleteCheckBox[currentChat] = 1;
+
         });
         SpeedUpButton.onClick.AddListener(() => SpeedUpChat());
     }
@@ -81,12 +93,13 @@ public class ChatManager : MonoBehaviour
 
         if (!speedUp)
         {
-            //SpeedUpButton
+            SpeedUpButton.gameObject.GetComponent<Image>().sprite = redbuttonsprite;
 
             speedUp = true;
         }
         else
         {
+            SpeedUpButton.gameObject.GetComponent<Image>().sprite = whitebuttonsprite;
             speedUp = false;
         }
     }
@@ -118,6 +131,8 @@ public class ChatManager : MonoBehaviour
     {
         float yTop = -46.79f;
         UpdateScroller();
+
+        currentChat = order;
 
         
 

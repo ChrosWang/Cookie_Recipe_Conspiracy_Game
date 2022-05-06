@@ -8,7 +8,7 @@ public class NarrativeControl : MonoBehaviour
     public int currentGameState;
 
     public int currentChat;
-    int toggle = 1;
+    public int toggle = 1;
 
     public ChatManager chatManager;
     public NewsLoader articleLoader;
@@ -144,10 +144,16 @@ public class NarrativeControl : MonoBehaviour
             {
                 breakingNewsSwapper.Swap(1);
                 StartCoroutine(PlayChatDelay(2f, 2));
-                StartCoroutine(NewComingDelay(25f, 3));
+                
                 toggle = toggle + 1;
 
 
+            }
+
+            if (chatManager.CompleteCheckBox[2] == 1)
+            {
+                StartCoroutine(NewComingDelay(10f, 3));
+                chatManager.CompleteCheckBox[2] = 2;
             }
         }
         else if (articleLoader.numArticleShared >= 6 && articleLoader.numArticleShared <= 15)
@@ -228,11 +234,11 @@ public class NarrativeControl : MonoBehaviour
             if (toggle == 12 && articleLoader.numArticleShared >= 31)
             {
                 StartCoroutine(PlayChatDelay(5f, 15));
-                StartCoroutine(NewComingDelay(43f, 16));
-                StartCoroutine(DelayBlurEffect(53f));
+                StartCoroutine(NewComingDelay(23f, 16));
+                StartCoroutine(DelayBlurEffect(33f));
                 toggle = toggle + 1;
             }
-            if (toggle == 14 && articleLoader.numArticleShared >= 39)
+            if (toggle == 13 && articleLoader.numArticleShared >= 39)
             {
                 StartCoroutine(PlayChatDelay(13f, 17));
                 StartCoroutine(DelayBlurEffect(30f));
