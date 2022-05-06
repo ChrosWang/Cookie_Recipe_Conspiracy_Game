@@ -145,10 +145,12 @@ public class NarrativeControl : MonoBehaviour
         {
             currentGameState = 1;
             Date.text = "4 / 16 / 2021";
+            
             if (toggle == 1)
             {
+                popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 1f);
                 breakingNewsSwapper.Swap(1);
-                StartCoroutine(NewComingDelay(0.1f, 2));
+                StartCoroutine(NewComingDelay(3f, 2));
                 
                 toggle = toggle + 1;
 
@@ -174,8 +176,10 @@ public class NarrativeControl : MonoBehaviour
         {
             currentGameState = 2;
             Date.text = "5 / 10 / 2021";
+            
             if (toggle == 2)
             {
+                popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 0.1f);
                 newPostCreator.MakeNSPost(2);
                 breakingNewsSwapper.Swap(2);
                 StartCoroutine(NewComingDelay(4f, 5));
@@ -234,6 +238,7 @@ public class NarrativeControl : MonoBehaviour
             Date.text = "5 / 10 / 2021";
             if (toggle == 6)
             {
+                popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 0.1f);
                 breakingNewsSwapper.Swap(3);
                 StartCoroutine(NewComingDelay(2f, 10));
                 toggle = toggle + 1;
@@ -278,6 +283,7 @@ public class NarrativeControl : MonoBehaviour
             Date.text = "5 / 12 / 2021";
             if (toggle == 11)
             {
+                popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 0.1f);
                 StartCoroutine(DelayBlurEffect(0.1f));
                 breakingNewsSwapper.Swap(4);
                 //StartCoroutine(PlayChatDelay(5f, 15));

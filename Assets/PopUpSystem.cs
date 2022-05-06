@@ -79,7 +79,7 @@ public class PopUpSystem : MonoBehaviour
 
             case 3:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Breaking News";
-                myPopUp.GetComponent<PopUpNotification>().Content.text = "View Today's Breaking News!";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content + " View Today's Breaking News!";
                 myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(true);
 
                 this.GetComponent<AudioSource>().Play();
