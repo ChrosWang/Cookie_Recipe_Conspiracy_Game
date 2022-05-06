@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 5098635212965474364}
   - component: {fileID: 9091652115285490232}
   - component: {fileID: 6911911333913836589}
+  - component: {fileID: 9146477885580381734}
   m_Layer: 5
   m_Name: Ads
   m_TagString: Untagged
@@ -704,7 +705,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4746380231571751609}
   m_Father: {fileID: 8825737277295778203}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -751,6 +753,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9146477885580381734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326048934138444410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3453422091ac2429f963586dcf3fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Adb: {fileID: 3326048934138444410}
+  Adf: {fileID: 8507419404528286413}
+  Ads:
+  - {fileID: 21300000, guid: 9a4db6f23eb0a664ba95c9b2448a607a, type: 3}
+  - {fileID: 21300000, guid: 425da92051244fb4d858c5b759a102dd, type: 3}
+  - {fileID: 21300000, guid: be00e0f69e6acfe4bb8f883d15f9bce0, type: 3}
+  - {fileID: 21300000, guid: 6431da58fc4cb004a9aab791ce74c888, type: 3}
+  - {fileID: 21300000, guid: f7555120e1e0edf4db57234b2acdf6f8, type: 3}
+  currentAd: 0
+  timer: 0
 --- !u!1 &4482612220070809274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1788,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8507419404528286413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4746380231571751609}
+  - component: {fileID: 2505877204946470541}
+  - component: {fileID: 4486521689637527119}
+  m_Layer: 5
+  m_Name: Ads (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4746380231571751609
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507419404528286413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5098635212965474364}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -35.17572, y: -719.28}
+  m_SizeDelta: {x: 1217, y: 156.0292}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2505877204946470541
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507419404528286413}
+  m_CullTransparentMesh: 1
+--- !u!114 &4486521689637527119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507419404528286413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 057c38d21e516f441b254af5da5ffc6f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8763763346581236361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2437,7 @@ MonoBehaviour:
     Body: 
     Paywall: 0
     Multipiler: 0
+    AppearDate: 0
     Score: 0
     Priority: 0
     GameState: 0

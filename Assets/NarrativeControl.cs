@@ -217,10 +217,10 @@ public class NarrativeControl : MonoBehaviour
         //BlurControl.BlurBegin();
         //yield return new WaitForSecondsRealtime(0.2f);
         chatManager.gameObject.SetActive(true);
-       // yield return new WaitForSecondsRealtime(0.7f);
-       // BlurControl.BlurEnd();
-       // yield return new WaitForSecondsRealtime(0.7f);
-       // BlurControl.gameObject.GetComponent<Blur>().enabled = false;
+        //yield return new WaitForSecondsRealtime(3f);
+        //BlurControl.BlurEnd();
+        //yield return new WaitForSecondsRealtime(1.2f);
+        //BlurControl.gameObject.GetComponent<Blur>().enabled = false;
         // BlurControl.BlurEnd();
         float OnComplete = chatManager.GetComponent<ChatManager>().PlayChat(index);
         //yield return new WaitForSecondsRealtime(OnComplete);
