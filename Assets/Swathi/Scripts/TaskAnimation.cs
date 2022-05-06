@@ -10,10 +10,12 @@ public class TaskAnimation : MonoBehaviour
    public GameObject taskbar;
    public Color Nocolor;
 
-   Color fullcolor;
+   public Color fullcolor;
    public GameObject chatbutton;
    public GameObject Newsbutton;
    public GameObject Socialbutton;
+   public GameObject mix;
+   public CanvasGroup mixtext;
 
    bool open;
    
@@ -41,6 +43,13 @@ public class TaskAnimation : MonoBehaviour
     }
        
     }
+    public void OnPointerEnter(PointerEventData eventData)
+       
+    {
+
+ 
+     LeanTween.value(mix.gameObject,  fullcolor, Nocolor, .2f );
+    }
    
 
 
@@ -50,6 +59,8 @@ public class TaskAnimation : MonoBehaviour
        //LeanTween.move(taskbar, new Vector3(-299.99f,-184.9798f, 10f), 0.2f) .setEaseInQuart();
         box.LeanScaleY(30,0.3f).setEaseInOutQuart();
         box.LeanScaleX(30,0.3f).setEaseInBack();
+
+        mixtext.LeanAlpha(0,0.1f);
        // MixerText.alpha = 1;
        // MixerText.LeanAlpha(0,1.5f).setEaseInExpo();
        // Logos.alpha = 0;
@@ -78,6 +89,7 @@ public class TaskAnimation : MonoBehaviour
         Newsbutton.SetActive(false);
         chatbutton.SetActive(false);
         open = false; 
+        mixtext.LeanAlpha(1,0.1f).setDelay(0.5f);
 
 
 
