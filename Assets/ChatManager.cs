@@ -33,19 +33,22 @@ public class ChatManager : MonoBehaviour
     bool speedUp = false;
     public GameObject Scroller;
 
-    public string[] NameList = {"","Daniel", 
-        "Daniel", 
-        "Wendy", 
-        "Daniel", 
-        "Wendy", 
-        "Moderator", 
+    public string[] NameList = {"","Daniel",
+        "Daniel",
+        "Wendy",
+        "Daniel",
+        "Wendy",
+        "MIXER",
+        "Chris",
+        "Hearthfoot Wellness and Medical Center",
+        "Hearthfoot Wellness and Medical Center",
+        "Wendy",
+        "Daniel",
+        "Wendy",
         "Chris", 
-        "Hearthfoot Wellness and Medical Center", 
-        "Hearthfoot Wellness and Medical Center", 
+        "MIXER", 
         "Wendy", 
-        "Daniel", 
-        "Wendy", 
-        "Chris"};
+        "Wendy" };
     public void Start()
     {
 

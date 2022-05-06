@@ -69,7 +69,7 @@ public class NarrativeControl : MonoBehaviour
 
     public void Update()
     {
-        
+        /*
         if (articleLoader.currentCP >= 1 && articleLoader.currentCP < 10)
         {
             currentGameState = 1;
@@ -135,9 +135,9 @@ public class NarrativeControl : MonoBehaviour
                     toggle = toggle + 1;
                 }
             } 
-        
-        /*
-        if (articleLoader.numArticleShared >= 1 && articleLoader.numArticleShared < 3)
+        */
+
+        if (articleLoader.currentCP >= 1 && articleLoader.numArticleShared <= 5)
         {
             currentGameState = 1;
             if (toggle == 1)
@@ -150,7 +150,7 @@ public class NarrativeControl : MonoBehaviour
 
             }
         }
-        else if (articleLoader.numArticleShared >= 3 && articleLoader.numArticleShared < 13)
+        else if (articleLoader.numArticleShared >= 6 && articleLoader.numArticleShared <= 15)
         {
             currentGameState = 2;
             if (toggle == 2)
@@ -161,7 +161,7 @@ public class NarrativeControl : MonoBehaviour
 
             }
 
-            if (toggle == 3 && articleLoader.numArticleShared >= 8)
+            if (toggle == 3 && articleLoader.numArticleShared >= 10)
             {
                 StartCoroutine(PlayChatDelay(2f, 6));
                 StartCoroutine(NewComingDelay(12f, 7));
@@ -171,38 +171,71 @@ public class NarrativeControl : MonoBehaviour
 
             if (toggle == 4 && articleLoader.numArticleShared >= 12)
             {
-                StartCoroutine(PlayChatDelay(2f, 8));
+                StartCoroutine(PlayChatDelay(7f, 8));
+                toggle = toggle + 1;
+            }
+
+            if (toggle == 5 && articleLoader.numArticleShared >= 14)
+            {
+                StartCoroutine(PlayChatDelay(3f, 9));
                 toggle = toggle + 1;
             }
 
         }
-        else if (articleLoader.numArticleShared >= 13 && articleLoader.numArticleShared < 23)
+        else if (articleLoader.numArticleShared >= 16 && articleLoader.numArticleShared <= 27)
         {
             currentGameState = 3;
-            if (toggle == 5)
+            if (toggle == 6)
             {
                 breakingNewsSwapper.Swap(3);
-                StartCoroutine(PlayChatDelay(5f, 9));
+                StartCoroutine(PlayChatDelay(13f, 10));
                 toggle = toggle + 1;
             }
-            if (toggle == 6 && articleLoader.numArticleShared >= 17)
-            {
-                StartCoroutine(PlayChatDelay(2f, 10));
-                toggle = toggle + 1;
-            }
-            if (toggle == 7 && articleLoader.numArticleShared >= 20)
+            if (toggle == 7 && articleLoader.numArticleShared >= 17)
             {
                 StartCoroutine(PlayChatDelay(2f, 11));
                 toggle = toggle + 1;
             }
-            if (toggle == 8 && articleLoader.numArticleShared >= 22)
+            if (toggle == 8 && articleLoader.numArticleShared >= 19)
             {
-                StartCoroutine(PlayChatDelay(2f, 12));
-                StartCoroutine(NewComingDelay(18f, 13));
+                StartCoroutine(PlayChatDelay(15f, 12));
+                toggle = toggle + 1;
+            }
+            if (toggle == 9 && articleLoader.numArticleShared >= 24)
+            {
+                StartCoroutine(PlayChatDelay(2f, 13));
+                //StartCoroutine(NewComingDelay(18f, 13));
+                toggle = toggle + 1;
+            }
+            if (toggle == 10 && articleLoader.numArticleShared >= 26)
+            {
+                StartCoroutine(PlayChatDelay(4f, 14));
                 toggle = toggle + 1;
             }
         }
-        */
+        else if (articleLoader.numArticleShared >= 28 && articleLoader.numArticleShared <= 40)
+        {
+            currentGameState = 4;
+            if (toggle == 11)
+            {
+                breakingNewsSwapper.Swap(4);
+                //StartCoroutine(PlayChatDelay(5f, 15));
+                toggle = toggle + 1;
+            }
+            if (toggle == 12 && articleLoader.numArticleShared >= 31)
+            {
+                StartCoroutine(PlayChatDelay(5f, 15));
+                StartCoroutine(NewComingDelay(43f, 16));
+                toggle = toggle + 1;
+            }
+            if (toggle == 14 && articleLoader.numArticleShared >= 39)
+            {
+                StartCoroutine(PlayChatDelay(13f, 17));
+                toggle = toggle + 1;
+            }
+
+        }
+
     }
 
     IEnumerator DelayNotification(float Delay, int index)
