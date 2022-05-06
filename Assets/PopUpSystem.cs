@@ -22,7 +22,7 @@ public class PopUpSystem : MonoBehaviour
 {
     public GameObject PopUpStack;
     public GameObject PopUpNotification;
-
+    public AudioManager audiomanager;
     
 
     /*
@@ -50,22 +50,64 @@ public class PopUpSystem : MonoBehaviour
     public void CreatePopUp(int index, PopUpMessage popUpMessage)
     {
         GameObject myPopUp = Instantiate(PopUpNotification, PopUpStack.GetComponent<RectTransform>()); ;
-        this.GetComponent<AudioSource>().Play();
+        myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().share.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().othershare.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().message.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().ppic.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().Trash.gameObject.SetActive(false);
+        myPopUp.GetComponent<PopUpNotification>().Replace.gameObject.SetActive(false);
 
         switch (index)
         {
             case 1:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "New Comments";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just commented on your post: " + popUpMessage.content;
+                myPopUp.GetComponent<PopUpNotification>().ppic.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(false);
+                myPopUp.GetComponent<PopUpNotification>().ppic.RandomRoll();
+                this.GetComponent<AudioSource>().Play();
                 break;
 
             case 2:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "New Message";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = "You receive a message from " + popUpMessage.username;
+                myPopUp.GetComponent<PopUpNotification>().message.gameObject.SetActive(true);
+
+                this.GetComponent<AudioSource>().Play();
+                break;
+
+            case 3:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Breaking News";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = "View Today's Breaking News!";
+                myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(true);
+
+                this.GetComponent<AudioSource>().Play();
                 break;
             case 4:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = "Your post is successfully shared!";
+                myPopUp.GetComponent<PopUpNotification>().share.gameObject.SetActive(true);
+                this.GetComponent<AudioSource>().Play();
+                break;
+            case 7:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Deletion!";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just deleted a post!";
+                myPopUp.GetComponent<PopUpNotification>().Trash.gameObject.SetActive(true);
+                audiomanager.OtherS.Play();
+                break;
+            case 8:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just posted on your page: " + popUpMessage.content;
+                myPopUp.GetComponent<PopUpNotification>().othershare.gameObject.SetActive(true);
+                audiomanager.OtherS.Play();
+                break;
+            case 9:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
+                myPopUp.GetComponent<PopUpNotification>().Replace.gameObject.SetActive(true);
+
+                audiomanager.OtherS.Play();
                 break;
             default:
                 break;

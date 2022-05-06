@@ -9,7 +9,8 @@ public class NewPostCreator : MonoBehaviour
     public GameObject newPost;
     public Button NewPostButton;
     public Transform VerticalLayoutGroup;
-
+    public TextAsset SpreadSheetJSON;
+    public PostCollection myPostCollection = new PostCollection();
     public CommentCollection myCommentCollection = new CommentCollection();
     public CommentCollection myKeyCommentCollection = new CommentCollection();
     public TextAsset SpreadSheetJSON1;
@@ -30,6 +31,7 @@ public class NewPostCreator : MonoBehaviour
 
     public void Initialization()
     {
+        myPostCollection = JsonUtility.FromJson<PostCollection>("{\"mixpost\":" + SpreadSheetJSON.text + "}");
         myCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON1.text + "}");
         myKeyCommentCollection = JsonUtility.FromJson<CommentCollection>("{\"usercomments\":" + SpreadSheetJSON2.text + "}");
 
@@ -110,6 +112,64 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
 
+    public void MakeNSPost(int index)
+    {
+        //int trendValue = newsarticle.Score;
+        // int priority = newsarticle.Priority;
+        Debug.Log("Making post" + index);
+        GameObject myPost = Instantiate(newPost, VerticalLayoutGroup);
+        myPost.transform.SetAsFirstSibling();
+        PostRefresher(myPost);
+        //PostRefresher(myPost);
+        myPost.GetComponent<NewPost>().nameTag.text = myPostCollection.mixpost[index].Username;
+        myPost.GetComponent<NewPost>().NewsArticleTitle.text = myPostCollection.mixpost[index].Title;
+        myPost.GetComponent<NewPost>().BodyArticle.text = myPostCollection.mixpost[index].Body;
+        myPost.GetComponent<NewPost>().profilePic.GetComponent<ProfileGenerator>().RandomRoll();
+        myPost.GetComponent<NewPost>().ArticlePic.sprite = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + myPostCollection.mixpost[index].PictureName);
+        if (Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + myPostCollection.mixpost[index].PictureName) != null)
+        {
+            myPost.GetComponent<NewPost>().ArticlePic.rectTransform.sizeDelta = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + myPostCollection.mixpost[index].PictureName).rect.size * 0.7f;
+        }
+        myPost.GetComponent<NewPost>().Likes.text = myPostCollection.mixpost[index].likes.ToString();
+        myPost.GetComponent<NewPost>().shares.text = myPostCollection.mixpost[index].shares.ToString();
+        myPost.GetComponent<NewPost>().comments.text = myPostCollection.mixpost[index].comments.ToString();
+        //myKeyCommentCollection.SearchForKeyWord(newsarticle.ReferenceNr);
+        string comment1 = myPostCollection.mixpost[index].Comment1;
+        string comment2 = myPostCollection.mixpost[index].Comment2;
+        if (comment1.Equals(""))
+        {
+            myPost.GetComponent<NewPost>().cms1.SetActive(false);
+
+        }
+        if (comment2.Equals(""))
+        {
+            myPost.GetComponent<NewPost>().cms2.SetActive(false);
+
+        }
+        myPost.GetComponent<NewPost>().comment1.text = "<color=#FF5555>" + myPostCollection.mixpost[index].Username1 + ":</color>   " + comment1;
+        myPost.GetComponent<NewPost>().comment2.text = "<color=#FF5555>" + myPostCollection.mixpost[index].Username2 + ":</color>   " + comment2;
+        PostRefresher(myPost);
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(myPost.GetComponent<NewPost>().Twik.GetComponent<RectTransform>());
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutPanel);
+        // myPost.SetActive(false);
+        //  myPost.SetActive(true);
+        //LeanTween.scale(myPost.GetComponent<NewPost>().Twik, new Vector2(1.001f, 1.001f), 0.001f);
+        /*
+        Debug.Log("it's working!");
+        if (!comment1.Equals(""))
+        {
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
+
+        }
+        if (!comment2.Equals(""))
+        {
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 5f);
+
+        }
+        */
+        popupsystem.DelayPopUp(8, new PopUpMessage("<color=#FF5555>" + myPostCollection.mixpost[index].Username + ":</color>", myPostCollection.mixpost[index].Body, 0, 0), 3f);
+    }
     public void MakePost(NewsArticle newsarticle)
      {
         int trendValue = newsarticle.Score;

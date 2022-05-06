@@ -36,11 +36,13 @@ public class ChatManager : MonoBehaviour
     public Sprite whitebuttonsprite;
     public Sprite redbuttonsprite;
 
-    public int[] CompleteCheckBox = { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
+    public int[] CompleteCheckBox = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     public int currentChat = 0;
 
-    public string[] NameList = {"","Daniel",
+    public string[] NameList = {
+        "",
+        "Daniel",
         "Daniel",
         "Wendy",
         "Daniel",
@@ -80,6 +82,7 @@ public class ChatManager : MonoBehaviour
         BackButton.onClick.AddListener(() => 
         {
             speedUp = false;
+            Time.timeScale = 1f;
             SpeedUpButton.gameObject.GetComponent<Image>().sprite = whitebuttonsprite;
             this.gameObject.SetActive(false);
             CompleteCheckBox[currentChat] = 1;
