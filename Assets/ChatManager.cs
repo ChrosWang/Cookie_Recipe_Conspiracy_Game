@@ -67,16 +67,28 @@ public class ChatManager : MonoBehaviour
      //   Debug.Log(myChatCollection.chatmessages[0].Text);
 
         //PlayChat(1);
-        BackButton.onClick.AddListener(() => this.gameObject.SetActive(false));
+        BackButton.onClick.AddListener(() => 
+        {
+            speedUp = false;
+            this.gameObject.SetActive(false);
+            
+        });
         SpeedUpButton.onClick.AddListener(() => SpeedUpChat());
     }
 
-    void SpeedUpChat()
+    public void SpeedUpChat()
     {
+
         if (!speedUp)
+        {
+            //SpeedUpButton
+
             speedUp = true;
+        }
         else
+        {
             speedUp = false;
+        }
     }
 
     void RefreshLayoutGroups(ChatBubble myChat)
@@ -207,7 +219,7 @@ public class ChatManager : MonoBehaviour
                         Action BackButtonAppear = () =>
                         {
                             BackButton.gameObject.SetActive(true);
-                            speedUp = false;
+                            
                         };
                         myTween.setOnComplete(BackButtonAppear);
                     }

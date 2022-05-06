@@ -124,7 +124,10 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().BodyArticle.text = newsarticle.Body;
         myPost.GetComponent<NewPost>().profilePic.sprite = GenerateProfilePic();
         myPost.GetComponent<NewPost>().ArticlePic.sprite = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr);
-        myPost.GetComponent<NewPost>().ArticlePic.rectTransform.sizeDelta = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr).rect.size*0.7f;
+        if (Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr) != null)
+        {
+            myPost.GetComponent<NewPost>().ArticlePic.rectTransform.sizeDelta = Resources.Load<Sprite>("Pictures/GSIIArticlePics/" + newsarticle.ReferenceNr).rect.size * 0.7f;
+        }
         myPost.GetComponent<NewPost>().Likes.text = Random.Range(priority * 10 + trendValue - trendValue / 2, priority * 10 + trendValue + 5).ToString();
         myPost.GetComponent<NewPost>().shares.text = Random.Range(priority * 10 + trendValue - ((trendValue * 2) / 3), 5 + priority * 10 + trendValue - trendValue / 3).ToString();
         myKeyCommentCollection.SearchForKeyWord(newsarticle.ReferenceNr);

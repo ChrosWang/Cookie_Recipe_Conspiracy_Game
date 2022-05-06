@@ -188,17 +188,19 @@ public class NarrativeControl : MonoBehaviour
             if (toggle == 6)
             {
                 breakingNewsSwapper.Swap(3);
-                StartCoroutine(PlayChatDelay(13f, 10));
+                StartCoroutine(PlayChatDelay(2f, 10));
                 toggle = toggle + 1;
             }
             if (toggle == 7 && articleLoader.numArticleShared >= 17)
             {
+                StartCoroutine(DelayBlurEffect(0.1f));
                 StartCoroutine(PlayChatDelay(2f, 11));
                 toggle = toggle + 1;
             }
             if (toggle == 8 && articleLoader.numArticleShared >= 19)
             {
                 StartCoroutine(PlayChatDelay(15f, 12));
+                StartCoroutine(DelayBlurEffect(35f));
                 toggle = toggle + 1;
             }
             if (toggle == 9 && articleLoader.numArticleShared >= 24)
@@ -218,6 +220,7 @@ public class NarrativeControl : MonoBehaviour
             currentGameState = 4;
             if (toggle == 11)
             {
+                StartCoroutine(DelayBlurEffect(0.1f));
                 breakingNewsSwapper.Swap(4);
                 //StartCoroutine(PlayChatDelay(5f, 15));
                 toggle = toggle + 1;
@@ -226,16 +229,29 @@ public class NarrativeControl : MonoBehaviour
             {
                 StartCoroutine(PlayChatDelay(5f, 15));
                 StartCoroutine(NewComingDelay(43f, 16));
+                StartCoroutine(DelayBlurEffect(53f));
                 toggle = toggle + 1;
             }
             if (toggle == 14 && articleLoader.numArticleShared >= 39)
             {
                 StartCoroutine(PlayChatDelay(13f, 17));
+                StartCoroutine(DelayBlurEffect(30f));
                 toggle = toggle + 1;
             }
 
         }
 
+    }
+
+    IEnumerator DelayBlurEffect(float Delay)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        BlurControl.BlurBegin();
+        yield return new WaitForSecondsRealtime(3f);
+        BlurControl.BlurEnd();
+        yield return new WaitForSecondsRealtime(1.2f);
+        BlurControl.gameObject.GetComponent<Blur>().enabled = false;
+        //yield return new WaitForSecondsRealtime(Delay);
     }
 
     IEnumerator DelayNotification(float Delay, int index)

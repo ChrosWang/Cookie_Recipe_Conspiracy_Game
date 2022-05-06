@@ -106,7 +106,7 @@ public class NewsCollection
         {
             if ((News[i].Score >= currentScore / 10) && (News[i].Score <= currentScore))
             {
-                if (currentGS <= News[i].AppearDate)
+                if (currentGS >= News[i].AppearDate)
                 {
                     //Debug.Log("Found one in range with index " + i + " with score " + News[i].Score + " in " + currentScore / 10 + " and " + currentScore);
                     newsAlgorithm[currentIndex] = i;
