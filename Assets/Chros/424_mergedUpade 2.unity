@@ -2455,7 +2455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291767094733315053, guid: fd49d4409a2df4f469b83bd9890e252a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 224.40836
       objectReference: {fileID: 0}
     - target: {fileID: 1291767094733315053, guid: fd49d4409a2df4f469b83bd9890e252a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6528,6 +6528,8 @@ MonoBehaviour:
   stateMachine: {fileID: 1181150550}
   newPostCreator: {fileID: 1126869205}
   popUpSystem: {fileID: 1100822759}
+  breakingNewsSwapper: {fileID: 0}
+  BlurControl: {fileID: 0}
 --- !u!4 &964476583
 Transform:
   m_ObjectHideFlags: 0
@@ -7840,7 +7842,14 @@ MonoBehaviour:
   VerticalLayoutGroup: {fileID: 0}
   myCommentCollection:
     usercomments: []
-  SpreadSheetJSON: {fileID: 0}
+    SearchList: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  myKeyCommentCollection:
+    usercomments: []
+    SearchList: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SpreadSheetJSON1: {fileID: 0}
+  SpreadSheetJSON2: {fileID: 0}
+  popupsystem: {fileID: 0}
+  Scroller: {fileID: 0}
 --- !u!1 &1131350973
 GameObject:
   m_ObjectHideFlags: 0
@@ -9282,12 +9291,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpreadSheetJSON: {fileID: 4900000, guid: 1b8c0d33ce8c2e74a9747cbbfb0963a7, type: 3}
+  SpreadSheetJSONB: {fileID: 0}
   myNewsCollection:
     News: []
     SearchList: 
     searchResultStat: 0
     newsAlgorithm: 000000000000000000000000
+  myBreakingNewsCollection:
+    News: []
+    SearchList: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    searchResultStat: 0
+    newsAlgorithm: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Chat: {fileID: 6782316177113315706}
+  narrative: {fileID: 0}
   SearchButton: {fileID: 1048491648}
   CurrentScoreButton: {fileID: 2048965993}
   textField: {fileID: 1131350975}
@@ -9307,6 +9323,7 @@ MonoBehaviour:
   searchCount: 0
   popupsystem: {fileID: 1100822759}
   numArticleShared: 0
+  articlebar: {fileID: 0}
   Scroller: {fileID: 1851604216}
   FullArticlePage: {fileID: 1404641085984190491}
 --- !u!4 &1248725620
@@ -14637,7 +14654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795989385034023808, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -146.8394
+      value: -146.83942
       objectReference: {fileID: 0}
     - target: {fileID: 4258444323971891876, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14669,7 +14686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7096756556177530509, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 506.0116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7096756556177530509, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -14757,7 +14774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8825737277295778203, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40.79
+      value: 40.789978
       objectReference: {fileID: 0}
     - target: {fileID: 8825737277295778203, guid: 0eeb2f44d0e5a1e4fa966dd29542aff6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16549,8 +16566,24 @@ MonoBehaviour:
   l1: -700
   yInc: 50
   BackButton: {fileID: 371080743}
+  SpeedUpButton: {fileID: 0}
   canvas1: {fileID: 6782316177113315704}
   Scroller: {fileID: 459154516}
+  NameList:
+  - 
+  - Daniel
+  - Daniel
+  - Wendy
+  - Daniel
+  - Wendy
+  - Moderator
+  - Chris
+  - Hearthfoot Wellness and Medical Center
+  - Hearthfoot Wellness and Medical Center
+  - Wendy
+  - Daniel
+  - Wendy
+  - Chris
 --- !u!224 &6782316177113315707
 RectTransform:
   m_ObjectHideFlags: 0
