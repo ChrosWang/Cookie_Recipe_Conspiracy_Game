@@ -28,7 +28,7 @@ public class ProfileGenerator : MonoBehaviour
     public Button RandomButton;
     private void Start()
     {
-        RandomRoll();
+        //RandomRoll();
        // RandomButton.onClick.AddListener(() => RandomRoll());
     }
 

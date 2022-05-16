@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class PointerEventController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PointerEventController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public GameObject logInAnimation;
     public GameObject Glass;
@@ -14,6 +15,11 @@ public class PointerEventController : MonoBehaviour, IPointerEnterHandler, IPoin
     public GameObject Circle2;
     public int movepatternCircle;
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Clicked");
+        SceneManager.LoadScene(1);
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         

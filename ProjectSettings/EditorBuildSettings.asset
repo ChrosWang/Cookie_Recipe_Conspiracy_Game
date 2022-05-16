@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Chros/TitleScene.unity
+    guid: 3f7b965dfb242af42960d0093477ccf9
+  - enabled: 1
+    path: Assets/Chros/424_mergedUpade 1.unity
+    guid: e398a6208f4f9504c807981b91f369eb
   m_configObjects: {}

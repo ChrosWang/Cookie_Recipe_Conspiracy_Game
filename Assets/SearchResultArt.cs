@@ -19,6 +19,7 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public GameObject MyFullArticlePage;
     public LTDescr liftupanimation;
     public NewsArticle news;
+    public GameObject shared;
 
     public bool is_Paywalled;
     // public GameObject content;
@@ -115,5 +116,12 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
         //Canvas.ForceUpdateCanvases();
     }
 
+    private void Update()
+    {
+        if (news.Is_shared)
+        {
+            shared.SetActive(true);
+        }
+    }
 
 }
