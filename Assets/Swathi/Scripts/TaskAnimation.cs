@@ -48,7 +48,7 @@ public class TaskAnimation : MonoBehaviour
     {
 
  
-     LeanTween.value(mix.gameObject,  fullcolor, Nocolor, .2f );
+     //LeanTween.value(mix.gameObject,  fullcolor, Nocolor, .2f );
     }
    
 
@@ -60,7 +60,7 @@ public class TaskAnimation : MonoBehaviour
         box.LeanScaleY(30,0.3f).setEaseInOutQuart();
         box.LeanScaleX(30,0.3f).setEaseInBack();
 
-        mixtext.LeanAlpha(0,0.1f);
+       // mixtext.LeanAlpha(0,0.1f);
        // MixerText.alpha = 1;
        // MixerText.LeanAlpha(0,1.5f).setEaseInExpo();
        // Logos.alpha = 0;
@@ -89,7 +89,7 @@ public class TaskAnimation : MonoBehaviour
         Newsbutton.SetActive(false);
         chatbutton.SetActive(false);
         open = false; 
-        mixtext.LeanAlpha(1,0.1f).setDelay(0.5f);
+       // mixtext.LeanAlpha(1,0.1f).setDelay(0.5f);
 
 
 
