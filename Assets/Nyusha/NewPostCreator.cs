@@ -111,7 +111,7 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = false;
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
-
+    //Make Non Sarah Post
     public void MakeNSPost(int index)
     {
         //int trendValue = newsarticle.Score;

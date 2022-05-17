@@ -156,7 +156,7 @@ public class NarrativeControl : MonoBehaviour
 
 
             }
-
+            /*If DM 2 is finished*/
             if (chatManager.CompleteCheckBox[2] == 1)
             {
                 chatManager.CompleteCheckBox[2] = 2;
@@ -165,8 +165,10 @@ public class NarrativeControl : MonoBehaviour
                 
             }
 
+            //If DM 3 is finished
             if (chatManager.CompleteCheckBox[3] == 1)
             {
+                //The game do this 
                 chatManager.CompleteCheckBox[3] = 2;
                 newPostCreator.MakeNSPost(1);
                 

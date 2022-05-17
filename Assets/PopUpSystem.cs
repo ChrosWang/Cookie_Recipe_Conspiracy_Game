@@ -28,7 +28,7 @@ public class PopUpSystem : MonoBehaviour
     /*
      * 1 - comments: xxx just commented on post yyy: "hahaha this is funny"
        2 - DMs: You receive a DM from xxx
-       3 - Follower count: Followers 100 -> Followers 120
+       3 - Breaking News swap
        4 - Shared Successfully
        5 - Likes: Your post yyy got 20 likes
        6 - Moderator: XXX just became a moderator
