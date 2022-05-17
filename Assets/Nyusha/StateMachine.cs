@@ -67,7 +67,19 @@ public class StateMachine : MonoBehaviour
         }
         );
     }
-
+    public void ChangeTabNum(int index)
+    {
+        if (index == 1)
+        {
+            ChangeTab(Tab.Social);
+        } else if (index == 2)
+        {
+            ChangeTab(Tab.Newsfeed);
+        } else if (index == 3)
+        {
+            ChangeTab(Tab.Chat);
+        }
+    }
     public void ChangeTab(Tab newTab)
     {
         currentTab = newTab;

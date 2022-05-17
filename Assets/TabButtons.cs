@@ -7,21 +7,22 @@ public class TabButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public GameObject stateMachine;
     public GameObject Selector;
+
+    public int Mode;
+
     //public LTDescr SelectAnimation;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        LeanTween.scaleX(Selector, 1, 0.2f).setEase(LeanTweenType.easeInOutSine);
+        LeanTween.scaleX(Selector, 1, 0.1f).setEase(LeanTweenType.easeInOutSine);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        LeanTween.scaleX(Selector, 0, 0.2f).setEase(LeanTweenType.easeInOutCubic);
+        LeanTween.scaleX(Selector, 0, 0.1f).setEase(LeanTweenType.easeInOutCubic);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameObject canvas = GameObject.Find("ArticleLoader");
-        canvas.GetComponent<NewsLoader>().FullArticlePage.SetActive(false);
-        //GameObject.Destroy(Article);
+        stateMachine.GetComponent<StateMachine>().ChangeTabNum(Mode);
     }
 }
