@@ -14,21 +14,22 @@ public class PopUps : MonoBehaviour
     void Start()
     {
         popUps = 0; //zero pop ups on screen initially
-        timer = 2f;
+        timer = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        Debug.Log(timer);
+        Debug.Log("Time: " + timer);
+
         if ((Input.GetMouseButtonDown(0)) && (popUps < 4)) //if clicking and less than 4 pop ups
         {
             ClickToPopUp();
         }
 
-        if (popUps >= 5) //if five or more pop ups on screen
-
+        if (popUps >= 4) //if more than four pop ups
+        {
             if (timer > 0) //if timer is greater than zero
             {
                 timer = timer - Time.deltaTime; //decrease the timer amount
@@ -37,14 +38,15 @@ public class PopUps : MonoBehaviour
             if (timer < 0) //if timer reaches zero
             {
                 AutoPop();
-                timer = 2f; //reset it back to 2 seconds
+                timer = 1f; //reset it back to 2 seconds
             }
         }
+    }
 
     void ClickToPopUp() //the first stage, manual control over pop ups
     {
         //Pop Up appears
-        Debug.Log(popUps);
+        Debug.Log("Popups =" + popUps);
         articles[popUps].SetActive(true);
         popUps++;
        // Animation();
