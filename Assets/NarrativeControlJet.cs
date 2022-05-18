@@ -33,7 +33,7 @@ public class NarrativeControlJet : MonoBehaviour
         articleLoader.MakePost(2);
         //articleLoader.MakePost(3);
 
-       // NewChatComing(1);
+        NewChatComing(1);
         //StartCoroutine(DelayBlurEffect(5f));
         Date.text = "4 / 15 / 2021";
        
