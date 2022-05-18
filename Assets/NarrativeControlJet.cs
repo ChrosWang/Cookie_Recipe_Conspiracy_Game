@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NarrativeControl : MonoBehaviour
+public class NarrativeControlJet : MonoBehaviour
 {
     public int currentGameState;
 

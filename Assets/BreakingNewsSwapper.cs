@@ -21,7 +21,7 @@ public class BreakingNewsSwapper : MonoBehaviour
 
     private void Start()
     {
-        ReadButton.onClick.AddListener(() => FullPageOpen());
+        //ReadButton.onClick.AddListener(() => FullPageOpen());
     }
     public void Swap(int index)
     {
