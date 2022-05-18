@@ -142,6 +142,32 @@ public class NarrativeControlJet : MonoBehaviour
             } 
         */
 
+        /***************************************************************************
+         * Useful Functions
+         * 1. StartCoroutine(NewComingDelay(delay, convID));
+         * example: StartCoroutine(NewComingDelay(3f, 2)); 
+         * This triggers the corresponding DM in the spreadsheet.
+         * 
+         * 2. DelayMakePost(delay, NonSarah post ID);
+         * example: DelayMakePost(5f, 0);
+         * This triggers the corresponding nonSarah posts in the spreadsheet.
+         * 
+         * 3. popUpSystem.DelayPopUp(pop up type, passing the information, delay);
+         * example: popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 0.1f);
+         * This triggers a certain type of pop up notification:
+         * 1 - comments: xxx just commented on post yyy: "hahaha this is funny" 
+         * 2 - DMs: You receive a DM from xxx
+         * 3 - Breaking News swap
+         * 4 - Shared Successfully
+         * 5 - Likes: Your post yyy got 20 likes
+         * 6 - Moderator: XXX just became a moderator
+         * 7 - Deletion:  XXX just deleted the post: yyy
+         * 8 - Someone else's post: xxx just posted: "check this out!"
+         * 
+         * 4. StartCoroutine(DelayBlurEffect(delay));
+         * example: StartCoroutine(DelayBlurEffect(0.1f));
+         * This triggers a blur effect
+        ***************************************************************************/
         if (articleLoader.currentCP >= 1 && articleLoader.numArticleShared <= 5)
         {
             currentGameState = 1;
