@@ -13518,6 +13518,12 @@ MonoBehaviour:
   PopUpStack: {fileID: 2074931845}
   PopUpNotification: {fileID: 2941752677161140661, guid: a5e7961feecbdda478498611a780885d, type: 3}
   audiomanager: {fileID: 853393909}
+  badgeSprites:
+  - {fileID: 21300000, guid: 8c3dbcf23b841e543a4ebfb4b49d85ce, type: 3}
+  - {fileID: 21300000, guid: c578db3abdee1f04e9f2bc671acb6230, type: 3}
+  - {fileID: 21300000, guid: ecac5e3278f8462499e913a269d9b44a, type: 3}
+  - {fileID: 21300000, guid: f1a40ebbaa190a948844986b8cd4bdcd, type: 3}
+  - {fileID: 21300000, guid: 4badaa50348cad144abf1731ffbf4933, type: 3}
 --- !u!82 &1100822760
 AudioSource:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class ArticleBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         //LeanTween.scaleY(Grow, 2f, 0.3f).setEase(LeanTweenType.easeInOutCubic);
         LeanTween.scaleY(this.gameObject, 2f, 0.3f).setEase(LeanTweenType.easeInOutCubic);
-        float Delay = 0f;
+        /*float Delay = 0f;
         for (int i = 0; i < Badges.Length; i++)
         {
             if (GainBadges[i])
@@ -33,13 +33,14 @@ public class ArticleBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 Delay = Delay + 0.05f;
             }
         }
-        
+        */
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
        // LeanTween.scaleY(Grow, 1f, 0.3f).setEase(LeanTweenType.easeInOutCubic);
         LeanTween.scaleY(this.gameObject, 1f, 0.3f).setEase(LeanTweenType.easeInOutCubic);
+        /*
         for (int i = 0; i < Badges.Length; i++)
         {
             if (GainBadges[i])
@@ -48,6 +49,7 @@ public class ArticleBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 
             }
         }
+        */
     }
 
     public void OnPointerClick(PointerEventData eventData)

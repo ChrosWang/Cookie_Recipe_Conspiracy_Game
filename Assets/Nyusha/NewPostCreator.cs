@@ -220,6 +220,7 @@ public class NewPostCreator : MonoBehaviour
         Debug.Log("it's working!");
         if (!comment1.Equals(""))
         {
+            
             popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
 
         }

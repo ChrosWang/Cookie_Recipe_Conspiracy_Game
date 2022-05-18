@@ -23,6 +23,7 @@ public class PopUpSystem : MonoBehaviour
     public GameObject PopUpStack;
     public GameObject PopUpNotification;
     public AudioManager audiomanager;
+    public Sprite[] badgeSprites;
     
 
     /*
@@ -107,6 +108,13 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().Replace.gameObject.SetActive(true);
 
+                audiomanager.OtherS.Play();
+                break;
+            case 10:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
+                myPopUp.GetComponent<PopUpNotification>().Badge.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().Badge.sprite = badgeSprites[popUpMessage.followers];
                 audiomanager.OtherS.Play();
                 break;
             default:

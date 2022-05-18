@@ -16,4 +16,5 @@ public class PopUpNotification : MonoBehaviour
     public GameObject message;
     public GameObject Trash;
     public GameObject Replace;
+    public Image Badge;
 }
