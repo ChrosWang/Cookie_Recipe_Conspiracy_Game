@@ -33,7 +33,8 @@ public class NarrativeControl : MonoBehaviour
         articleLoader.MakePost(2);
         //articleLoader.MakePost(3);
 
-        NewChatComing(1);
+       // NewChatComing(1);
+        //StartCoroutine(DelayBlurEffect(5f));
         Date.text = "4 / 15 / 2021";
        
     }
@@ -152,11 +153,12 @@ public class NarrativeControl : MonoBehaviour
                 breakingNewsSwapper.Swap(1);
                 StartCoroutine(NewComingDelay(3f, 2));
                 
+
                 toggle = toggle + 1;
 
 
             }
-
+            /*If DM 2 is finished*/
             if (chatManager.CompleteCheckBox[2] == 1)
             {
                 chatManager.CompleteCheckBox[2] = 2;
@@ -165,8 +167,10 @@ public class NarrativeControl : MonoBehaviour
                 
             }
 
+            //If DM 3 is finished
             if (chatManager.CompleteCheckBox[3] == 1)
             {
+                //The game do this 
                 chatManager.CompleteCheckBox[3] = 2;
                 newPostCreator.MakeNSPost(1);
                 

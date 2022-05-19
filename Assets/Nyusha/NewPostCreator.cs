@@ -111,7 +111,7 @@ public class NewPostCreator : MonoBehaviour
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = false;
         myPost.GetComponent<NewPost>().LayoutGroup3.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
-
+    //Make Non Sarah Post
     public void MakeNSPost(int index)
     {
         //int trendValue = newsarticle.Score;
@@ -220,6 +220,7 @@ public class NewPostCreator : MonoBehaviour
         Debug.Log("it's working!");
         if (!comment1.Equals(""))
         {
+            
             popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
 
         }

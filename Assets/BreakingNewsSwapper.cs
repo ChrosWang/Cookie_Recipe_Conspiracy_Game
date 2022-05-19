@@ -7,6 +7,7 @@ using DG.Tweening;
 public class BreakingNewsSwapper : MonoBehaviour
 {
     public Sprite[] GS_List;
+    public Sprite[] HD_List;
 
     public Button ReadButton;
 
@@ -16,14 +17,18 @@ public class BreakingNewsSwapper : MonoBehaviour
 
     public GameObject[] FullArticles;
 
+    public Image Header;
+
     private void Start()
     {
-        ReadButton.onClick.AddListener(() => FullPageOpen());
+        //ReadButton.onClick.AddListener(() => FullPageOpen());
     }
     public void Swap(int index)
     {
         LeanTween.alpha(this.gameObject, 0, 0.3f);
         this.gameObject.GetComponent<Image>().sprite = GS_List[index];
+        Header.sprite = HD_List[index];
+        //notification
         LeanTween.alpha(this.gameObject, 0, 0.3f).setDelay(0.3f);
         currentIndex = index;
     }

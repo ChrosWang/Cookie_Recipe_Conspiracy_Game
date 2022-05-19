@@ -23,12 +23,13 @@ public class PopUpSystem : MonoBehaviour
     public GameObject PopUpStack;
     public GameObject PopUpNotification;
     public AudioManager audiomanager;
+    public Sprite[] badgeSprites;
     
 
     /*
      * 1 - comments: xxx just commented on post yyy: "hahaha this is funny"
        2 - DMs: You receive a DM from xxx
-       3 - Follower count: Followers 100 -> Followers 120
+       3 - Breaking News swap
        4 - Shared Successfully
        5 - Likes: Your post yyy got 20 likes
        6 - Moderator: XXX just became a moderator
@@ -107,6 +108,13 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().Replace.gameObject.SetActive(true);
 
+                audiomanager.OtherS.Play();
+                break;
+            case 10:
+                myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
+                myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
+                myPopUp.GetComponent<PopUpNotification>().Badge.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().Badge.sprite = badgeSprites[popUpMessage.followers];
                 audiomanager.OtherS.Play();
                 break;
             default:

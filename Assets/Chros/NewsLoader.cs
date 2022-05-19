@@ -116,6 +116,28 @@ public class NewsLoader : MonoBehaviour
     {
         newPostCreater.MakePost(myNewsCollection.News[index]);
     }
+
+    void CheckBadges()
+    {
+        switch (numArticleShared)
+        {
+            case 1:
+                popupsystem.DelayPopUp(10, new PopUpMessage("", "You earned Badge: <color=#FF5555>Rookie</color><br>Shared 1 article.", 0, 0), 0f);
+                break;
+            case 5:
+                popupsystem.DelayPopUp(10, new PopUpMessage("", "You earned Badge: <color=#FF5555>Skilled Clicker</color><br>Shared 5 article.", 1, 0), 0f);
+                break;
+            case 10:
+                popupsystem.DelayPopUp(10, new PopUpMessage("", "You earned Badge: <color=#FF5555>Net Explorer</color><br>Shared 10 article.", 2, 0), 0f);
+                break;
+            case 20:
+                popupsystem.DelayPopUp(10, new PopUpMessage("", "You earned Badge: <color=#FF5555>Voracious Reader</color><br>Shared 20 article.", 3, 0), 0f);
+                break;
+            case 35:
+                popupsystem.DelayPopUp(10, new PopUpMessage("", "You earned Badge: <color=#FF5555>Power Reader</color><br>Shared 35 article.", 3, 0), 0f);
+                break;
+        }
+    }
     void  UpdateShare(int index)
     {
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
@@ -124,6 +146,7 @@ public class NewsLoader : MonoBehaviour
             myNewsCollection.RetrieveNewsArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
             numArticleShared++;
+            CheckBadges();
             articlebar.UpdateShare();
            // ShareStats1.SetActive(true);
           //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
@@ -143,6 +166,7 @@ public class NewsLoader : MonoBehaviour
             Article.Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
             numArticleShared++;
+            CheckBadges();
             articlebar.UpdateShare();
 
             // ShareStats1.SetActive(true);
@@ -160,6 +184,7 @@ public class NewsLoader : MonoBehaviour
             myNewsCollection.RetrieveAlgoritmArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
             numArticleShared++;
+            CheckBadges();
             // ShareStats1.SetActive(true);
             //  ShareStats1.GetComponent<RandomGenerateStats>().RandomGenerate(myNewsCollection.RetrieveNewsArticle(0).Score, myNewsCollection.RetrieveNewsArticle(0).Priority);
             newPostCreater.MakePost(myNewsCollection.RetrieveAlgoritmArticle(index));
@@ -222,6 +247,7 @@ public class NewsLoader : MonoBehaviour
         {
             SearchMyCollection(textField.text, narrative.currentGameState);
         }
+
 
         //if (searchCount >=3)
       ///  {
