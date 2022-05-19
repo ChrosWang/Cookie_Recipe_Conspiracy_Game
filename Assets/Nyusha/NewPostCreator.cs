@@ -122,6 +122,14 @@ public class NewPostCreator : MonoBehaviour
         PostRefresher(myPost);
         //PostRefresher(myPost);
         myPost.GetComponent<NewPost>().nameTag.text = myPostCollection.mixpost[index].Username;
+        if (myPostCollection.mixpost[index].Username.Equals("WendyDW"))
+        {
+            myPost.GetComponent<NewPost>().Wendy.SetActive(true);
+        }
+        if (myPostCollection.mixpost[index].Username.Equals("MrSupreme88"))
+        {
+            myPost.GetComponent<NewPost>().Chris.SetActive(true);
+        }
         myPost.GetComponent<NewPost>().NewsArticleTitle.text = myPostCollection.mixpost[index].Title;
         myPost.GetComponent<NewPost>().BodyArticle.text = myPostCollection.mixpost[index].Body;
         myPost.GetComponent<NewPost>().profilePic.GetComponent<ProfileGenerator>().RandomRoll();

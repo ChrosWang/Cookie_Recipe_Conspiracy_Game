@@ -22,4 +22,6 @@ public class NewPost : MonoBehaviour
     public GameObject[] LayoutGroups;
     public GameObject cms1;
     public GameObject cms2;
+    public GameObject Wendy;
+    public GameObject Chris;
 }

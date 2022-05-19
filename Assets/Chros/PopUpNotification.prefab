@@ -686,7 +686,7 @@ RectTransform:
   m_GameObject: {fileID: 2682581313039166969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 511831955850318162}
   - {fileID: 1180515811885690610}
@@ -891,6 +891,8 @@ MonoBehaviour:
   Trash: {fileID: 4494828770499477305}
   Replace: {fileID: 1300838492067628521}
   Badge: {fileID: 1334609101677378714}
+  Wendy: {fileID: 4601952189888448136}
+  Chris: {fileID: 3568778342837763410}
 --- !u!1 &3285102128646291010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 99b949501318c964f8747d26c9a06ca5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec69491d291f7944fbbd4f178320bafc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3039,7 +3041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b39d8288bd380d74099a2e7cee09818f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fde85f643f6c56438f99e3a940ce701, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

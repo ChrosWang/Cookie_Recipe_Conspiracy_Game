@@ -66,7 +66,18 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just commented on your post: " + popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().ppic.gameObject.SetActive(true);
                 myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(false);
-                myPopUp.GetComponent<PopUpNotification>().ppic.RandomRoll();
+                if (popUpMessage.username.Contains("WendyDW"))
+                {
+                    myPopUp.GetComponent<PopUpNotification>().Wendy.SetActive(true);
+                }
+                else if (popUpMessage.username.Contains("MrSupreme88"))
+                {
+                    myPopUp.GetComponent<PopUpNotification>().Chris.SetActive(true);
+                }
+                else
+                {
+                    myPopUp.GetComponent<PopUpNotification>().ppic.RandomRoll();
+                }
                 this.GetComponent<AudioSource>().Play();
                 break;
 
