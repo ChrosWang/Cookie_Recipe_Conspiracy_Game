@@ -34,6 +34,8 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
        
     {
+        LeanTween.scale(AnimationHelper, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEaseInOutCubic();
+        /*
         x = AnimationHelper.transform.localPosition.x;
         y = AnimationHelper.transform.localPosition.y;
         z = AnimationHelper.transform.localPosition.z;
@@ -50,16 +52,17 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
             LeanTween.scale(AnimationHelper, new Vector3(1.1f,1.1f,1.1f), 0.3f).setEaseInOutCubic();
         } else
         {
-            liftupanimation.resume();
+           liftupanimation.resume();
             LeanTween.scale(AnimationHelper, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEaseInOutCubic();
         }
+        */
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("Mounse Exit");
-        liftupanimation.pause();
-        LeanTween.moveLocal(AnimationHelper, new Vector3(x, y, z), 1.0f);
+       // liftupanimation.pause();
+       // LeanTween.moveLocal(AnimationHelper, new Vector3(x, y, z), 1.0f);
         LeanTween.scale(AnimationHelper, new Vector3(1f, 1f, 1f), 0.3f).setEaseInOutCubic();
     }
 

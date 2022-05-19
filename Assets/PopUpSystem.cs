@@ -79,6 +79,7 @@ public class PopUpSystem : MonoBehaviour
                     myPopUp.GetComponent<PopUpNotification>().ppic.RandomRoll();
                 }
                 this.GetComponent<AudioSource>().Play();
+                myPopUp.GetComponent<PopUpNotification>().tab = 1;
                 break;
 
             case 2:
@@ -87,12 +88,14 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().message.gameObject.SetActive(true);
 
                 this.GetComponent<AudioSource>().Play();
+                myPopUp.GetComponent<PopUpNotification>().tab = 3;
                 break;
 
             case 3:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Breaking News";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content + " View Today's Breaking News!";
                 myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().tab = 2;
 
                 this.GetComponent<AudioSource>().Play();
                 break;
@@ -101,23 +104,27 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Content.text = "Your post is successfully shared!";
                 myPopUp.GetComponent<PopUpNotification>().share.gameObject.SetActive(true);
                 this.GetComponent<AudioSource>().Play();
+                myPopUp.GetComponent<PopUpNotification>().tab = 1;
                 break;
             case 7:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Deletion!";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just deleted a post!";
                 myPopUp.GetComponent<PopUpNotification>().Trash.gameObject.SetActive(true);
                 audiomanager.OtherS.Play();
+                myPopUp.GetComponent<PopUpNotification>().tab = 1;
                 break;
             case 8:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.username + " just posted on your page: " + popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().othershare.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().tab = 1;
                 audiomanager.OtherS.Play();
                 break;
             case 9:
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Mixer";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().Replace.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().tab = 1;
 
                 audiomanager.OtherS.Play();
                 break;
@@ -126,6 +133,7 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content;
                 myPopUp.GetComponent<PopUpNotification>().Badge.gameObject.SetActive(true);
                 myPopUp.GetComponent<PopUpNotification>().Badge.sprite = badgeSprites[popUpMessage.followers];
+                myPopUp.GetComponent<PopUpNotification>().tab = 2;
                 audiomanager.OtherS.Play();
                 break;
             default:
