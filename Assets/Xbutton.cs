@@ -8,6 +8,7 @@ public class Xbutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public GameObject Article;
     public GameObject Selector;
+    public bool pop;
     //public LTDescr SelectAnimation;
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -21,8 +22,10 @@ public class Xbutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameObject canvas = GameObject.Find("ArticleLoader");
-        canvas.GetComponent<NewsLoader>().FullArticlePage.SetActive(false);
+        if (!pop) {
+            GameObject canvas = GameObject.Find("ArticleLoader");
+            canvas.GetComponent<NewsLoader>().FullArticlePage.SetActive(false);
+        }
         GameObject.Destroy(Article);
 
     }
