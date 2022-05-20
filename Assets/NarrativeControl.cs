@@ -192,7 +192,7 @@ public class NarrativeControl : MonoBehaviour
                 popUpSystem.DelayPopUp(3, new PopUpMessage("", Date.text, 0, 0), 0.1f);
                 newPostCreator.MakeNSPost(2);
                 breakingNewsSwapper.Swap(2);
-                StartCoroutine(NewComingDelay(4f, 5));
+                StartCoroutine(NewComingDelay(12f, 5));
                 toggle = toggle + 1;
 
             }
@@ -214,7 +214,7 @@ public class NarrativeControl : MonoBehaviour
             if (chatManager.CompleteCheckBox[6] == 1)
             {
                 chatManager.CompleteCheckBox[6] = 2;
-                StartCoroutine(NewComingDelay(5f, 7));
+                StartCoroutine(NewComingDelay(2f, 7));
                
                 
             }
@@ -337,12 +337,13 @@ public class NarrativeControl : MonoBehaviour
                 StartCoroutine(DelayMakePost(40f, 12));
                 StartCoroutine(DelaySwap(45f, 6));
             }
-                if (toggle == 13 && articleLoader.numArticleShared >= 37)
+                if (toggle == 13 && articleLoader.numArticleShared >= 35)
             {
-                Date.text = "5 / 13 / 2021";
-                StartCoroutine(NewComingDelay(13f, 17));
-                StartCoroutine(DelayBlurEffect(30f));
                 toggle = toggle + 1;
+                Date.text = "5 / 13 / 2021";
+                StartCoroutine(NewComingDelay(8f, 17));
+                StartCoroutine(DelayBlurEffect(30f));
+              
             }
                 
             if (chatManager.CompleteCheckBox[17] == 1)
