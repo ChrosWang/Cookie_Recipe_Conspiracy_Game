@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Article: {fileID: 8825737277295778204}
   Selector: {fileID: 4482612220070809274}
+  pop: 0
 --- !u!222 &1131072603730684229
 CanvasRenderer:
   m_ObjectHideFlags: 0

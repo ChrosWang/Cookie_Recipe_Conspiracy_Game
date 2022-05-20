@@ -60,7 +60,7 @@ public class SearchResultArt : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mounse Exit");
+        //Debug.Log("Mounse Exit");
        // liftupanimation.pause();
        // LeanTween.moveLocal(AnimationHelper, new Vector3(x, y, z), 1.0f);
         LeanTween.scale(AnimationHelper, new Vector3(1f, 1f, 1f), 0.3f).setEaseInOutCubic();

@@ -183,7 +183,8 @@ public class NewsLoader : MonoBehaviour
 
     void UpdateShareYML(int index)
     {
-        if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared)
+        Debug.Log("Testing index is" + index);
+        if (!myNewsCollection.RetrieveAlgoritmArticle(index).Is_shared)
         {
        //     Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveAlgoritmArticle(index).Score);
             currentCP = currentCP + myNewsCollection.RetrieveAlgoritmArticle(index).Score;
@@ -398,7 +399,7 @@ public class NewsLoader : MonoBehaviour
         {
             myNewsCollection.generateNewsFeed(currentCP,narrative.currentGameState);
             int randomIndex = Random.Range(2, myNewsCollection.newsAlgorithm[0]);
-            Debug.Log("Generating YML in 1 and " + myNewsCollection.newsAlgorithm[0]+"and generation is "+randomIndex);
+            //Debug.Log("Generating YML in 1 and " + myNewsCollection.newsAlgorithm[0]+"and generation is "+randomIndex);
             switch (myNewsCollection.RetrieveAlgoritmArticle(randomIndex).SourceNum)
             {
                 case 1:
@@ -427,7 +428,7 @@ public class NewsLoader : MonoBehaviour
                     myNews = Instantiate(Article1, SearchResultGroup.GetComponent<RectTransform>());
                     break;
             }
-
+            LeanTween.moveLocal(SearchResultGroup, new Vector2(861f, -373f), 0f);
             LeanTween.alpha(myNews.GetComponent<SearchResultArt>().AnimationHelper.GetComponent<RectTransform>(), 0, 0);
             LeanTween.scale(myNews.GetComponent<SearchResultArt>().AnimationHelper, new Vector3(1.3f, 1.3f, 1.3f), 0);
             //myNews.GetComponent<SearchResultArt>().NewsSite.text = myNewsCollection.RetrieveNewsArticle(index).Source;

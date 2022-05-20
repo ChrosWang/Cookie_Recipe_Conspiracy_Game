@@ -18,6 +18,7 @@ public class BreakingNewsSwapper : MonoBehaviour
     public GameObject[] FullArticles;
 
     public Image Header;
+    public GameObject Reddot;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class BreakingNewsSwapper : MonoBehaviour
         //notification
         LeanTween.alpha(this.gameObject, 0, 0.3f).setDelay(0.3f);
         currentIndex = index;
+        Reddot.SetActive(true);
     }
 
     public void FullPageOpen()

@@ -90,7 +90,7 @@ public class NewsCollection
     {
         for (int i = 0; i < SearchList.Length; i++)
         {
-            Debug.Log("Hi my order is " + RetrieveNewsArticle(i).Priority);
+           // Debug.Log("Hi my order is " + RetrieveNewsArticle(i).Priority);
         }
     }
 
