@@ -17,7 +17,8 @@ void Start()
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        Debug.Log("button clicked");
+        NextSlide();
     }
 
      public void NextSlide()
