@@ -8578,6 +8578,7 @@ MonoBehaviour:
   Video: {fileID: 442572000}
   myImage: {fileID: 942478258}
   audiomanager: {fileID: 853393909}
+  toScene: 2
 --- !u!1 &648702741
 GameObject:
   m_ObjectHideFlags: 0
@@ -18083,7 +18084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.2966, y: -0.20410156}
+  m_AnchoredPosition: {x: -8.2966, y: -0.20446777}
   m_SizeDelta: {x: 933.58, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398172344

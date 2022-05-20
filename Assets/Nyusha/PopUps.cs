@@ -17,6 +17,7 @@ public class PopUps : MonoBehaviour
     public GameObject stateSix;
     public GameObject[] complexSound;
     public GameObject soundSourcesParent;
+    public GameObject TurnOffEffect;
     // public bool wendyDead;
 
 
@@ -49,6 +50,7 @@ public class PopUps : MonoBehaviour
             Debug.Log("on wendy");
             Destroy(soundSourcesParent);
             ClickToPopUp();
+            GameState6();
            
         }
 
@@ -163,6 +165,7 @@ public class PopUps : MonoBehaviour
 
     void GameState6()
     {
+        TurnOffEffect.GetComponent<TurnOffEffect>().PlayEffect();
        //go to scene stuff
     }
 }
