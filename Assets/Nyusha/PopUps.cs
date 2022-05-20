@@ -16,7 +16,8 @@ public class PopUps : MonoBehaviour
     float quickTimer;
     public GameObject stateSix;
     public GameObject[] complexSound;
-    public bool wendyDead;
+    public GameObject soundSourcesParent;
+    // public bool wendyDead;
 
 
     // Start is called before the first frame update
@@ -32,20 +33,23 @@ public class PopUps : MonoBehaviour
          g.SetActive(false);
          }
         stateSix.SetActive(false);
-        wendyDead = false;
+        // wendyDead = false;
     }
 
     // Update is called once per frame
     void Update()
     { 
-        if ((Input.GetMouseButtonDown(0)) && (popUps < 32) ) //if clicking (less than code removed)
+        if ((Input.GetMouseButtonDown(0)) && (popUps < 31) ) //if clicking (less than code removed)
         {
             ClickToPopUp();
         }
 
-        if ((Input.GetMouseButtonDown(0)) && (popUps >= 32) ) //if clicking (less than code removed)
+        if ((Input.GetMouseButtonDown(0)) && (popUps == 31)) //if clicking (less than code removed)
         {
+            Debug.Log("on wendy");
+            Destroy(soundSourcesParent);
             ClickToPopUp();
+           
         }
 
         // if ((Input.GetMouseButtonDown(0)) && (popUps == 32) )
@@ -55,15 +59,15 @@ public class PopUps : MonoBehaviour
             
         // }
 
-        if (popUps == 35)
-        {
-            wendyDead = true;
-        }
+        // if (popUps == 35)
+        // {
+        //     wendyDead = true;
+        // }
 
-        if ((Input.GetMouseButtonDown(0)) && (wendyDead == true))
-        {
-            GameState6();
-        }
+        // if ((Input.GetMouseButtonDown(0)) && (wendyDead == true))
+        // {
+        //     GameState6();
+        // }
 
         // if (popUps == 9)
         // {

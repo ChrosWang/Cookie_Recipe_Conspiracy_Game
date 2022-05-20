@@ -17,7 +17,6 @@ public class GS6Text : MonoBehaviour
     public TMP_Text Tmp3;
      [TextArea(10, 100)] 
     public string String3;
-    public GameObject slide1;
     // public TMP_Text Tmp4;
     // public string String4;
 
