@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NarrativeControl : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class NarrativeControl : MonoBehaviour
     public AudioManager audiomanager;
     public MixerAssetManager mixswapper;
     public TMP_Text Date;
+    public TurnOffEffect turnoff;
+    public Button TurnOffButton;
+
+    public Sprite turnoffsprite;
 
     public void Start()
     {
@@ -34,7 +39,8 @@ public class NarrativeControl : MonoBehaviour
         //articleLoader.MakePost(3);
 
        // NewChatComing(1);
-        //StartCoroutine(DelayBlurEffect(5f));
+        //StartCoroutine(DelayBlurEffect(0f));
+       // turnoff.PlayEffect();
         Date.text = "4 / 15 / 2021";
        
     }
@@ -338,8 +344,27 @@ public class NarrativeControl : MonoBehaviour
                 StartCoroutine(DelayBlurEffect(30f));
                 toggle = toggle + 1;
             }
+                
+            if (chatManager.CompleteCheckBox[17] == 1)
+            {
+                chatManager.CompleteCheckBox[17] = 2;
+                TurnOffButton.gameObject.SetActive(true);
+                TurnOffButton.onClick.AddListener(() => { 
+                    turnoff.PlayEffect();
+                    //SceneManager.LoadScene(2);
+                   // DelaySceneLoad(4f);
+                   });
+            }
+                
 
         }
+
+    }
+    IEnumerator DelaySceneLoad(float Delay)
+    {
+        yield return new WaitForSecondsRealtime(Delay);
+        Debug.Log("Loading");
+        SceneManager.LoadScene(2);
 
     }
     

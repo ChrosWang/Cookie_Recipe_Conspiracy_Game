@@ -261,6 +261,10 @@ public class ChatManager : MonoBehaviour
                         Action BackButtonAppear = () =>
                         {
                             BackButton.gameObject.SetActive(true);
+                            if (currentChat == 17)
+                            {
+                                CompleteCheckBox[currentChat] = 1;
+                            }
                             
                         };
                         myTween.setOnComplete(BackButtonAppear);
