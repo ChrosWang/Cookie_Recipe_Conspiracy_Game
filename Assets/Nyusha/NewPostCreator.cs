@@ -229,12 +229,12 @@ public class NewPostCreator : MonoBehaviour
         if (!comment1.Equals(""))
         {
             
-            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 3f);
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[0]].Comment, 0, 0), 10f);
 
         }
         if (!comment2.Equals(""))
         {
-            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 5f);
+            popupsystem.DelayPopUp(1, new PopUpMessage("<color=#FF5555>" + myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].User + ":</color>", myKeyCommentCollection.usercomments[myKeyCommentCollection.SearchList[1]].Comment, 0, 0), 20f);
 
         }
         
