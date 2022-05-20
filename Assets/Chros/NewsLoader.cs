@@ -60,6 +60,8 @@ public class NewsLoader : MonoBehaviour
 
 
     public int currentCP;
+    public TMP_Text currentMembers;
+    public TMP_Text currentOnline;
 
     public int searchCount;
 
@@ -143,6 +145,8 @@ public class NewsLoader : MonoBehaviour
         if (!myNewsCollection.RetrieveNewsArticle(index).Is_shared) {
           //  Debug.Log("Adding CP: " + currentCP + "to score for "  + myNewsCollection.RetrieveNewsArticle(0).Score);
             currentCP = currentCP + myNewsCollection.RetrieveNewsArticle(index).Score;
+            currentMembers.text = (543 + currentCP * 10 - Random.Range(1, 9)).ToString();
+            currentOnline.text = ((543 + currentCP * 10 - Random.Range(1, 9)) / 10).ToString();
             myNewsCollection.RetrieveNewsArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("",  "", 0,0));
             numArticleShared++;
@@ -163,6 +167,8 @@ public class NewsLoader : MonoBehaviour
         {
            // Debug.Log("Full Article shared");
             currentCP = currentCP + Article.Score;
+            currentMembers.text = (543 + currentCP * 10 - Random.Range(1, 9)).ToString();
+            currentOnline.text = ((543 + currentCP * 10 - Random.Range(1, 9)) / 10).ToString();
             Article.Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
             numArticleShared++;
@@ -181,6 +187,8 @@ public class NewsLoader : MonoBehaviour
         {
        //     Debug.Log("Adding CP: " + currentCP + "to score for " + myNewsCollection.RetrieveAlgoritmArticle(index).Score);
             currentCP = currentCP + myNewsCollection.RetrieveAlgoritmArticle(index).Score;
+            currentMembers.text = (543 + currentCP * 10 - Random.Range(1, 9)).ToString();
+            currentOnline.text = ((543 + currentCP * 10 - Random.Range(1, 9))/10).ToString();
             myNewsCollection.RetrieveAlgoritmArticle(index).Is_shared = true;
             popupsystem.CreatePopUp(4, new PopUpMessage("", "", 0, 0));
             numArticleShared++;

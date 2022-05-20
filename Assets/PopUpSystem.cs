@@ -39,7 +39,7 @@ public class PopUpSystem : MonoBehaviour
 
     public void DelayPopUp(int index, PopUpMessage popUpMessage, float Delay)
     {
-        StartCoroutine(DelaymyPopUp(index, popUpMessage, Delay));
+        StartCoroutine(DelaymyPopUp(index, popUpMessage, Delay + Random.Range(0.3f,0.9f)));
     }
 
     IEnumerator DelaymyPopUp(int index, PopUpMessage popUpMessage, float Delay)

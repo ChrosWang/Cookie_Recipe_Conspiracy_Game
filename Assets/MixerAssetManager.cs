@@ -33,8 +33,8 @@ public class MixerAssetManager : MonoBehaviour
     int onlineMembers;
     public void Start()
     {
-        currentMembers = 20;
-        OnlineNum.text = 2.ToString();
+      //  currentMembers = 20;
+       // OnlineNum.text = 2.ToString();
     }
     public void AddNewMembers(int increase)
     {
@@ -59,7 +59,7 @@ public class MixerAssetManager : MonoBehaviour
     }
     public void Swap3()
     {
-        WelcomeText.text = "We’ll all made the connection and cannot deny it any longer, <br>White sugar,";
+        WelcomeText.text = "We’ve all made the connection and cannot deny it any longer. <br>White sugar,<br>White blood cells,<br>White lab coats. ";
         WelcomeText2.text = "Welcome to the revolution!";
         popupsystem.DelayPopUp(9, new PopUpMessage("System", "Your Welcome Post has been modified: We’ll all made the connection and cannot deny it any longer, <br>White sugar,", 0, 0), 2f);
     }
