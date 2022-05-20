@@ -10,6 +10,7 @@ public class TurnOffEffect : MonoBehaviour
     public VideoPlayer Video;
     public GameObject myImage;
     public AudioManager audiomanager;
+    public int toScene;
     public void PlayEffect()
     {
         LeanTween.alpha(myImage.GetComponent<RectTransform>(), 0f, 0f);
@@ -25,7 +26,10 @@ public class TurnOffEffect : MonoBehaviour
 
     public void SwitchScene(UnityEngine.Video.VideoPlayer vp)
     {
-        audiomanager.Secret.Stop();
-        SceneManager.LoadScene(2);
+        if (audiomanager != null)
+        {
+            audiomanager.Secret.Stop();
+        }
+        SceneManager.LoadScene(toScene) ;
     }
 }

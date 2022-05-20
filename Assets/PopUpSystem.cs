@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpMessage
 {
@@ -95,6 +96,7 @@ public class PopUpSystem : MonoBehaviour
                 myPopUp.GetComponent<PopUpNotification>().Subject.text = "Breaking News";
                 myPopUp.GetComponent<PopUpNotification>().Content.text = popUpMessage.content + " View Today's Breaking News!";
                 myPopUp.GetComponent<PopUpNotification>().Icon.gameObject.SetActive(true);
+                myPopUp.GetComponent<PopUpNotification>().AnimationHelper.GetComponent<Image>().color = new Color(1, 0.8f, 0.8f);
                 myPopUp.GetComponent<PopUpNotification>().tab = 2;
 
                 this.GetComponent<AudioSource>().Play();

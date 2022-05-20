@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nyusha/GameState5.unity
     guid: efb5ab67c69acd1429948443dbf4c785
+  - enabled: 1
+    path: Assets/Nyusha/GS6_Debrief.unity
+    guid: 97f9be15f2d455e4cb3614f3b478bc49
   m_configObjects: {}

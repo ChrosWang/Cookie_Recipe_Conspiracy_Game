@@ -7,7 +7,7 @@ public class BreakingNewsRead : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public BreakingNewsSwapper brs;
     public GameObject Selector;
-
+    public GameObject Reddot;
     public void OnPointerEnter(PointerEventData eventData)
     {
         LeanTween.scaleX(Selector, 1, 0.1f).setEase(LeanTweenType.easeInOutSine);
@@ -21,6 +21,7 @@ public class BreakingNewsRead : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerClick(PointerEventData eventData)
     {
         brs.FullPageOpen();
+        Reddot.SetActive(false);
     }
 
 }

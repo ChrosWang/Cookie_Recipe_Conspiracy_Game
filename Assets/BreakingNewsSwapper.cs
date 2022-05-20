@@ -18,6 +18,7 @@ public class BreakingNewsSwapper : MonoBehaviour
     public GameObject[] FullArticles;
 
     public Image Header;
+    public GameObject Reddot;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class BreakingNewsSwapper : MonoBehaviour
         //notification
         LeanTween.alpha(this.gameObject, 0, 0.3f).setDelay(0.3f);
         currentIndex = index;
+        Reddot.SetActive(true);
     }
 
     public void FullPageOpen()
@@ -60,7 +62,7 @@ public class BreakingNewsSwapper : MonoBehaviour
         }
         Debug.Log("current location local is:" + myFullArticle.transform.localPosition.x + "  " + myFullArticle.transform.localPosition.y);
         LeanTween.moveLocal(content, new Vector2(0f, 0f), 0f);
-        LeanTween.moveLocal(myFullArticle, new Vector2(1000f, -1043f), 0f);
+        LeanTween.moveLocal(myFullArticle, new Vector2(960f, -1043f), 0f);
         LeanTween.scale(myFullArticle, new Vector3(1f, 1f, 1f), 0.3f).setEaseInOutCubic();
         DOTween.To(
                 () => txt,
