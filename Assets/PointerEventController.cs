@@ -18,7 +18,7 @@ public class PointerEventController : MonoBehaviour, IPointerEnterHandler, IPoin
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Clicked");
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
