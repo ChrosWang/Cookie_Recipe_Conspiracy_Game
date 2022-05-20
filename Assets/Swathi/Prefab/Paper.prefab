@@ -1010,6 +1010,7 @@ GameObject:
   - component: {fileID: 1291767096089579215}
   - component: {fileID: 1291767096089579213}
   - component: {fileID: 8063765071029761809}
+  - component: {fileID: 4393854429346110678}
   m_Layer: 5
   m_Name: Paper
   m_TagString: Untagged
@@ -1144,6 +1145,20 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+--- !u!114 &4393854429346110678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291767096089579209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &1291767096171577996
 GameObject:
   m_ObjectHideFlags: 0

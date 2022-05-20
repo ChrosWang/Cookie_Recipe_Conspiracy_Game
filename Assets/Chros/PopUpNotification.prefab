@@ -835,6 +835,7 @@ GameObject:
   - component: {fileID: 2941752677161140666}
   - component: {fileID: 2941752677161140664}
   - component: {fileID: 3971013751187593234}
+  - component: {fileID: 5276157076949330616}
   m_Layer: 5
   m_Name: PopUpNotification
   m_TagString: Untagged
@@ -895,6 +896,22 @@ MonoBehaviour:
   Badge: {fileID: 1334609101677378714}
   Wendy: {fileID: 4601952189888448136}
   Chris: {fileID: 3568778342837763410}
+  statemachine: {fileID: 0}
+  tab: 0
+--- !u!114 &5276157076949330616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941752677161140661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &3285102128646291010
 GameObject:
   m_ObjectHideFlags: 0

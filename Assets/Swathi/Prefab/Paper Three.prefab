@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 5216259324956297300}
   - component: {fileID: 5216259324956297299}
   - component: {fileID: 6935631235370997171}
+  - component: {fileID: 1742720558977513798}
   m_Layer: 5
   m_Name: Paper Three
   m_TagString: Untagged
@@ -449,6 +450,20 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+--- !u!114 &1742720558977513798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216259324956297297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &5216259324980995812
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,9 +31,9 @@ public class AdSwapper : MonoBehaviour
         Action SwapAd = () =>
         {
             Adf.GetComponent<Image>().sprite = Ads[randomAd];
-            LeanTween.alpha(Adf, 1f, 0.01f).setEaseInOutCubic();
+            LeanTween.alpha(Adf.GetComponent<RectTransform>(), 1f, 0.01f).setEaseInOutCubic();
         };
-        LeanTween.alpha(Adf, 0f, 2f).setEaseInOutCubic().setOnComplete(SwapAd);
+        LeanTween.alpha(Adf.GetComponent<RectTransform>(), 0f, 2f).setEaseInOutCubic().setOnComplete(SwapAd);
         
         
         

@@ -389,7 +389,8 @@ public class NewsLoader : MonoBehaviour
         } else
         {
             myNewsCollection.generateNewsFeed(currentCP,narrative.currentGameState);
-            int randomIndex = Random.Range(1, myNewsCollection.newsAlgorithm[0]);
+            int randomIndex = Random.Range(2, myNewsCollection.newsAlgorithm[0]);
+            Debug.Log("Generating YML in 1 and " + myNewsCollection.newsAlgorithm[0]+"and generation is "+randomIndex);
             switch (myNewsCollection.RetrieveAlgoritmArticle(randomIndex).SourceNum)
             {
                 case 1:

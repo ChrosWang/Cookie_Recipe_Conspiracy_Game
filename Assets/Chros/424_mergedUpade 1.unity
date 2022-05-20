@@ -3877,6 +3877,7 @@ GameObject:
   - component: {fileID: 371080745}
   - component: {fileID: 371080744}
   - component: {fileID: 371080743}
+  - component: {fileID: 371080746}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3986,6 +3987,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371080741}
   m_CullTransparentMesh: 1
+--- !u!114 &371080746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371080741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 743590313}
+  ChangeMode: 0
 --- !u!1001 &373361625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4039,7 +4054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291767094733315053, guid: fd49d4409a2df4f469b83bd9890e252a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 224.40836
       objectReference: {fileID: 0}
     - target: {fileID: 1291767094733315053, guid: fd49d4409a2df4f469b83bd9890e252a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4938,6 +4953,7 @@ GameObject:
   - component: {fileID: 417148246}
   - component: {fileID: 417148245}
   - component: {fileID: 417148247}
+  - component: {fileID: 417148248}
   m_Layer: 5
   m_Name: BkNews
   m_TagString: Untagged
@@ -5017,6 +5033,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brs: {fileID: 1854278710}
   Selector: {fileID: 1090919061}
+--- !u!114 &417148248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417148243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 743590313}
+  ChangeMode: 0
 --- !u!1 &428061761
 GameObject:
   m_ObjectHideFlags: 0
@@ -6720,6 +6750,7 @@ GameObject:
   - component: {fileID: 561580138}
   - component: {fileID: 561580137}
   - component: {fileID: 561580136}
+  - component: {fileID: 561580139}
   m_Layer: 5
   m_Name: Date (1)
   m_TagString: Untagged
@@ -6863,6 +6894,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561580134}
   m_CullTransparentMesh: 1
+--- !u!114 &561580139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561580134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 743590313}
+  ChangeMode: 0
 --- !u!1 &567228209
 GameObject:
   m_ObjectHideFlags: 0
@@ -7649,6 +7694,7 @@ GameObject:
   - component: {fileID: 613565023}
   - component: {fileID: 613565022}
   - component: {fileID: 613565021}
+  - component: {fileID: 613565024}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -7780,6 +7826,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613565019}
   m_CullTransparentMesh: 1
+--- !u!114 &613565024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613565019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 743590313}
+  ChangeMode: 0
 --- !u!1 &619663319
 GameObject:
   m_ObjectHideFlags: 0
@@ -8859,9 +8919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062c41f111bb5d41a66f550f6e50216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorDefault: {fileID: 2800000, guid: 3ec585227400d15458d29eafba5797bb, type: 3}
+  cursorDefault: {fileID: 2800000, guid: 14f069ca915254e42bd4eacf79a01e4b, type: 3}
   cursorSpecial:
-  - {fileID: 2800000, guid: 5bd3e6a715d06c740a1ff7bb31d40ffe, type: 3}
+  - {fileID: 2800000, guid: fd32a065a778f384d9f5f686cdbce18b, type: 3}
   - {fileID: 2800000, guid: 1e83c0f6c38270446966df7dc1a3ae99, type: 3}
   - {fileID: 2800000, guid: 075165162b5fc7847946bbdd1dea45f8, type: 3}
   - {fileID: 2800000, guid: 66d78ad07ba15234289f5f52be2696ca, type: 3}
@@ -17368,7 +17428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.2966, y: -0.20550537}
+  m_AnchoredPosition: {x: -8.2966, y: -0.20355225}
   m_SizeDelta: {x: 933.58, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398172344
@@ -17958,7 +18018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursormanager: {fileID: 743590313}
-  ChangeMode: 2
+  ChangeMode: 0
 --- !u!114 &1446348442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20951,8 +21011,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 327374337}
   m_HandleRect: {fileID: 327374336}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999875
+  m_Value: 0
+  m_Size: 0.99999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -25220,6 +25280,7 @@ GameObject:
   - component: {fileID: 2070763153}
   - component: {fileID: 2070763152}
   - component: {fileID: 2070763155}
+  - component: {fileID: 2070763156}
   m_Layer: 5
   m_Name: SpeedUpButton
   m_TagString: Untagged
@@ -25341,7 +25402,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0678f0bd69687a146a7eaff468d12019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatmanager: {fileID: 0}
+  chatmanager: {fileID: 6782316177113315706}
+--- !u!114 &2070763156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070763150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 743590313}
+  ChangeMode: 0
 --- !u!1 &2072355365
 GameObject:
   m_ObjectHideFlags: 0

@@ -981,6 +981,7 @@ GameObject:
   - component: {fileID: 8490464855266910736}
   - component: {fileID: 672557707560723091}
   - component: {fileID: 1692007504355507945}
+  - component: {fileID: 5913568673923313698}
   m_Layer: 5
   m_Name: sharehelper
   m_TagString: Untagged
@@ -1060,6 +1061,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Article: {fileID: 8825737277295778204}
   Selector: {fileID: 1259536184858023430}
+--- !u!114 &5913568673923313698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859728879869382601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &5113456802044878078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1380,7 @@ GameObject:
   - component: {fileID: 4316418005655582654}
   - component: {fileID: 2201939633620850736}
   - component: {fileID: 6020903938522699491}
+  - component: {fileID: 3618212977056610729}
   m_Layer: 5
   m_Name: xbutton
   m_TagString: Untagged
@@ -1474,6 +1490,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3618212977056610729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866947984070928388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &7578124446049600536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 504.67377, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 809.3475, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2106079330778478405

@@ -10,16 +10,16 @@ public class CursorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(cursorDefault, new Vector2(cursorDefault.width / 2, cursorDefault.height / 2), CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorDefault, new Vector2(22,0), CursorMode.ForceSoftware);
     }
 
     public void ChangeTo(int index)
     {
-        Cursor.SetCursor(cursorSpecial[index], new Vector2(cursorDefault.width / 2, cursorDefault.height / 2), CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorSpecial[index], new Vector2(22, 0), CursorMode.ForceSoftware);
     }
 
     public void ChangeDefault()
     {
-        Cursor.SetCursor(cursorDefault, new Vector2(cursorDefault.width / 2, cursorDefault.height / 2), CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorDefault, new Vector2(22, 0), CursorMode.ForceSoftware);
     }
 }

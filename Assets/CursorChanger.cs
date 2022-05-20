@@ -8,6 +8,11 @@ public class CursorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public CursorManager cursormanager;
     public int ChangeMode;
 
+    private void Start()
+    {
+        GameObject myCursor = GameObject.Find("CursorManager");
+        cursormanager = myCursor.GetComponent<CursorManager>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         cursormanager.ChangeTo(ChangeMode);

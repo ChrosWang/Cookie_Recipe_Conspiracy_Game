@@ -1216,6 +1216,7 @@ GameObject:
   - component: {fileID: 6072516786342982791}
   - component: {fileID: 6072516786342982790}
   - component: {fileID: 4727447707609295741}
+  - component: {fileID: 6636821048522348269}
   m_Layer: 5
   m_Name: Paper Four
   m_TagString: Untagged
@@ -1350,6 +1351,20 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+--- !u!114 &6636821048522348269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072516786342982788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dbac1a6ae26e34a902aae01c00a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursormanager: {fileID: 0}
+  ChangeMode: 0
 --- !u!1 &6846346171595774642
 GameObject:
   m_ObjectHideFlags: 0
