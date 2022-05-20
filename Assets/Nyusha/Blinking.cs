@@ -8,8 +8,9 @@ public class Blinking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f); 
-       LeanTween.alpha(gameObject,1f,1f).setLoopPingPong().setEaseInOutQuint();
+        LeanTween.alpha(gameObject.GetComponent<RectTransform>(),0f,0f);
+       //gameObject.GetComponent<Image>().color = new Color(1f,1f,1f,0f); 
+       LeanTween.alpha(gameObject.GetComponent<RectTransform>(),1f,1f).setLoopPingPong().setEaseInOutQuint();
     }
 
     // Update is called once per frame
